@@ -105,7 +105,7 @@ const HotSellers = () => {
   ];
 
   return (
-    <div className="py-10 font-Satoshi">
+    <div className="py-10 font-Satoshi bg-neutral-10">
       <Container>
         <div className="flex justify-center items-center py-10">
           {/* Grid Section */}
