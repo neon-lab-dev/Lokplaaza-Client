@@ -51,12 +51,13 @@
   --color-neutral-20:#0D0D0D;
   --color-neutral-25:#FAFAFA;
   --color-neutral-30:#BFBFBF;
+  --color-neutral-35:#DEDEDE;
   
 
 
 
   /* Shadows */
-  --shadow-primary-button: 0 -2px 2px 0 rgba(255, 255, 255, 0.05) inset, 0 12px 64px 0 rgba(255, 23, 40, 0.50);
+  --shadow-primary-button: 0 4px 12px 0 rgba(0, 79, 47, 0.24);
 
   /* Gradients */
   --bg-gradient-primary: linear-gradient(360deg, #FFFFFF 50%, #F5F5F5 100%);

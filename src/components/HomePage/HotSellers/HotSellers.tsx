@@ -116,18 +116,21 @@ const HotSellers = () => {
           </div>
         </div>
       </Container>
-      <div className="relative h-fit ">
+      <div className="relative h-[400px] md:h-[500px] w-full">
         <Image
           src={IMAGES.HotSellerCTAbg}
-          alt={"hotsellers"}
-          className="absolute md:object-cover w-full h-full top-0 right-0 left-0 z-[-1]"
+          alt="hotsellers"
+          fill // make image cover parent
+          className="object-cover"
+          priority
         />
+          <div className="absolute inset-0 flex items-center justify-end">
         <Container>
-          {" "}
-          <h3 className="text-white font-bold text-xl md:text-3xl py-20 md:py-30  text-right ">
-            Upto 50% off on <br></br>Hotsellers
-          </h3>
+            <h3 className="text-white font-bold text-xl md:text-3xl text-right">
+              Upto 50% off on <br /> Hotsellers
+            </h3>
         </Container>
+          </div>
       </div>
     </div>
   );

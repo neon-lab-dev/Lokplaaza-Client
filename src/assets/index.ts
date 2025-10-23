@@ -2,6 +2,7 @@ import lokplaazaLogo from "../assets/Images/Lokplaazalogo.png"
 import heroSofaSmall from "../assets/Images/hero-smallscreen.png";
 import heroSofa from "../assets/Images/heroSofa.png" ;
 import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.png" ;
+import ShopByRoom from "../assets/Images/shopByRoom.png" ;
 
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg"
@@ -12,7 +13,8 @@ export const IMAGES = {
   lokplaazaLogo,
   heroSofa,
   heroSofaSmall,
-  HotSellerCTAbg
+  HotSellerCTAbg,
+  ShopByRoom
 
   
 };

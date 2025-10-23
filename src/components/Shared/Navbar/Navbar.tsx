@@ -1,5 +1,6 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
+import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,9 +63,13 @@ const Navbar = () => {
               <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
             </Link>
 
-            <button className="bg-success-05 rounded-full py-3.5 px-6 flex items-center justify-center gap-2">
-              <p className="text-success-10">Sign in</p>
-            </button>
+            <Button
+              label="Sign in"
+              bgColor="bg-success-05"
+              textColor="text-success-10"
+              icon={ICONS.rightArrow}
+              onClick={() => console.log("Clicked!")}
+            />
           </div>
 
           <Link
