@@ -30,7 +30,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="bg-neutral-35 font-Satoshi">
+    <div className="bg-neutral-35 font-Satoshi w-full">
       <Container>
         <div className="flex items-center justify-between py-5">
           <Link href={"/"} className="">
@@ -64,7 +64,6 @@ const Navbar = () => {
 
             <button className="bg-success-05 rounded-full py-3.5 px-6 flex items-center justify-center gap-2">
               <p className="text-success-10">Sign in</p>
-
             </button>
           </div>
 
