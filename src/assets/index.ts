@@ -1,13 +1,20 @@
-import MITRConsoltancyLogo from "../assets/Images/mitr-consultancy.png";
+import lokplaazaLogo from "../assets/Images/Lokplaazalogo.png"
+import heroSofa from "../assets/Images/heroSofa.png";
 
-import cart from "../assets/Icons/cart.svg";
+
+import hamburgerMenu from "../assets/Icons/hambuger-menu.svg"
+import cart from "../assets/Icons/cart.png"
+
 
 export const IMAGES = {
-  MITRConsoltancyLogo,
+  lokplaazaLogo,
+  heroSofa,
+
   
 };
 
 export const ICONS = {
   cart,
+  hamburgerMenu
   
 };

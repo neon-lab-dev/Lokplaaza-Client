@@ -32,14 +32,22 @@
 
   /* Primary */
 
-  --color-primary-10: #fb2c36;
+  --color-primary-05: #CD8D2C;
+  --color-primary-10: #FFECCF;
 
   /* neutral */
 
-  --color-neutral-10: #27272a;
+  --color-secondary-05: #A61319;
 
 
-  --color-success-10: #4FD67DC4;
+  --color-success-05: #004F2F;
+  --color-success-10: #E6F1EC;
+
+
+  --color-neutral-05:#4A4A4A;
+  --color-neutral-10:#F5F5F5;
+  --color-neutral-15:#EBEBEB;
+  --color-neutral-20:#0D0D0D;
   
 
 
@@ -48,7 +56,8 @@
   --shadow-primary-button: 0 -2px 2px 0 rgba(255, 255, 255, 0.05) inset, 0 12px 64px 0 rgba(255, 23, 40, 0.50);
 
   /* Gradients */
-  --bg-gradient-primary: linear-gradient(180deg, var(--red-400, #FF6467) 0%, var(--red-500, #FB2C36) 100%);
+  --bg-gradient-primary: linear-gradient(360deg, #FFFFFF 50%, #F5F5F5 100%);
+
 
 }
 
