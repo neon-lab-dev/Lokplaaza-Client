@@ -8,7 +8,7 @@ import React from 'react'
 
 const GotInspiration = () => {
   return (
-     <div className="py-14 xl:pt-[px] font-Satoshi bg-primary-15">
+     <div className="py-14 xl:py-0 font-Satoshi bg-primary-15">
       <Container>
         <div className=" flex flex-col xl:flex-row-reverse items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
           <div className=" w-full xl:w-[60%]">
@@ -35,7 +35,7 @@ const GotInspiration = () => {
             
           </div>
           <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[40%] ">
-            <Image src={IMAGES.ShopByRoom} alt={"shop by room"} className="w-full h-[380px] md:h-[476px] xl:h-full xl:w-full object-cover rounded-t-3xl md:rounded-3xl" />
+            <Image src={IMAGES.ShopByRoom} alt={"shop by room"} className="w-full h-[380px] md:h-[476px] xl:h-[804px] xl:w-[814px] object-cover rounded-3xl md:rounded-t-3xl xl:rounded-3xl" />
           </div>
         </div>
       </Container>
