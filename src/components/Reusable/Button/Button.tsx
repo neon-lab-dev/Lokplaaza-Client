@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 type ButtonProps = {
   label: string;
   bgColor?: string;
   textColor?: string;
-  icon?: string;
+  icon?: string |StaticImageData;
   shadow?: string;
   onClick?: () => void;
   className?: string;

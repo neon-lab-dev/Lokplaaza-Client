@@ -4,11 +4,10 @@ import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
 import Image from "next/image";
-import React from "react";
 
 const ShopByRoom = () => {
   return (
-    <div className="py-[216px] font-Satoshi bg-neutral-10">
+    <div className="pt-[76px] xl:py-[216px] font-Satoshi bg-neutral-10">
       <Container>
         <div className=" flex flex-col xl:flex-row items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
           <div className=" w-full xl:w-[60%]">
@@ -31,10 +30,10 @@ const ShopByRoom = () => {
             />
           </div>
           <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[40%] ">
-            <div className=" xl:hidden w-[70%] xl:w-[237px] h-[27px] bg-neutral-15 rounded-t-3xl"></div>
-            <div className=" xl:hidden w-[90%] xl:w-[284px] h-[27px] bg-neutral-35 rounded-t-3xl"></div>
-            <div className="hidden xl:h-[237px] xl:w-[27px] bg-neutral-15 rounded-l-3xl"></div>
-            <div className="hidden xl:h-[284px] xl:w-[27px] bg-neutral-35 rounded-l-3xl"></div>
+            <div className=" xl:hidden w-[65%] xl:w-[237px] h-[27px] bg-neutral-15 rounded-t-3xl"></div>
+            <div className=" xl:hidden w-[80%] xl:w-[284px] h-[27px] bg-neutral-35 rounded-t-3xl"></div>
+            <div className="hidden xl:flex xl:h-[237px] xl:w-[27px] bg-neutral-15 rounded-l-3xl"></div>
+            <div className="hidden xl:flex xl:h-[284px] xl:w-[27px] bg-neutral-35 rounded-l-3xl"></div>
             <Image src={IMAGES.ShopByRoom} alt={"shop by room"} className="w-full h-[380px] xl:size-[380px] object-cover rounded-t-3xl xl:rounded-3xl" />
           </div>
         </div>

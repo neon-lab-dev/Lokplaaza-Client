@@ -31,7 +31,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="bg-neutral-35 font-Satoshi w-full">
+    <div className="bg-transparent font-Satoshi w-full">
       <Container>
         <div className="flex items-center justify-between py-5">
           <Link href={"/"} className="">

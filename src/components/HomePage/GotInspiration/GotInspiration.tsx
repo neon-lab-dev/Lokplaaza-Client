@@ -11,31 +11,29 @@ const GotInspiration = () => {
      <div className="py-14 xl:py-0 font-Satoshi bg-primary-15">
       <Container>
         <div className=" flex flex-col xl:flex-row-reverse items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
-          <div className=" w-full xl:w-[60%]">
+          <div className=" w-full xl:w-[40%]">
             <Heading
-              heading="Luxury Collection"
-              title="Designs that Define Style"
+              heading="GOT INSPIRATION? WE ARE HERE!"
+              title="Got a Picture? We’ll Build It"
               alignClass="text-center xl:text-right"
               headingColor='text-secondary-10'
               titleColor='text-white'
 
             />
             <p className="text-neutral-10 text-center xl:text-right text-base md:text-2xl mt-4 mb-9 md:mt-3 md:mb-4">
-              Whether you’re styling a cozy bedroom, a productive office, or a
-              welcoming living room — we’ve made it easy. Browse furniture and
-              décor tailored for every room in your home or workspace.
+              Already have a design or style in mind? Upload your inspiration photo and let our team curate pieces just for you.
             </p>
             <div className='flex justify-center xl:justify-end'><Button
-              label="Explore By Room"
+              label="Upload Now"
               bgColor="bg-success-05"
               textColor="text-success-10"
-              icon={ICONS.rightArrow}
+              icon={ICONS.imageIcon}
               onClick={() => {console.log("Clicked!")}}
             /></div>
             
           </div>
-          <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[40%] ">
-            <Image src={IMAGES.ShopByRoom} alt={"shop by room"} className="w-full h-[380px] md:h-[476px] xl:h-[804px] xl:w-[814px] object-cover rounded-3xl md:rounded-t-3xl xl:rounded-3xl" />
+          <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[60%] ">
+            <Image src={IMAGES.GotInspiration} alt={"shop by room"} className="w-full h-[380px] md:h-[476px] xl:h-[804px] xl:w-[814px] object-cover rounded-3xl md:rounded-t-3xl xl:rounded-r-3xl" />
           </div>
         </div>
       </Container>

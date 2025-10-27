@@ -13,12 +13,12 @@ const HeroSection = () => {
         <Image
           src={IMAGES.heroSofa}
           alt={"hero section"}
-          className="hidden md:flex absolute top-0 right-0 h-full z-[-1] object-cover"
+          className="hidden md:flex absolute top-0 right-0 w-full h-full  z-[-1] object-cover"
         />
         <Image
           src={IMAGES.heroSofaSmall}
           alt={"hero section"}
-          className="absolute flex  md:hidden top-0 right-0 h-full z-[-1] object-cover"
+          className="absolute flex  md:hidden top-0 right-0 w-full h-full z-[-1] object-cover"
         />
         <Container>
           <div className="flex flex-col items-center justify-center">

@@ -109,7 +109,7 @@ const HotSellers = () => {
       <Container>
         <div className="flex justify-center items-center py-10">
           {/* Grid Section */}
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-6 w-full place-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-6 gap-3 md:gap-6 xl:gap-x-9 place-items-center">
             {hotSellerData.map((hotSeller: any) => (
               <HotSellersCard key={hotSeller.id} data={hotSeller} />
             ))}
@@ -126,7 +126,7 @@ const HotSellers = () => {
         />
           <div className="absolute inset-0 flex items-center justify-end">
         <Container>
-            <h3 className="text-white font-bold text-xl md:text-3xl text-right">
+            <h3 className="text-white font-bold text-xl md:text-3xl flex items-center justify-end ">
               Upto 50% off on <br /> Hotsellers
             </h3>
         </Container>

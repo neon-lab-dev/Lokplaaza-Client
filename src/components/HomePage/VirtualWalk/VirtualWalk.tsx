@@ -11,20 +11,18 @@ const VirtualWalk = () => {
     <div className="py-14 xl:py-[122px] font-Satoshi bg-neutral-10">
       <Container>
         <div className=" flex flex-col xl:flex-row-reverse items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
-          <div className=" w-full xl:w-[60%]">
+          <div className=" w-full xl:w-[40%]">
             <Heading
-              heading="Luxury Collection"
-              title="Designs that Define Style"
-              alignClass="text-center xl:text-right"
+              heading="VIRTUAL WALK"
+              title="Step Inside Without Stepping Out"
+              alignClass="text-right md:text-center xl:text-right"
             />
-            <p className="text-neutral-20 text-center xl:text-right text-base md:text-2xl mt-4 mb-9 md:mt-3 md:mb-4">
-              Whether you’re styling a cozy bedroom, a productive office, or a
-              welcoming living room — we’ve made it easy. Browse furniture and
-              décor tailored for every room in your home or workspace.
+            <p className="text-neutral-20 text-right md:text-center xl:text-right text-base md:text-2xl mt-4 mb-9 md:mt-3 md:mb-4">
+              Take a 360° virtual tour of our store and experience our furniture up close. Explore designs, textures, and layouts — all from the comfort of your home.
             </p>
-            <div className="flex justify-center xl:justify-end">
+            <div className="flex justify-end md:justify-center xl:justify-end">
               <Button
-                label="Explore By Room"
+                label="Start Virtual Walk"
                 bgColor="bg-success-05"
                 textColor="text-success-10"
                 icon={ICONS.rightArrow}
@@ -34,7 +32,7 @@ const VirtualWalk = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[40%] ">
+          <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[60%] ">
             <Image
               src={IMAGES.ShopByRoom}
               alt={"shop by room"}
