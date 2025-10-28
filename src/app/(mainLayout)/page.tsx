@@ -6,12 +6,12 @@ import HotSellers from "@/components/HomePage/HotSellers/HotSellers";
 import ShopByRoom from "@/components/HomePage/ShopByRoom/ShopByRoom";
 import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
+import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-
       <HotSellers />
       <ShopByRoom/>
       <GotInspiration/>
@@ -19,6 +19,7 @@ export default function Home() {
       <Explore/>
       <TryARView/>
       <CallToAction/>
+      <WhyChooseUs/>
     </div>
   );
 }
