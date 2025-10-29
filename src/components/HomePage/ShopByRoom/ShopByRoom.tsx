@@ -9,7 +9,7 @@ const ShopByRoom = () => {
   return (
     <div className="pt-[76px] xl:py-[216px] font-Satoshi bg-neutral-10">
       <Container>
-        <div className=" flex flex-col xl:flex-row items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
+        <div className=" flex flex-col xl:flex-row items-center justify-between gap-11 xl:gap-5 md:gap-[162px]">
           <div className=" w-full xl:w-[60%]">
             <Heading
               heading="Luxury Collection"
