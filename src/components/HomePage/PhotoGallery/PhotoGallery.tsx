@@ -1,13 +1,15 @@
 "use client";
+import { IMAGES } from "@/assets";
 import Image from "next/image";
 import React from "react";
 
 const images = [
-  "/images/img1.jpg",
-  "/images/img2.jpg",
-  "/images/img3.jpg",
-  "/images/img4.jpg",
-  "/images/img5.jpg",
+  IMAGES.TryARView,
+  IMAGES.TryARView,
+  IMAGES.TryARView,
+  IMAGES.TryARView,
+  IMAGES.TryARView,
+  IMAGES.TryARView,
 ];
 
 const PhotoGallery: React.FC = () => {

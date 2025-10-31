@@ -45,6 +45,7 @@
   --color-success-05: #004F2F;
   --color-success-10: #E6F1EC;
   --color-success-15: #304E2D;
+  --color-success-20: #004529;
 
 
   --color-neutral-05:#4A4A4A;
@@ -55,18 +56,32 @@
   --color-neutral-30:#BFBFBF;
   --color-neutral-35:#DEDEDE;
   --color-neutral-40:#757575;
+  --color-neutral-45:#FFFFFFA3;
+  --color-neutral-50:#FFFFFF7A;
+  --color-neutral-55:#3B3B3B;
   
 
+/* breakpoints */
+   --breakpoint-xs: 480px;
+  --breakpoint-3xl: 1920px;
 
 
   /* Shadows */
   --shadow-primary-button: 0 4px 12px 0 rgba(0, 79, 47, 0.24);
+  --shadow-testimonial-card: 0 8px 24px 0 #B1A491;
 
   /* Gradients */
   --bg-gradient-primary: linear-gradient(360deg, #FFFFFF 50%, #F5F5F5 100%);
+  --bg-gradient-card: linear-gradient(0deg, #FFF 50%, #F5F5F5 100%)
 
 
 }
+
+.body{
+  font-family: 'Satoshi' ;
+}
+
+
 
 .bg-gradient-primary {
   background: var(--bg-gradient-primary);

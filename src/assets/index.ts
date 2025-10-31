@@ -6,6 +6,7 @@ import ShopByRoom from "../assets/Images/shopByRoom.png" ;
 import GotInspiration from "../assets/Images/gotInspiration.png" ;
 import TryARView from "../assets/Images/TryARView.png" ;
 import offerBanner from "../assets/Images/offer-banner.png" ;
+import storeLocation from "../assets/Images/storeLocation.jpg" ;
 
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg"
@@ -22,7 +23,8 @@ export const IMAGES = {
   ShopByRoom,
   GotInspiration,
   TryARView,
-  offerBanner
+  offerBanner,
+  storeLocation
 
   
 };

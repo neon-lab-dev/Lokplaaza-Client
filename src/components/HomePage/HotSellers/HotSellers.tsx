@@ -126,7 +126,7 @@ const HotSellers = () => {
         />
           <div className="absolute inset-0 flex items-center justify-end">
         <Container>
-            <h3 className="text-white font-bold text-xl md:text-3xl flex items-center justify-end ">
+            <h3 className="text-white font-medium text-xl md:text-3xl flex items-center justify-end ">
               Upto 50% off on <br /> Hotsellers
             </h3>
         </Container>
