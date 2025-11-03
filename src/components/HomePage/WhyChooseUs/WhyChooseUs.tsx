@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
           {whyChooseUsData.map((whyChoose, index) => {
             return <div key={index} className="bg-white rounded-2xl md:rounded-4xl p-6 w-full space-y-4">
                 <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center">
-                    <h2 className="text-neutral-20 font-bold text-xl md::text-3xl">{whyChoose.title}</h2>
+                    <h2 className="text-neutral-20 font-medium text-xl md::text-3xl">{whyChoose.title}</h2>
                     <Image src={whyChoose.icon} alt={whyChoose.title} className="size-9 "/> 
                 </div>
                 <p className="text-neutral-20">{whyChoose.description}</p>

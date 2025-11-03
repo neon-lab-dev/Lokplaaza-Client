@@ -16,7 +16,7 @@ const Explore = () => {
 
       {/* Left Side - Text Section */}
       <div className="w-full xl:w-[55%] px-6 xl:pl-20 flex flex-col justify-center">
-        <h2 className="text-neutral-20 text-xl md:text-3xl xl:text-6xl font-bold">
+        <h2 className="text-neutral-20 text-xl md:text-3xl xl:text-6xl font-medium">
             Explore Luxury Furniture
         </h2>
         <p className="text-neutral-20 text-[13px] md:text-base xl:text-2xl mt-4 mb-6 md:mt-3 md:mb-4 max-w-[550px]">

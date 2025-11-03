@@ -24,10 +24,10 @@ const HeroSection = () => {
           <div className="flex flex-col items-center justify-center">
             <Navbar />
             <div className="space-y-6">
-              <h1 className="text-neutral-25 text-center text-3xl md:text-[61px] font-bold max-w-[1128px]">
+              <h1 className="text-neutral-25 text-center text-3xl md:text-[61px] font-medium max-w-[1128px]">
                 Make Your Interior More Minimalistic & Modern
               </h1>
-              <p className="text-neutral-30 text-base md:text-2xl lg:text-3xl text-center leading-8">
+              <p className="text-neutral-30 text-base md:text-2xl lg:text-3xl text-center font-light leading-8">
                 Turn your room with panto into a lot more minimalist and modern
                 with ease and speed
               </p>

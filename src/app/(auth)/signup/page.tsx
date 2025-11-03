@@ -1,6 +1,7 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
+import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ type TFormData = {
   phoneNumber: string;
   email: string;
   password: string;
+  confirmPassword: string;
 };
 
 const Signup = () => {
@@ -19,13 +21,17 @@ const Signup = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<TFormData>();
 
   const isLoading = false;
 
   const handleSignup = (data: TFormData) => {
-    console.log(data);
+    console.log("Signup Data:", data);
   };
+
+  // Watch password value for matching validation
+  const passwordValue = watch("password");
 
   return (
     <div className="flex flex-col justify-center items-center h-full font-Satoshi">
@@ -46,16 +52,6 @@ const Signup = () => {
             type="text"
             error={errors.name}
             {...register("name", { required: "Full name is required" })}
-          />
-
-          <TextInput
-            label="Date of Birth"
-            placeholder="Select your birth date"
-            type="date"
-            error={errors.dateofBirth}
-            {...register("dateofBirth", {
-              required: "Date of birth is required",
-            })}
           />
 
           <TextInput
@@ -89,20 +85,37 @@ const Signup = () => {
           />
 
           <TextInput
+            label="Date of Birth"
+            placeholder="Select your birth date"
+            type="date"
+            error={errors.dateofBirth}
+            {...register("dateofBirth", {
+              required: "Date of birth is required",
+            })}
+          />
+
+          <PasswordInput
             label="Password"
-            placeholder="Enter password"
-            type="password"
+            placeholder="Enter your password"
             error={errors.password}
             {...register("password", { required: "Password is required" })}
+          />
+
+          <PasswordInput
+            label="Confirm Password"
+            placeholder="Confirm your password"
+            error={errors.confirmPassword}
+            {...register("confirmPassword", {
+              required: "Confirm password is required",
+              validate: (value) =>
+                value === passwordValue || "Passwords do not match",
+            })}
           />
 
           <Button
             label={isLoading ? "Please wait..." : "Sign Up"}
             bgColor="bg-success-05"
             icon={ICONS.rightArrow}
-            onClick={() => {
-              console.log("Clicked!");
-            }}
             className="w-full"
           />
 

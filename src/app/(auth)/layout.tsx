@@ -8,11 +8,9 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
       <Image
         src={IMAGES.authImg}
         alt="lookplaza-signup"
-        className="h-screen rounded-r-3xl object-cover"
+        className="max-w-[600px] 2xl:max-w-full h-screen rounded-r-3xl object-cover"
       />
-      <div className="w-full">
-        {children}
-      </div>
+      <div className="w-full">{children}</div>
     </div>
   );
 };
