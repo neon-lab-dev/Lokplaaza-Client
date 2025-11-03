@@ -1,3 +1,6 @@
-<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 13L13 1M1 1L13 13" stroke="#E6F1EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="5px" height="5px" viewBox="0 0 5 5" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(90.196079%,94.509804%,92.54902%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0.995312 13.004677 L 13.004677 0.995312 M 0.995312 0.995312 L 13.004677 13.004677 " transform="matrix(0.357143,0,0,0.357143,0,0)"/>
+</g>
 </svg>

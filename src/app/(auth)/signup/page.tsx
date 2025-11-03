@@ -132,16 +132,8 @@ const Signup = () => {
         </form>
       </div>
 
-      <Button
-        label={"Click"}
-        bgColor="bg-success-05"
-        icon={ICONS.rightArrow}
-        className="w-full"
-        onClick={() => setIsOtpModalOpen(!isOtpModalOpen)}
-      />
-
       <Modal isModalOpen={isOtpModalOpen}>
-       <VerifyOTPForm/>
+        <VerifyOTPForm />
       </Modal>
     </div>
   );
