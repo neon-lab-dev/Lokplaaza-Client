@@ -63,13 +63,14 @@ const Navbar = () => {
               <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
             </Link>
 
+            <Link href={"/login"}>
             <Button
               label="Sign in"
               bgColor="bg-success-05"
               textColor="text-success-10"
               icon={ICONS.rightArrow}
-              onClick={() => console.log("Clicked!")}
             />
+            </Link>
           </div>
 
           <Link
