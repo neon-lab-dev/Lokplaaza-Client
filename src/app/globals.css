@@ -32,57 +32,55 @@
 
   /* Primary */
 
-  --color-primary-05: #CD8D2C;
-  --color-primary-10: #FFECCF;
+  --color-primary-05: #cd8d2c;
+  --color-primary-10: #ffeccf;
   --color-primary-15: #5f533f;
 
   /* neutral */
 
-  --color-secondary-05: #A61319;
-  --color-secondary-10: #F57B80;
+  --color-secondary-05: #a61319;
+  --color-secondary-10: #f57b80;
 
-
-  --color-success-05: #004F2F;
-  --color-success-10: #E6F1EC;
-  --color-success-15: #304E2D;
+  --color-success-05: #004f2f;
+  --color-success-10: #e6f1ec;
+  --color-success-15: #304e2d;
+  --color-success-20: #2b8963;
   --color-success-20: #004529;
 
+  --color-neutral-05: #4a4a4a;
+  --color-neutral-10: #f5f5f5;
+  --color-neutral-15: #ebebeb;
+  --color-neutral-20: #0d0d0d;
+  --color-neutral-25: #fafafa;
+  --color-neutral-30: #bfbfbf;
+  --color-neutral-35: #dedede;
+  --color-neutral-40: #757575;
+  --color-neutral-45: #ffffffa3;
+  --color-neutral-50: #ffffff7a;
+  --color-neutral-55: #3b3b3b;
+  --color-neutral-45: #000;
 
-  --color-neutral-05:#4A4A4A;
-  --color-neutral-10:#F5F5F5;
-  --color-neutral-15:#EBEBEB;
-  --color-neutral-20:#0D0D0D;
-  --color-neutral-25:#FAFAFA;
-  --color-neutral-30:#BFBFBF;
-  --color-neutral-35:#DEDEDE;
-  --color-neutral-40:#757575;
-  --color-neutral-45:#FFFFFFA3;
-  --color-neutral-50:#FFFFFF7A;
-  --color-neutral-55:#3B3B3B;
-  
-
-/* breakpoints */
-   --breakpoint-xs: 480px;
+  /* breakpoints */
+  --breakpoint-xs: 480px;
   --breakpoint-3xl: 1920px;
-
 
   /* Shadows */
   --shadow-primary-button: 0 4px 12px 0 rgba(0, 79, 47, 0.24);
+<<<<<<< HEAD
   --shadow-testimonial-card: 0 8px 24px 0 #B1A491;
   --shadow-product-card:0 4px 24px 0 rgba(0, 0, 0, 0.12);  
+=======
+  --shadow-testimonial-card: 0 8px 24px 0 #b1a491;
+>>>>>>> bf53d7c9ecc4467964d2fc3f80b9fc61d3bdb455
 
   /* Gradients */
-  --bg-gradient-primary: linear-gradient(360deg, #FFFFFF 50%, #F5F5F5 100%);
-  --bg-gradient-card: linear-gradient(0deg, #FFF 50%, #F5F5F5 100%)
-
-
+  --bg-gradient-primary: linear-gradient(360deg, #ffffff 50%, #f5f5f5 100%);
+  --bg-gradient-card: linear-gradient(0deg, #fff 50%, #f5f5f5 100%);
 }
 
-.body{
-  font-family: 'Satoshi' ;
+.body {
+  font-family: "Satoshi";
 }
-
-
 
 .bg-gradient-primary {
   background: var(--bg-gradient-primary);
@@ -99,4 +97,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
