@@ -3,6 +3,7 @@ import HotSellersCard from "./HotSellerCards/HotSellersCard";
 import { IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
+import SecondaryHeading from "@/components/Reusable/SecondaryHeading/SecondaryHeading";
 
 const HotSellers = () => {
   const hotSellerData = [
@@ -107,7 +108,10 @@ const HotSellers = () => {
   return (
     <div className="py-10 font-Satoshi bg-neutral-10">
       <Container>
-        <div className="flex justify-center items-center py-10">
+        <div className="text-center">
+         <SecondaryHeading title="Hotsellers"/>
+        </div>
+        <div className="flex justify-center items-center py-10 mt-4">
           {/* Grid Section */}
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-6 gap-3 md:gap-6 xl:gap-x-9 place-items-center">
             {hotSellerData.map((hotSeller: any) => (
