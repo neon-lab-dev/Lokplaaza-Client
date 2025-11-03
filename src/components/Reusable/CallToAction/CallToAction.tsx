@@ -16,6 +16,7 @@ interface CallToActionProps {
   textAlign?: 'left' | 'center' | 'right'
   bgColor?:string
   textColor?:string
+  iconClassName?:string
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({
@@ -29,7 +30,8 @@ const CallToAction: React.FC<CallToActionProps> = ({
   overlayClass = 'bg-black/40', // optional translucent overlay
   textAlign = 'left',
   bgColor, 
-  textColor
+  textColor,
+  iconClassName
 }) => {
   return (
     <div className={`relative w-full ${height}`}>
@@ -46,10 +48,10 @@ const CallToAction: React.FC<CallToActionProps> = ({
       <div className={`absolute inset-0 ${overlayClass}`} />
 
       {/* Content */}
-      <div className="absolute inset-0 flex items-center">
+      <div className="absolute inset-0 flex items-center ">
         <Container>
           <div
-            className={`flex flex-col gap-2 ${
+            className={`flex flex-col gap-4 ${
               textAlign === 'center'
                 ? 'items-center text-center'
                 : textAlign === 'right'
@@ -67,6 +69,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
               onClick={onButtonClick}
               bgColor={bgColor}
               textColor={textColor}
+              iconClassName={iconClassName}
             />
           </div>
         </Container>

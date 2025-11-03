@@ -7,18 +7,21 @@ import HeroSection from "@/components/HomePage/Hero/HeroSection";
 import HotSellers from "@/components/HomePage/HotSellers/HotSellers";
 import OfflineStore from "@/components/HomePage/OfflineStore/OfflineStore";
 import PhotoGallery from "@/components/HomePage/PhotoGallery/PhotoGallery";
-import Products from "@/components/HomePage/Products/Products";
 import ShopByRoom from "@/components/HomePage/ShopByRoom/ShopByRoom";
 import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
 import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
+import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSection";
+import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
+import Accessories from "@/components/HomePage/Accessories/Accessories";
+import Appliances from "@/components/HomePage/Appliances/Appliances";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      <Products/>
+      <ProductsSection/>
       <HotSellers />
       <ShopByRoom/>
       <GotInspiration/>
@@ -35,18 +38,22 @@ export default function Home() {
       overlayClass="bg-black/30"
       textAlign="left"
     />
+    <ModularKitchen/>
+    <Appliances/>
+    <Accessories/>
       <CallToAction
       image={IMAGES.offerBanner}
       heading="Plan your dream kitchen with Lokplaaza."
       subtext="Smart solutions, stylish designs, and everything you need under one roof."
       buttonLabel="Book Appointment"
-      buttonIcon={ICONS.rightArrow}
+      buttonIcon={ICONS.downArrow}
       onButtonClick={() => console.log('CTA Clicked')}
       height="h-[250px] md:h-[350px]"
       overlayClass="bg-black/30"
       textAlign="left"
       textColor="text-success-20"
       bgColor="bg-success-10"
+      iconClassName="rotate-270"
     />
       <OfflineStore/>
       <WhyChooseUs/>

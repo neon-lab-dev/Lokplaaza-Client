@@ -10,6 +10,7 @@ type ButtonProps = {
   shadow?: string;
   onClick?: () => void;
   className?: string;
+  iconClassName?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,6 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   textColor = "text-success-10",
   icon,
   shadow = "shadow-primary-button",
+  iconClassName,
   onClick,
   className,
 }) => {
@@ -44,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
         <Image
           src={icon}
           alt={label}
-          className="size-6 flex items-center"
+          className={`size-6 flex items-center justify-center ${iconClassName}`}
         />
       )}
     </button>

@@ -33,8 +33,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Corner Shadow Circle */}
-      <div className="absolute bg-white size-12 p-4 bottom-0 right-0 shadow-product-card rounded-full">
-        <Image src={ICONS.rightArrow} alt={title} /> 
+      <div className="absolute flex items-center justify-center bg-white size-12 bottom-0 right-0 shadow-product-card rounded-full">
+        <Image src={ICONS.rightArrowRed  } alt={title} className="size-6" /> 
       </div>
 
       {/* Product Details */}
