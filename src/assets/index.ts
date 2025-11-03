@@ -14,6 +14,7 @@ import cart from "../assets/Icons/cart.png";
 import rightArrow from "../assets/Icons/arrow-sm-right.svg";
 import imageIcon from "../assets/Icons/photograph.png";
 import cube from "../assets/Icons/cube.png";
+import cross from "../assets/Icons/cross.svg";
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -34,4 +35,5 @@ export const ICONS = {
   rightArrow,
   imageIcon,
   cube,
+  cross,
 };
