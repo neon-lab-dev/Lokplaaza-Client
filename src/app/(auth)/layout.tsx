@@ -4,11 +4,11 @@ import { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex gap-24">
+    <div className="flex gap-5">
       <Image
         src={IMAGES.authImg}
         alt="lookplaza-signup"
-        className="max-w-[600px] 2xl:max-w-full h-screen rounded-r-3xl object-cover"
+        className="max-w-[500px] lg:max-w-[600px] xl:max-w-full h-screen rounded-r-3xl object-cover sticky left-0 top-0 hidden lg:flex"
       />
       <div className="w-full">{children}</div>
     </div>

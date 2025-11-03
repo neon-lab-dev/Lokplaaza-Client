@@ -45,7 +45,7 @@
   --color-success-10: #e6f1ec;
   --color-success-15: #304e2d;
   --color-success-20: #2b8963;
-  --color-success-20: #004529;
+  --color-success-25: #004529;
 
   --color-neutral-05: #4a4a4a;
   --color-neutral-10: #f5f5f5;
@@ -66,12 +66,8 @@
 
   /* Shadows */
   --shadow-primary-button: 0 4px 12px 0 rgba(0, 79, 47, 0.24);
-<<<<<<< HEAD
   --shadow-testimonial-card: 0 8px 24px 0 #B1A491;
   --shadow-product-card:0 4px 24px 0 rgba(0, 0, 0, 0.12);  
-=======
-  --shadow-testimonial-card: 0 8px 24px 0 #b1a491;
->>>>>>> bf53d7c9ecc4467964d2fc3f80b9fc61d3bdb455
 
   /* Gradients */
   --bg-gradient-primary: linear-gradient(360deg, #ffffff 50%, #f5f5f5 100%);
