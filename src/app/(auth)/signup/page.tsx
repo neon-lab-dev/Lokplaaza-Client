@@ -34,7 +34,7 @@ const Signup = () => {
   const passwordValue = watch("password");
 
   return (
-    <div className="flex flex-col justify-center items-center h-full font-Satoshi">
+    <div className="flex flex-col justify-center items-center h-full font-Satoshi px-5 lg:px-10 xl:px-0 py-8 lg:py-16">
       <div className="space-y-12 w-full">
         <Image
           src={IMAGES.lokplaazaLogo}

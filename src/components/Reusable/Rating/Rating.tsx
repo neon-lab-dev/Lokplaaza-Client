@@ -1,5 +1,5 @@
 import React from "react";
-import { Star } from "lucide-react";
+import { CiStar } from "react-icons/ci";
 
 interface StarRatingProps {
   rating: number; // example: 4.3, 2.8 etc.
@@ -23,7 +23,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, size = 20, className })
             style={{ width: size, height: size }}
           >
             {/* Empty background star */}
-            <Star
+            <CiStar
               size={size}
               className="text-gray-300 absolute top-0 left-0"
               strokeWidth={1.5}
@@ -36,7 +36,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, size = 20, className })
                 width: isFull ? "100%" : isHalf ? "50%" : "0%",
               }}
             >
-              <Star size={size} fill="currentColor" stroke="none" />
+              <CiStar size={size} fill="currentColor" stroke="none" />
             </div>
           </div>
         );
