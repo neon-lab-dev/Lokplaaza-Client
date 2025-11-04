@@ -1,71 +1,62 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setUser } from "../Features/Auth/authSlice";
 import type {
+  BaseQueryApi,
   BaseQueryFn,
   FetchArgs,
-  FetchBaseQueryError,
-} from '@reduxjs/toolkit/query';
-import { logout, setUser } from '../features/Auth/authSlice';
-import { RootState } from '../store';
+} from "@reduxjs/toolkit/query";
+import type { DefinitionType } from "@reduxjs/toolkit/query";
+import type { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://.localhost:5000/api/v1',
   // baseUrl: "http://localhost:5000/api/v1",
-  credentials: 'include',
+  baseUrl: "https://lokplaaza-server.vercel.app/api/v1",
+  credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
+    console.log(token);
+
     if (token) {
-      headers.set('authorization', `${token}`);
+      headers.set("authorization", `${token}`);
     }
     return headers;
   },
 });
 
 const baseQueryWithRefreshToken: BaseQueryFn<
-  string | FetchArgs,
-  unknown,
-  FetchBaseQueryError
-> = async (args, api, extraOptions) => {
+  FetchArgs,
+  BaseQueryApi,
+  DefinitionType
+> = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
-   try {
     const res = await fetch(
-      'https://.localhost:5000/api/v1/auth/refresh-token',
+      // "http://localhost:5000/api/v1/auth/refresh-token",
+      "https://lokplaaza-server.vercel.app/api/v1/auth/refresh-token",
       {
-        method: 'POST',
-        credentials: 'include',
+        credentials: "include",
       }
     );
 
     const data = await res.json();
-    if (data?.data?.accessToken) {
-      const user = (api.getState() as RootState).auth.user;
-      api.dispatch(
-        setUser({
-          user,
-          token: data.data.accessToken,
-        })
-      );
-      // Retry the original query with new token
-      result = await baseQuery(args, api, extraOptions);
-    }
-  }catch (error) {
-        console.warn('Session expired, logging out user...');
-        api.dispatch(logout()); 
-        if (typeof window !== 'undefined') {
-          window.location.href = '/auth';
-        }
-      }
-    }
+    const user = (api.getState() as RootState).auth.user;
+    api.dispatch(
+      setUser({
+        user,
+        token: data?.data?.accessToken,
+      })
+    );
+    result = await baseQuery(args, api, extraOptions);
+  }
 
   return result;
 };
 
 export const baseApi = createApi({
-  reducerPath: 'baseApi',
+  reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: [
-    'users',
-  ],
+  tagTypes: ["users"],
   endpoints: () => ({}),
 });

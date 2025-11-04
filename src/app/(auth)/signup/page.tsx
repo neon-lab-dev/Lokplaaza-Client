@@ -1,10 +1,13 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
+import VerifyOTPForm from "@/components/AuthPage/VerifyOTPForm/VerifyOTPForm";
 import Button from "@/components/Reusable/Button/Button";
+import Modal from "@/components/Reusable/Modal/Modal";
 import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type TFormData = {
@@ -17,6 +20,7 @@ type TFormData = {
 };
 
 const Signup = () => {
+  const [isOtpModalOpen, setIsOtpModalOpen] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -127,6 +131,10 @@ const Signup = () => {
           </p>
         </form>
       </div>
+
+      <Modal isModalOpen={isOtpModalOpen}>
+        <VerifyOTPForm />
+      </Modal>
     </div>
   );
 };
