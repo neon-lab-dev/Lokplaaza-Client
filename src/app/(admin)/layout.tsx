@@ -1,0 +1,19 @@
+import Header from "@/components/Dashboard/Header/Header";
+import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
+import { ReactNode } from "react";
+
+const AdminLayout = ({children} : {children: ReactNode}) => {
+  return (
+    <div className="flex bg-neutral-150">
+      <Sidebar />
+      <div className="w-full flex flex-col">
+        <Header/>
+        <div className="px-5 py-4">
+            {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminLayout;

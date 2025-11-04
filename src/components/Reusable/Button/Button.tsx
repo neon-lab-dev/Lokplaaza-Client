@@ -9,6 +9,7 @@ type ButtonProps = {
   icon?: string | StaticImageData;
   shadow?: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   className?: string;
 };
 
@@ -19,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   shadow = "shadow-primary-button",
   onClick,
+  type,
   className,
 }) => {
   const buttonClasses = twMerge(
@@ -38,7 +40,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button onClick={onClick} className={buttonClasses}>
+    <button type={type} onClick={onClick} className={buttonClasses}>
       <p className={twMerge("font-medium", textColor)}>{label}</p>
       {icon && (
         <Image
