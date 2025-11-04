@@ -58,7 +58,6 @@
   --color-neutral-45: #ffffffa3;
   --color-neutral-50: #ffffff7a;
   --color-neutral-55: #3b3b3b;
-  --color-neutral-45: #000;
 
   /* breakpoints */
   --breakpoint-xs: 480px;
@@ -72,6 +71,7 @@
   /* Gradients */
   --bg-gradient-primary: linear-gradient(360deg, #ffffff 50%, #f5f5f5 100%);
   --bg-gradient-card: linear-gradient(0deg, #fff 50%, #f5f5f5 100%);
+   --bg-gray-gradient:linear-gradient(213deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.48) 50%);
 }
 
 .body {
@@ -83,6 +83,9 @@
 }
 .bg-gradient-card {
   background: var(--bg-gradient-card);
+}
+.bg-gray-gradient {
+  background: var(--bg-gray-gradient);
 }
 
 .scrollbar-none::-webkit-scrollbar {

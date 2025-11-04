@@ -12,6 +12,8 @@ import authImg from "../assets/Images/auth.webp";
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg";
 import cart from "../assets/Icons/cart.png";
 import rightArrow from "../assets/Icons/arrow-sm-right.svg";
+import downArrow from "../assets/Icons/arrow-sm-down.svg";
+import rightArrowRed from "../assets/Icons/arrow-sm-right1.svg";
 import imageIcon from "../assets/Icons/photograph.png";
 import cube from "../assets/Icons/cube.png";
 import cross from "../assets/Icons/cross.svg";
@@ -35,5 +37,7 @@ export const ICONS = {
   rightArrow,
   imageIcon,
   cube,
+  rightArrowRed,
+  downArrow,
   cross,
 };

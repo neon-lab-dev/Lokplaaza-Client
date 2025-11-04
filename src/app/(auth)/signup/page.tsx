@@ -123,7 +123,7 @@ const Signup = () => {
             className="w-full"
           />
 
-          <p className="text-neutral-45 leading-5 text-center mt-6">
+          <p className="text-black leading-5 text-center mt-6">
             Already Have An Account?{" "}
             <Link href={"/login"} className="font-bold text-success-20">
               Login
