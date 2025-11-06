@@ -17,12 +17,14 @@ import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen"
 import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
 import StartDreamKitchenBanner from "@/components/StartDreamKitchenBanner/StartDreamKitchenBanner";
+import BenefitsOfModularKitchen from "@/components/BenefitsOfModularKitchen/BenefitsOfModularKitchen";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
       <StartDreamKitchenBanner/>
+      <BenefitsOfModularKitchen/>
       <ProductsSection />
       <HotSellers />
       <ShopByRoom />
