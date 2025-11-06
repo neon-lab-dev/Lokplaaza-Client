@@ -39,6 +39,7 @@ import number1 from "../assets/Icons/number-1.svg";
 import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
+import downArrow2 from "../assets/Icons/down-arrow.svg";
 
 export const IMAGES = {
   lokplaazaLogo,
