@@ -8,6 +8,7 @@ import TryARView from "../assets/Images/TryARView.png";
 import offerBanner from "../assets/Images/offer-banner.png";
 import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
+import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
 //Benefits of Modular Kitchen
 import flexible from "../assets/Images/flexible.webp";
 import easyToAssemble from "../assets/Images/easy-to-assemble.webp";
@@ -39,7 +40,6 @@ import number1 from "../assets/Icons/number-1.svg";
 import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
-import downArrow2 from "../assets/Icons/down-arrow.svg";
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -65,6 +65,7 @@ export const IMAGES = {
   getAQuote,
   talkToTeam,
   gettingStarted,
+  talkToDesignExpert,
 };
 
 export const ICONS = {

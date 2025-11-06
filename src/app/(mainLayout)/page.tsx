@@ -21,6 +21,7 @@ import BenefitsOfModularKitchen from "@/components/BenefitsOfModularKitchen/Bene
 import GetCustomizedKitchenBanner from "@/components/GetCustomizedKitchenBanner/GetCustomizedKitchenBanner";
 import StepsOfCustomizedKitchen from "@/components/StepsOfCustomizedKitchen/StepsOfCustomizedKitchen";
 import OurRange from "@/components/OurRange/OurRange";
+import TalkToDesignExpert from "@/components/TalkToDesignExpert/TalkToDesignExpert";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <GetCustomizedKitchenBanner/>
       <StepsOfCustomizedKitchen/>
       <OurRange/>
+      <TalkToDesignExpert/>
 
 
       <ProductsSection />
