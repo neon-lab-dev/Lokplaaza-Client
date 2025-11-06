@@ -18,6 +18,7 @@ import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
 import StartDreamKitchenBanner from "@/components/StartDreamKitchenBanner/StartDreamKitchenBanner";
 import BenefitsOfModularKitchen from "@/components/BenefitsOfModularKitchen/BenefitsOfModularKitchen";
+import GetCustomizedKitchenBanner from "@/components/GetCustomizedKitchenBanner/GetCustomizedKitchenBanner";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <HeroSection />
       <StartDreamKitchenBanner/>
       <BenefitsOfModularKitchen/>
+      <GetCustomizedKitchenBanner/>
       <ProductsSection />
       <HotSellers />
       <ShopByRoom />

@@ -44,7 +44,7 @@ const BenefitsOfModularKitchen = () => {
 
   return (
     <Container>
-      <div className="py-14">
+      <div className="py-14 font-Satoshi">
         <h3 className="text-neutral-20 text-[32px] lg:text-[45px] 2xl:text-[61px] font-semibold leading-9 lg:leading-11 2xl:leading-16">
           Benefits of Modular Kitchen
         </h3>
@@ -74,7 +74,7 @@ const BenefitsOfModularKitchen = () => {
                     {benefit.title}
                   </h3>
                 </div>
-                <p className="text-white/90 text-sm">{benefit.description}</p>
+                <p className="text-success-10 text-sm lg:text-base">{benefit.description}</p>
               </div>
             </div>
           ))}
