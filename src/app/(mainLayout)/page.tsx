@@ -16,26 +16,11 @@ import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSecti
 import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
-import StartDreamKitchenBanner from "@/components/StartDreamKitchenBanner/StartDreamKitchenBanner";
-import BenefitsOfModularKitchen from "@/components/BenefitsOfModularKitchen/BenefitsOfModularKitchen";
-import GetCustomizedKitchenBanner from "@/components/GetCustomizedKitchenBanner/GetCustomizedKitchenBanner";
-import StepsOfCustomizedKitchen from "@/components/StepsOfCustomizedKitchen/StepsOfCustomizedKitchen";
-import OurRange from "@/components/OurRange/OurRange";
-import TalkToDesignExpert from "@/components/TalkToDesignExpert/TalkToDesignExpert";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      
-      <StartDreamKitchenBanner/>
-      <BenefitsOfModularKitchen/>
-      <GetCustomizedKitchenBanner/>
-      <StepsOfCustomizedKitchen/>
-      <OurRange/>
-      <TalkToDesignExpert/>
-
-
       <ProductsSection />
       <HotSellers />
       <ShopByRoom />

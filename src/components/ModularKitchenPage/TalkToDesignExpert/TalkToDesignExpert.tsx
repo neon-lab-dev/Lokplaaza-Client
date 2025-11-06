@@ -1,9 +1,9 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import Image from "next/image";
-import Container from "../Reusable/Container/Container";
-import TextInput from "../Reusable/TextInput/TextInput";
-import Button from "../Reusable/Button/Button";
+import Container from "../../Reusable/Container/Container";
+import TextInput from "../../Reusable/TextInput/TextInput";
+import Button from "../../Reusable/Button/Button";
 import { useForm } from "react-hook-form";
 
 type TFormData = {

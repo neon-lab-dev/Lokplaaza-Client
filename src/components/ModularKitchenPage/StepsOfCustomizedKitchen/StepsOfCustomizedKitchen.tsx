@@ -1,5 +1,5 @@
 import { ICONS, IMAGES } from "@/assets";
-import Container from "../Reusable/Container/Container";
+import Container from "../../Reusable/Container/Container";
 import Image from "next/image";
 
 const StepsOfCustomizedKitchen = () => {

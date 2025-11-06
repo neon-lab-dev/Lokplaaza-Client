@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Container from "../Reusable/Container/Container";
+import Container from "../../Reusable/Container/Container";
 import Image from "next/image";
 import { ICONS } from "@/assets";
 

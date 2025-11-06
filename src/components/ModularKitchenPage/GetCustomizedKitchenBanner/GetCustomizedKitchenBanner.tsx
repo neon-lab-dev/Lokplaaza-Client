@@ -1,6 +1,6 @@
 import { ICONS, IMAGES } from "@/assets";
-import Button from "../Reusable/Button/Button";
-import Container from "../Reusable/Container/Container";
+import Button from "../../Reusable/Button/Button";
+import Container from "../../Reusable/Container/Container";
 import Image from "next/image";
 
 const GetCustomizedKitchenBanner = () => {

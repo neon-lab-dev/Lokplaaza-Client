@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Container from "../Reusable/Container/Container";
+import Container from "../../Reusable/Container/Container";
 import { ICONS, IMAGES } from "@/assets";
 
 const BenefitsOfModularKitchen = () => {

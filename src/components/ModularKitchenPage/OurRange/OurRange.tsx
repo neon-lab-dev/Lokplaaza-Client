@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { ICONS, IMAGES } from "../../assets";
-import Container from "./../Reusable/Container/Container";
+import { ICONS, IMAGES } from "../../../assets";
+import Container from "../../Reusable/Container/Container";
 
 const OurRange = () => {
   const accordingData = [
