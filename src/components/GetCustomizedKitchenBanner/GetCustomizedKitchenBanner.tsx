@@ -1,6 +1,7 @@
-import { ICONS } from "@/assets";
+import { ICONS, IMAGES } from "@/assets";
 import Button from "../Reusable/Button/Button";
 import Container from "../Reusable/Container/Container";
+import Image from "next/image";
 
 const GetCustomizedKitchenBanner = () => {
   return (
@@ -20,6 +21,31 @@ const GetCustomizedKitchenBanner = () => {
           icon={ICONS.rightArrow}
           className="w-fit self-end"
         />
+
+        {/* Images */}
+        <div className="flex flex-col gap-6 mt-13 2xl:mt-[98px]">
+          {/* Large top image */}
+          <Image
+            src={IMAGES.customizedModularKitchen1}
+            alt="Customized modular kitchen"
+            className="w-full h-[348px] rounded-xl object-cover"
+          />
+
+          {/* Bottom grid images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            {[
+              IMAGES.customizedModularKitchen2,
+              IMAGES.customizedModularKitchen2,
+            ].map((img, index) => (
+              <Image
+                key={index}
+                src={img}
+                alt={`Customized modular kitchen ${index + 2}`}
+                className="w-full h-[218px] rounded-xl object-cover"
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </Container>
   );

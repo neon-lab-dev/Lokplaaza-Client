@@ -15,6 +15,10 @@ import customizable from "../assets/Images/customizable.webp";
 import spaceSaving from "../assets/Images/space-saving.webp";
 import costEffective from "../assets/Images/cost-effective.webp";
 import adaptability from "../assets/Images/adaptability.webp";
+// Customized Modular Kitchen
+import customizedModularKitchen1 from "../assets/Images/customized-modular-kitchen-1.webp";
+import customizedModularKitchen2 from "../assets/Images/customized-modular-kitchen-2.webp";
+import customizedModularKitchen3 from "../assets/Images/customized-modular-kitchen-3.webp";
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg";
 import cart from "../assets/Icons/cart.png";
@@ -43,6 +47,9 @@ export const IMAGES = {
   spaceSaving,
   costEffective,
   adaptability,
+  customizedModularKitchen1,
+  customizedModularKitchen2,
+  customizedModularKitchen3,
 };
 
 export const ICONS = {
