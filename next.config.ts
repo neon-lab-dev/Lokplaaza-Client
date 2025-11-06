@@ -1,8 +1,22 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/models/:file*',
+        headers: [
+          { key: 'Content-Type', value: 'model/gltf-binary' }, // for .glb
+        ],
+      },
+      {
+        source: '/models/:file*',
+        headers: [
+          { key: 'Content-Type', value: 'model/vnd.usdz+zip' }, // for .usdz
+        ],
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
