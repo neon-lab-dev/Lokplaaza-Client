@@ -19,6 +19,12 @@ import adaptability from "../assets/Images/adaptability.webp";
 import customizedModularKitchen1 from "../assets/Images/customized-modular-kitchen-1.webp";
 import customizedModularKitchen2 from "../assets/Images/customized-modular-kitchen-2.webp";
 import customizedModularKitchen3 from "../assets/Images/customized-modular-kitchen-3.webp";
+// Steps of Customized Kitchen
+import uploadInspiration from "../assets/Images/upload-inspiration.webp";
+import getAQuote from "../assets/Images/get-a-quote.webp";
+import talkToTeam from "../assets/Images/talk-to-team.webp";
+import gettingStarted from "../assets/Images/getting-started.webp";
+
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg";
 import cart from "../assets/Icons/cart.png";
@@ -29,6 +35,10 @@ import imageIcon from "../assets/Icons/photograph.png";
 import cube from "../assets/Icons/cube.png";
 import cross from "../assets/Icons/cross.svg";
 import tickMarkGreen from "../assets/Icons/tick-mark-green.svg";
+import number1 from "../assets/Icons/number-1.svg";
+import number2 from "../assets/Icons/number-2.svg";
+import number3 from "../assets/Icons/number-3.svg";
+import number4 from "../assets/Icons/number-4.svg";
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -50,6 +60,10 @@ export const IMAGES = {
   customizedModularKitchen1,
   customizedModularKitchen2,
   customizedModularKitchen3,
+  uploadInspiration,
+  getAQuote,
+  talkToTeam,
+  gettingStarted,
 };
 
 export const ICONS = {
@@ -62,4 +76,8 @@ export const ICONS = {
   downArrow,
   cross,
   tickMarkGreen,
+  number1,
+  number2,
+  number3,
+  number4,
 };
