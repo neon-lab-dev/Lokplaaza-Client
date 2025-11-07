@@ -9,6 +9,12 @@ import offerBanner from "../assets/Images/offer-banner.png";
 import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
+import modularKitchenHero from "../assets/Images/modular-kitchen-hero.webp";
+// Perfect kitchen
+import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
+import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
+import perfectKitchen3 from "../assets/Images/perfect-kitchen-3.webp";
+import perfectKitchen4 from "../assets/Images/perfect-kitchen-4.webp";
 //Benefits of Modular Kitchen
 import flexible from "../assets/Images/flexible.webp";
 import easyToAssemble from "../assets/Images/easy-to-assemble.webp";
@@ -52,6 +58,11 @@ export const IMAGES = {
   offerBanner,
   storeLocation,
   authImg,
+  modularKitchenHero,
+  perfectKitchen1,
+  perfectKitchen2,
+  perfectKitchen3,
+  perfectKitchen4,
   flexible,
   easyToAssemble,
   customizable,

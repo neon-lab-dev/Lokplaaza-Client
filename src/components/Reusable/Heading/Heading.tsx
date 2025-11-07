@@ -18,7 +18,7 @@ const Heading: React.FC<HeadingProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`${alignClass} ${className} space-y-2`}>
+    <div className={`${alignClass} ${className} space-y-2 font-Satoshi`}>
       {heading && (
         <h5
           className={`uppercase text-[13px] md:text-xl font-medium ${headingColor}`}

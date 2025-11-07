@@ -2,7 +2,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import StarRating from "../Rating/Rating";
-import { ICONS } from '@/assets';
+import { ICONS } from "@/assets";
 
 interface ProductCardProps {
   image: string | StaticImageData;
@@ -33,9 +33,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Corner Shadow Circle */}
-      <div className="absolute flex items-center justify-center bg-white size-12 bottom-0 right-0 shadow-product-card rounded-full">
-        <Image src={ICONS.rightArrowRed  } alt={title} className="size-6" /> 
-      </div>
+      <button className="absolute flex items-center justify-center bg-white size-12 bottom-0 right-0 shadow-product-card rounded-full cursor-pointer hover:bg-secondary-05/10 transition duration-300">
+        <Image src={ICONS.rightArrowRed} alt={title} className="size-6" />
+      </button>
 
       {/* Product Details */}
       <div className="relative z-10">
