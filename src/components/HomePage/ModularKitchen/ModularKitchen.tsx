@@ -20,23 +20,23 @@ const ModularKitchen = () => {
     <div className="bg-neutral-10 py-14">
       <Container>
         <Heading title="Kitchen Styles" alignClass="text-left" />
- </Container>
-        {/* Horizontal scroll wrapper INSIDE the container */}
-        <div className="mt-8 -mx-5 2xl:mx-0">
-          <div className="flex gap-4 overflow-x-auto scrollbar-none scroll-smooth px-5 2xl:px-0">
-            <div className="flex gap-4 w-max">
-              {kitchens.map((item, index) => (
-                <KitchenCard
-                  key={index}
-                  title={item.title}
-                  image={item.image}
-                  onClick={() => console.log(`${item.title} clicked`)}
-                />
-              ))}
-            </div>
+      
+      {/* Horizontal scroll wrapper INSIDE the container */}
+      <div className="mt-8 -mx-5 2xl:mx-0">
+        <div className="flex gap-4 overflow-x-auto scrollbar-none scroll-smooth px-5 2xl:px-0">
+          <div className="flex gap-4 w-max">
+            {kitchens.map((item, index) => (
+              <KitchenCard
+                key={index}
+                title={item.title}
+                image={item.image}
+                onClick={() => console.log(`${item.title} clicked`)}
+              />
+            ))}
           </div>
         </div>
-     
+      </div>
+      </Container>
     </div>
   );
 };

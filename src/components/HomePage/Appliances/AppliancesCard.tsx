@@ -32,8 +32,8 @@ const KitchenCard = ({ title, image,onClick }: KitchenCardProps) => {
             className="size-6 -translate-x-2 group-hover:translate-x-0 transition-all duration-300"
           />
           <div className="space-y-2">
-            <h3 className="font-medium text-white text-xl">{title}</h3>
-            <p className="">
+            <h3 className="text-xl font-bold leading-6 text-white">{title}</h3>
+            <p className="text-success-10 text-sm lg:text-base">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Accusantium mollitia quo laboriosam voluptate dolorem
             </p>

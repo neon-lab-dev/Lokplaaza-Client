@@ -9,7 +9,7 @@ const GetCustomizedKitchenBanner = () => {
     <Container>
       <div className="py-14 font-Satoshi flex flex-col gap-4 justify-end text-end">
         <Heading title="Get your customized modular kitchen" alignClass="text-right" />
-        <p className="text-neutral-20 text-base lg:text-2xl mb-2">
+        <p className="text-neutral-20 text-sm md:text-base 2xl:text-2xl mb-2">
           Explore our latest design collections & trends. Book your free
           consultation now, personalized designs for every Indian needs.
         </p>

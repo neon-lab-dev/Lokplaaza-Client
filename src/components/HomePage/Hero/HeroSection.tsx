@@ -31,12 +31,18 @@ const HeroSection = () => {
         alt="hero section"
         fill
         priority
-        className="hidden md:block object-cover -z-10"
+        className="hidden md:block  -z-10"
       />
 
       {/* Mobile background image */}
       <Image
-        src={IMAGES.heroSofaSmall}
+        src={
+          selected === "primary"
+            ? IMAGES.heroImgYellow
+            : selected === "success"
+            ? IMAGES.heroImgGreen
+            : IMAGES.heroImgRed
+        }
         alt="hero section small"
         fill
         priority
