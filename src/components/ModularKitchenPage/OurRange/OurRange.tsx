@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ICONS, IMAGES } from "../../../assets";
 import Container from "../../Reusable/Container/Container";
+import Heading from "@/components/Reusable/Heading/Heading";
 
 const OurRange = () => {
   const accordingData = [
@@ -33,9 +34,7 @@ const OurRange = () => {
 
   return (
     <Container>
-      <h3 className="text-neutral-20 text-[32px] lg:text-[45px] 2xl:text-[61px] font-semibold leading-9 lg:leading-11 2xl:leading-16">
-        Our Range
-      </h3>
+      <Heading title="Our Range" alignClass="text-left" />
 
       <div className="flex gap-3 flex-col w-full mt-12">
         {accordingData.map((according, index) => (

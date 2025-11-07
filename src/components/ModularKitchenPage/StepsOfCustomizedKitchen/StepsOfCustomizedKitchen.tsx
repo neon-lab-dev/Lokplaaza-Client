@@ -1,6 +1,7 @@
 import { ICONS, IMAGES } from "@/assets";
 import Container from "../../Reusable/Container/Container";
 import Image from "next/image";
+import Heading from "@/components/Reusable/Heading/Heading";
 
 const StepsOfCustomizedKitchen = () => {
   const stepsOfCustomizedKitchen = [
@@ -36,9 +37,7 @@ const StepsOfCustomizedKitchen = () => {
   return (
     <Container>
       <div className="py-14 font-Satoshi">
-        <h3 className="text-neutral-20 text-[32px] lg:text-[45px] 2xl:text-[61px] font-semibold leading-9 lg:leading-11 2xl:leading-16">
-          Steps to get your customized kitchen
-        </h3>
+        <Heading title="Steps to get your customized kitchen" alignClass="text-left" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[68px] mt-12 2xl:mt-[92px]">
           {stepsOfCustomizedKitchen.map((step, index) => {
