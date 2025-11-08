@@ -66,7 +66,7 @@ const ResetPassword = () => {
             className="w-full"
           />
 
-          <p className="text-neutral-45 leading-5 text-center mt-6">
+          <p className="text-neutral-55 leading-5 text-center mt-6">
             Back to{" "}
             <Link href={"/login"} className="font-bold text-success-20">
               Login

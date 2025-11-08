@@ -42,7 +42,7 @@ const Navbar = () => {
             />
           </Link>
 
-          <div className=" hidden lg:flex items-center gap-[74px]">
+          <div className=" hidden lg:flex items-center gap-14">
             {navlinks?.map((item) => (
               <Link
                 key={item?.label}
