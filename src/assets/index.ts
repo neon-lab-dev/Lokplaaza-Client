@@ -1,6 +1,9 @@
 import lokplaazaLogo from "../assets/Images/Lokplaazalogo.png";
 import heroSofaSmall from "../assets/Images/hero-smallscreen.png";
 import heroSofa from "../assets/Images/heroSofa.png";
+import heroImgGreen from "../assets/Images/hero-img-green.webp";
+import heroImgRed from "../assets/Images/hero-img-red.webp";
+import heroImgYellow from "../assets/Images/hero-img-yellow.webp";
 import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.png";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
 import GotInspiration from "../assets/Images/gotInspiration.png";
@@ -50,6 +53,9 @@ import number4 from "../assets/Icons/number-4.svg";
 export const IMAGES = {
   lokplaazaLogo,
   heroSofa,
+  heroImgGreen,
+  heroImgRed,
+  heroImgYellow,
   heroSofaSmall,
   HotSellerCTAbg,
   ShopByRoom,

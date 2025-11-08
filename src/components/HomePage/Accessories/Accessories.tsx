@@ -19,7 +19,7 @@ const Accessories = () => {
     <div className="bg-neutral-10 py-14">
       <Container>
         <Heading title="Accessories" alignClass="text-left" />
- </Container>
+
         {/* Horizontal scroll wrapper INSIDE the container */}
         <div className="mt-8 -mx-5 2xl:mx-0">
           <div className="flex gap-4 overflow-x-auto scrollbar-none scroll-smooth px-5 2xl:px-0">
@@ -35,7 +35,7 @@ const Accessories = () => {
             </div>
           </div>
         </div>
-     
+      </Container>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { ICONS } from "@/assets";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 interface KitchenCardProps {
   title: string;
@@ -10,7 +11,8 @@ interface KitchenCardProps {
 
 const KitchenCard = ({ title, image, icon, onClick }: KitchenCardProps) => {
   return (
-    <div
+    <Link
+      href="/modular-kitchen"
       className="relative w-[182px] h-56 rounded-xl group overflow-hidden cursor-pointer"
       onClick={onClick}
     >
@@ -36,7 +38,7 @@ const KitchenCard = ({ title, image, icon, onClick }: KitchenCardProps) => {
   
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

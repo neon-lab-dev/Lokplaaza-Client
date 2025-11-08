@@ -2,10 +2,10 @@
 const SecondaryHeading = ({title}:{title:string}) => {
   return (
     <div className='flex flex-col items-center justify-center'>
-        <h2 className='text-neutral-20 font-medium text-[61px]'>
+        <h2 className='text-neutral-20 font-medium text-3xl md:text-4xl 2xl:text-6xl'>
             {title}
         </h2>
-        <div className='mt-3 bg-secondary-05 h-5 w-21 rounded-full'></div>
+        <div className='mt-3 bg-secondary-05 h-2 lg:h-4 2xl:h-5 w-12 lg:w-21 rounded-full'></div>
     </div>
   )
 }
