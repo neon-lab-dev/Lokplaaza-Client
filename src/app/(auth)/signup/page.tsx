@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 
 type TFormData = {
   name: string;
-  dateofBirth: string;
+  dateOfBirth: string;
   phoneNumber: string;
   email: string;
   password: string;
@@ -107,8 +107,8 @@ const Signup = () => {
             label="Date of Birth"
             placeholder="Select your birth date"
             type="date"
-            error={errors.dateofBirth}
-            {...register("dateofBirth", {
+            error={errors.dateOfBirth}
+            {...register("dateOfBirth", {
               required: "Date of birth is required",
             })}
           />

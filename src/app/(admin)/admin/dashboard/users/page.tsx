@@ -7,6 +7,8 @@ interface User {
   _id: string;
   name: string;
   email: string;
+  phoneNumber: string;
+  dateOfBirth : string;
   role: string;
   createdAt: string;
   updatedAt: string;
@@ -66,8 +68,6 @@ const Users = () => {
       year: "numeric",
       month: "short",
       day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
     });
   };
 
@@ -172,6 +172,12 @@ const Users = () => {
                     User
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Phone Number
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Date of Birth
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Role
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -232,6 +238,16 @@ const Users = () => {
                             </div>
                           </div>
                         </div>
+                      </td>
+
+                      
+
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {user?.phoneNumber || "N/A"}
+                      </td>
+
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {formatDate(user?.dateOfBirth) || "N/A"}
                       </td>
 
                       <td className="px-6 py-4 whitespace-nowrap">
