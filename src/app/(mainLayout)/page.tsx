@@ -42,7 +42,7 @@ export default function Home() {
       <Appliances />
       <Accessories />
       <CallToAction
-        image={IMAGES.offerBanner}
+        image={IMAGES.modularKitchen}
         heading="Plan your dream kitchen with Lokplaaza."
         subtext="Smart solutions, stylish designs, and everything you need under one roof."
         buttonLabel="Book Appointment"
@@ -58,7 +58,7 @@ export default function Home() {
       <OfflineStore />
       <WhyChooseUs />
       <Testimonials />
-      <PhotoGallery />
+      {/* <PhotoGallery /> */}
     </div>
   );
 }

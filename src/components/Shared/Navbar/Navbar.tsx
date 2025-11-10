@@ -8,6 +8,28 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
+  // const navlinks = [
+  //   {
+  //     label: "Home",
+  //     path: "/",
+  //   },
+  //   {
+  //     label: "Shop",
+  //     path: "/shop",
+  //   },
+  //   {
+  //     label: "Room",
+  //     path: "/room",
+  //   },
+  //   {
+  //     label: "Collection",
+  //     path: "/collection",
+  //   },
+  //   {
+  //     label: "Inspiration",
+  //     path: "/inspiration",
+  //   },
+  // ];
   const navlinks = [
     {
       label: "Home",
@@ -15,19 +37,19 @@ const Navbar = () => {
     },
     {
       label: "Shop",
-      path: "/shop",
+      path: "/",
     },
     {
       label: "Room",
-      path: "/room",
+      path: "/",
     },
     {
       label: "Collection",
-      path: "/collection",
+      path: "/",
     },
     {
       label: "Inspiration",
-      path: "/inspiration",
+      path: "/",
     },
   ];
   return (

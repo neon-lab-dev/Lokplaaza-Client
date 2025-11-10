@@ -36,7 +36,7 @@ const TryARView = () => {
           </div>
 
           <Image
-            src={IMAGES.GotInspiration}
+            src={IMAGES.tryIt}
             alt={"shop by room"}
             className="w-[380px] h-[484px] object-cover rounded-3xl md:rounded-t-3xl xl:rounded-r-3xl"
           />
