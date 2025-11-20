@@ -1,15 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 
-type TAuthUser = {
-     user : null | object;
-     token : null | string;
+export interface AuthState {
+  user: any | null;
+  token: string | null;
 }
 
-const initialState: TAuthUser = {
-    user : null,
-    token : null,
-}
+const initialState: AuthState = {
+  user: null,
+  token: null,
+};
 const authSlice = createSlice({
     name : 'auth',
     initialState,

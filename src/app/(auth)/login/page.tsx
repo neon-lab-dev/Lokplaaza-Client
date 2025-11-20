@@ -5,8 +5,6 @@ import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
-import { useLoginMutation } from "@/redux/Features/Auth/authApi";
-import { setUser } from "@/redux/Features/Auth/authSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,6 +12,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+import { useLoginMutation } from "@/redux/features/Auth/authApi";
+import { setUser } from "@/redux/features/Auth/authSlice";
 
 type TFormData = {
   email: string;
