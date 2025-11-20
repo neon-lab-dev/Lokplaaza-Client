@@ -17,7 +17,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   message,
 }) => {
   return (
-    <div className="relative h-[380px] w-full md:w-full xl:w-[380px] rounded-2xl overflow-hidden shadow-testimonial-card">
+    <div className="relative h-[380px] w-fullk md:w-full xl:w-[380px] rounded-2xl overflow-hidden shadow-testimonial-card">
       {/* Background Image */}
       <Image
         src={image}

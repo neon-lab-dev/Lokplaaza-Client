@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
           <div className=" hidden lg:flex items-center justify-center gap-6">
             <Link
-              href={"/"}
+              href={"/cart"}
               className="flex items-center justify-center size-12 rounded-full bg-neutral-10"
             >
               <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
