@@ -11,7 +11,7 @@ import TalkToDesignExpert from "@/components/ModularKitchenPage/TalkToDesignExpe
 
 const ModularKitchen = () => {
   return (
-    <div>
+    <div className="bg-neutral-10">
       <ModularKitchenHero />
       <FindPerfectKitchen/>
       <StartDreamKitchenBanner />

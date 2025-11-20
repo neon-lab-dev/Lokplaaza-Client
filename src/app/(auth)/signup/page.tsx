@@ -6,7 +6,7 @@ import Button from "@/components/Reusable/Button/Button";
 import Modal from "@/components/Reusable/Modal/Modal";
 import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
-import { useSignupMutation } from "@/redux/Features/Auth/authApi";
+import { useSignupMutation } from "@/redux/features/Auth/authApi";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

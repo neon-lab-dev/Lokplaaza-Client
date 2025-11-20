@@ -9,7 +9,7 @@ const OurCollection = () => {
       <div className="py-14 font-Satoshi">
         <Heading title="Our Collection" alignClass="text-left" />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-y-20 mt-28">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 place-items-center 2xl:grid-cols-5 gap-y-20 mt-28">
           {sampleProducts.length > 0 ? (
             sampleProducts.map((product) => (
               <ProductCard
