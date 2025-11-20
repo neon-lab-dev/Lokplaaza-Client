@@ -1,7 +1,7 @@
 "use client";
 import Button from "../../Reusable/Button/Button";
 import { MdDashboard, MdPeople } from "react-icons/md";
-import { logout } from "../../../redux/Features/Auth/authSlice";
+import { logout } from "../../../redux/features/Auth/authSlice";
 import { useDispatch } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";

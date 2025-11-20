@@ -4,6 +4,7 @@ import heroSofa from "../assets/Images/heroSofa.png";
 import heroImgGreen from "../assets/Images/hero-img-green.webp";
 import heroImgRed from "../assets/Images/hero-img-red.webp";
 import heroImgYellow from "../assets/Images/hero-img-yellow.webp";
+import shopView from "../assets/Images/shopView.webp";
 import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.png";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
 import GotInspiration from "../assets/Images/gotInspiration.png";
@@ -13,6 +14,11 @@ import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
 import modularKitchenHero from "../assets/Images/modular-kitchen-hero.webp";
+import modularKitchen from "../assets/Images/modularKitchen.webp";
+import customFurniture from "../assets/Images/customFurniture.webp";
+import tryIt from "../assets/Images/TryIt.webp";
+import blackCube from "../assets/Icons/black-cube.svg";
+import walk360degree from "../assets/Icons/360-dergee.svg";
 import sofa1 from "../assets/Images/sofa1.jpg";    // Dummy
 // Perfect kitchen
 import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
@@ -36,6 +42,19 @@ import getAQuote from "../assets/Images/get-a-quote.webp";
 import talkToTeam from "../assets/Images/talk-to-team.webp";
 import gettingStarted from "../assets/Images/getting-started.webp";
 
+// Testimonials
+import testimonial1 from "../assets/Images/tesimonial1.webp";
+import testimonial2 from "../assets/Images/tesimonial2.webp";
+import testimonial3 from "../assets/Images/tesimonial3.webp";
+
+// paymment icons
+import visaCard from "../assets/Icons/payment-options/visa.svg";
+import amex from "../assets/Icons/payment-options/amex.svg";
+import unionPay from "../assets/Icons/payment-options/union-pay.svg";
+import mastercard from "../assets/Icons/payment-options/mastercard.svg";
+import cirrus from "../assets/Icons/payment-options/cirrus.svg";
+import maestro from "../assets/Icons/payment-options/maestro.svg";
+
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg";
 import cart from "../assets/Icons/cart.png";
@@ -46,10 +65,14 @@ import imageIcon from "../assets/Icons/photograph.png";
 import cube from "../assets/Icons/cube.png";
 import cross from "../assets/Icons/cross.svg";
 import tickMarkGreen from "../assets/Icons/tick-mark-green.svg";
+import rupee from "../assets/Icons/rupee.svg";
+import sparkles from "../assets/Icons/sparkles.svg";
+import collection from "../assets/Icons/collection.svg";
 import number1 from "../assets/Icons/number-1.svg";
 import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
+
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -85,6 +108,13 @@ export const IMAGES = {
   talkToTeam,
   gettingStarted,
   talkToDesignExpert,
+  tryIt,
+  testimonial1,
+  testimonial2,
+  testimonial3,
+  modularKitchen,
+  shopView,
+  customFurniture
 };
 
 export const ICONS = {
@@ -101,4 +131,15 @@ export const ICONS = {
   number2,
   number3,
   number4,
+  rupee,
+  sparkles,
+  collection,
+  visaCard,
+  amex,
+  unionPay,
+  mastercard,
+  cirrus,
+  maestro,
+  blackCube,
+  walk360degree
 };

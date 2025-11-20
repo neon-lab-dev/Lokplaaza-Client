@@ -32,11 +32,18 @@ const VirtualWalk = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[60%] ">
-            <Image
-              src={IMAGES.ShopByRoom}
+          <div className="relative flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[60%] ">
+            <div className="absolute top-0 bottom-0 right-0 left-0 bg-neutral-60 flex items-center justify-center w-full h-[414px] md:h-[476px] xl:h-[674px] xl:w-[529px] rounded-3xl">
+              <Image
+              src={ICONS.walk360degree}
               alt={"shop by room"}
-              className="w-full h-[414px] md:h-[476px] xl:h-[674px] xl:w-[529px] object-cover rounded-3xl"
+              className="w-[120px] h-[108px]" 
+            />
+            </div>
+            <Image
+              src={IMAGES.shopView}
+              alt={"shop by room"}
+              className="w-full h-[414px] md:h-[476px] xl:h-[674px] xl:w-[529px] object-cover  rounded-3xl" 
             />
           </div>
         </div>

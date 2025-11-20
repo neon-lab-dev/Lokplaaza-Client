@@ -39,7 +39,7 @@ const ProductDetails = () => {
 
   return (
     <Container>
-      <div className="font-Satoshi mt-10">
+      <div className="font-Satoshi my-10">
         {/* Breadcrumbs */}
         <div className="">
           <p className="text-neutral-40 text-sm lg:text-xl font-medium">
@@ -50,7 +50,7 @@ const ProductDetails = () => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 mt-6 lg:mt-12">
+        <div className="flex flex-col lg:flex-row gap-6 mt-6 lg:mt-8">
           {/* Images */}
           <div className="w-full lg:w-[50%]">
             <div className="relative h-60 sm:h-96 md:h-[540px] w-full rounded-2xl overflow-hidden">
@@ -89,7 +89,7 @@ const ProductDetails = () => {
             <h2 className="text-neutral-20 font-bold leading-8 mt-5">
               ₹ 4,490/-
             </h2>
-            <p className="text-neutral-40 text-xsm font-medium">
+            <p className="text-neutral-40 text-sm font-medium">
               incl all taxes
             </p>
 

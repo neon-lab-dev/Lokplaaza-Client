@@ -7,7 +7,7 @@ import { IMAGES } from "@/assets";
 const Testimonials = () => {
   const testimonials = [
     {
-      image: IMAGES.GotInspiration,
+      image: IMAGES.testimonial1,
       name: "John Doe",
       clientImage: IMAGES.ShopByRoom,
       position: "Product Designer",
@@ -15,7 +15,7 @@ const Testimonials = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem doloribus consectetur iste, adipisci nam quo aspernatur magni eos delectus provident necessitatibus.",
     },
     {
-      image: IMAGES.GotInspiration,
+      image: IMAGES.testimonial2,
       name: "Sarah Johnson",
       clientImage: IMAGES.ShopByRoom,
       position: "Marketing Lead",
@@ -23,7 +23,7 @@ const Testimonials = () => {
         "Quisquam, voluptatem! Reiciendis repellendus quos dolores fugit sequi at saepe nesciunt. Eveniet corporis praesentium voluptate animi.",
     },
     {
-      image: IMAGES.GotInspiration,
+      image: IMAGES.testimonial3,
       name: "Michael Smith",
       clientImage: IMAGES.ShopByRoom,
       position: "CEO, Brandify",

@@ -13,9 +13,9 @@ import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSection";
-import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
+import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 
 export default function Home() {
   return (
@@ -42,7 +42,7 @@ export default function Home() {
       <Appliances />
       <Accessories />
       <CallToAction
-        image={IMAGES.offerBanner}
+        image={IMAGES.modularKitchen}
         heading="Plan your dream kitchen with Lokplaaza."
         subtext="Smart solutions, stylish designs, and everything you need under one roof."
         buttonLabel="Book Appointment"
@@ -58,7 +58,7 @@ export default function Home() {
       <OfflineStore />
       <WhyChooseUs />
       <Testimonials />
-      <PhotoGallery />
+      {/* <PhotoGallery /> */}
     </div>
   );
 }

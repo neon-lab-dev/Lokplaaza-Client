@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setUser } from "../Features/Auth/authSlice";
+import { setUser } from "../features/Auth/authSlice";
 import type {
   BaseQueryApi,
   BaseQueryFn,

@@ -6,7 +6,7 @@ interface KitchenCardProps {
   title: string;
   image: string | StaticImageData;
   icon?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const KitchenCard = ({ title, image, icon, onClick }: KitchenCardProps) => {
