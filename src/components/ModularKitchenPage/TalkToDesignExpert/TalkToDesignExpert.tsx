@@ -55,23 +55,23 @@ const TalkToDesignExpert = () => {
               </>
               <>
                 <input
-                  placeholder="Enter your full name"
+                  placeholder="Enter Mobile no"
                   className={`px-[18px] py-3.5 rounded-lg border focus:outline-none border-neutral-10 text-neutral-10 focus:border-primary-10 transition duration-300`}
                 />
-                {errors?.name?.message && (
+                {errors?.phoneNumber?.message && (
                   <span className="text-red-500 text-sm">
-                    {String(errors?.name?.message)}
+                    {String(errors?.phoneNumber?.message)}
                   </span>
                 )}
               </>
               <>
                 <input
-                  placeholder="Enter your full name"
+                  placeholder="Enter your email address"
                   className={`px-[18px] py-3.5 rounded-lg border focus:outline-none border-neutral-10 text-neutral-10 focus:border-primary-10 transition duration-300`}
                 />
-                {errors?.name?.message && (
+                {errors?.email?.message && (
                   <span className="text-red-500 text-sm">
-                    {String(errors?.name?.message)}
+                    {String(errors?.email?.message)}
                   </span>
                 )}
               </>

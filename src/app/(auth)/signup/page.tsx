@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import VerifyOTPForm from "@/components/AuthPage/VerifyOTPForm/VerifyOTPForm";
@@ -5,14 +6,17 @@ import Button from "@/components/Reusable/Button/Button";
 import Modal from "@/components/Reusable/Modal/Modal";
 import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
+import { useSignupMutation } from "@/redux/features/Auth/authApi";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type TFormData = {
   name: string;
-  dateofBirth: string;
+  dateOfBirth: string;
   phoneNumber: string;
   email: string;
   password: string;
@@ -20,6 +24,8 @@ type TFormData = {
 };
 
 const Signup = () => {
+  const router = useRouter();
+  const [signup, { isLoading }] = useSignupMutation();
   const [isOtpModalOpen, setIsOtpModalOpen] = useState<boolean>(false);
   const {
     register,
@@ -28,10 +34,19 @@ const Signup = () => {
     watch,
   } = useForm<TFormData>();
 
-  const isLoading = false;
-
-  const handleSignup = (data: TFormData) => {
-    console.log("Signup Data:", data);
+  const handleSignup = async (data: TFormData) => {
+    try {
+      const payload = {
+        ...data,
+      };
+      const response = await signup(payload).unwrap();
+      if (response?.success) {
+        toast.success(response?.message || "Signup successful. Please login.");
+        router.push("/login");
+      }
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Something went wrong");
+    }
   };
 
   // Watch password value for matching validation
@@ -92,8 +107,8 @@ const Signup = () => {
             label="Date of Birth"
             placeholder="Select your birth date"
             type="date"
-            error={errors.dateofBirth}
-            {...register("dateofBirth", {
+            error={errors.dateOfBirth}
+            {...register("dateOfBirth", {
               required: "Date of birth is required",
             })}
           />

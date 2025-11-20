@@ -4,6 +4,7 @@ import heroSofa from "../assets/Images/heroSofa.png";
 import heroImgGreen from "../assets/Images/hero-img-green.webp";
 import heroImgRed from "../assets/Images/hero-img-red.webp";
 import heroImgYellow from "../assets/Images/hero-img-yellow.webp";
+import shopView from "../assets/Images/shopView.webp";
 import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.png";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
 import GotInspiration from "../assets/Images/gotInspiration.png";
@@ -14,7 +15,10 @@ import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
 import modularKitchenHero from "../assets/Images/modular-kitchen-hero.webp";
 import modularKitchen from "../assets/Images/modularKitchen.webp";
+import customFurniture from "../assets/Images/customFurniture.webp";
 import tryIt from "../assets/Images/TryIt.webp";
+import blackCube from "../assets/Icons/black-cube.svg";
+import walk360degree from "../assets/Icons/360-dergee.svg";
 // Perfect kitchen
 import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
 import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
@@ -106,7 +110,9 @@ export const IMAGES = {
   testimonial1,
   testimonial2,
   testimonial3,
-  modularKitchen
+  modularKitchen,
+  shopView,
+  customFurniture
 };
 
 export const ICONS = {
@@ -132,4 +138,6 @@ export const ICONS = {
   mastercard,
   cirrus,
   maestro,
+  blackCube,
+  walk360degree
 };

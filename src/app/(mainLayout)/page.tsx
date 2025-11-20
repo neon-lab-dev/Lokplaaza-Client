@@ -13,9 +13,9 @@ import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSection";
-import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
+import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 
 export default function Home() {
   return (

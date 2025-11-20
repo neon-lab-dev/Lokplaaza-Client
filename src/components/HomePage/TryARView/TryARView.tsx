@@ -4,9 +4,34 @@ import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import TryByMobileModal from "./TryByMobileModal";
 
 const TryARView = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // detect mobile device or small screen
+    const checkDevice = () => {
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    };
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
+  const handleTryNow = () => {
+    if (isMobile) {
+      // mobile → go to AR view page
+   // or open AR directly if using webXR
+    } else {
+      console.log("showing")
+      setShowModal(true);
+    }
+  };
   return (
     <div className="py-14 font-Satoshi bg-primary-10">
       <Container>
@@ -29,7 +54,7 @@ const TryARView = () => {
                 textColor="text-success-10"
                 icon={ICONS.cube}
                 onClick={() => {
-                  console.log("Clicked!");
+                  handleTryNow();
                 }}
               />
             </div>
@@ -42,6 +67,12 @@ const TryARView = () => {
           />
         </div>
       </Container>
+      {
+  showModal && (
+    <TryByMobileModal onClose={() => setShowModal(false)} />
+  )
+}
+
     </div>
   );
 };

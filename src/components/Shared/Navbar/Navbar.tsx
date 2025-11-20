@@ -72,6 +72,7 @@ const Navbar = () => {
                 className={`text-base font-medium leading-5 hover:underline 
              text-neutral-10
                 `}
+                
               >
                 {item?.label}
               </Link>
