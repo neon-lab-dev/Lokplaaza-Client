@@ -47,10 +47,9 @@ const Navbar = () => {
               <Link
                 key={item?.label}
                 href={item?.path}
-                className={`text-base font-medium leading-5 hover:underline 
-             text-neutral-10
+                className={`text-base font-medium leading-5 hover:underline
+             ${pathname !== "/" ? "text-neutral-05" : "text-neutral-10"}
                 `}
-                
               >
                 {item?.label}
               </Link>
@@ -65,12 +64,12 @@ const Navbar = () => {
             </Link>
 
             <Link href={"/login"}>
-            <Button
-              label="Sign in"
-              bgColor="bg-success-05"
-              textColor="text-success-10"
-              icon={ICONS.rightArrow}
-            />
+              <Button
+                label="Sign in"
+                bgColor="bg-success-05"
+                textColor="text-success-10"
+                icon={ICONS.rightArrow}
+              />
             </Link>
           </div>
 

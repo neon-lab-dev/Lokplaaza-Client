@@ -13,6 +13,7 @@ import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
 import modularKitchenHero from "../assets/Images/modular-kitchen-hero.webp";
+import sofa1 from "../assets/Images/sofa1.jpg";    // Dummy
 // Perfect kitchen
 import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
 import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
@@ -65,6 +66,7 @@ export const IMAGES = {
   storeLocation,
   authImg,
   modularKitchenHero,
+  sofa1,
   perfectKitchen1,
   perfectKitchen2,
   perfectKitchen3,
