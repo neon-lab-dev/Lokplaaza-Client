@@ -1,20 +1,24 @@
 "use client";
 import { ICONS, IMAGES } from '@/assets'
+import BreadCrumps from '@/components/Reusable/BreadCrumps/BreadCrumps';
 import Button from '@/components/Reusable/Button/Button'
 import Container from '@/components/Reusable/Container/Container'
 import Heading from '@/components/Reusable/Heading/Heading'
+import Modal from '@/components/Reusable/Modal/Modal';
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import { BiX } from 'react-icons/bi';
 
 const GotInspiration = () => {
+  const [isModalOpen,setIsModalOpen]=useState(false)
   return (
      <div className="xl:relative py-14 xl:py-0 font-Satoshi bg-primary-15 xl:h-screen flex items-center">
       <div className='hidden xl:block xl:absolute h-full w-full top-0 left-0 bottom-0'>
         <Image src={IMAGES.GotInspiration} alt={"shop by room"} className="w-full max-w-[55%] h-full  object-cover xl:rounded-r-3xl" />
       </div>
       <Container>
-        <div className=" flex flex-col xl:flex-row-reverse items-center justify-center gap-11 xl:gap-5 md:gap-[162px]">
-          <div className=" w-full xl:w-[40%]">
+        <div className="flex flex-col xl:flex-row-reverse items-center justify-center gap-11 xl:gap-5 md:gap-[162px] ">
+          <div className="relative z-[9999] w-full xl:w-[40%]">
             <Heading
               heading="GOT INSPIRATION? WE ARE HERE!"
               title="Got a Picture? We’ll Build It"
@@ -28,10 +32,12 @@ const GotInspiration = () => {
             </p>
             <div className='flex justify-center xl:justify-end'><Button
               label="Upload Now"
-              bgColor="bg-success-05"
+              bgColor="bg-success-05 z-[999]"
               textColor="text-success-10"
               icon={ICONS.imageIcon}
-              onClick={() => {console.log("Clicked!")}}
+              onClick={() => {
+                setIsModalOpen(true)
+              }}
             /></div>
             
           </div>
@@ -40,6 +46,28 @@ const GotInspiration = () => {
           </div>
         </div>
       </Container>
+      <Modal isModalOpen={isModalOpen}>
+        <div className="px-6 pt-6 w-[80vw]">
+          <div className="w-full flex justify-between items-center">  <BreadCrumps path={["Home", "Products", "Inspiration"]} />
+           <BiX className="text-neutral-20 text-2xl" onClick={()=>{setIsModalOpen(false)}} />
+          </div>
+         <div className="w-full h-[60vh] flex flex-col items-center justify-center">
+                     <Image src={IMAGES.inspiration} alt={"shop now"} className={"size-40"} />
+                     <p className="text-3xl font-medium text-neutral-20 mt-6 m-3">
+                       Your Cart is Empty!
+                     </p>
+                     <p className="text-lg text-neutral-40 leading-[120%] text-center max-w-[300px] mx-auto">
+                       Add products in cart to see them here.
+                     </p>
+                   </div>
+
+          <Button
+            label="Upload/Click Image"
+            className="w-full"
+            onClick={() => setIsModalOpen(false)}
+          />
+        </div>
+      </Modal>
     </div>
   )
 }
