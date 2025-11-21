@@ -9,7 +9,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       {
-        pathname !== "/" && <Navbar />
+        pathname.startsWith("/products") && <Navbar />
       }
       {children}
       <Footer />
