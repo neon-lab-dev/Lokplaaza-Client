@@ -54,10 +54,10 @@ const GotInspiration = () => {
          <div className="w-full h-[60vh] flex flex-col items-center justify-center">
                      <Image src={IMAGES.inspiration} alt={"shop now"} className={"size-40"} />
                      <p className="text-3xl font-medium text-neutral-20 mt-6 m-3">
-                       Your Cart is Empty!
+                       Generate Inspiration
                      </p>
                      <p className="text-lg text-neutral-40 leading-[120%] text-center max-w-[300px] mx-auto">
-                       Add products in cart to see them here.
+                      Upload or Click a photo of your inspiration and get a quote.
                      </p>
                    </div>
 
