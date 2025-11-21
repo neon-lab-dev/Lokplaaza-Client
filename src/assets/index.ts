@@ -20,6 +20,7 @@ import tryIt from "../assets/Images/TryIt.webp";
 import blackCube from "../assets/Icons/black-cube.svg";
 import walk360degree from "../assets/Icons/360-dergee.svg";
 import sofa1 from "../assets/Images/sofa1.jpg";    // Dummy
+import inspiration from "../assets/Images/amico.svg"; 
 // Perfect kitchen
 import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
 import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
@@ -116,7 +117,8 @@ export const IMAGES = {
   testimonial3,
   modularKitchen,
   shopView,
-  customFurniture
+  customFurniture,
+  inspiration
 };
 
 export const ICONS = {
