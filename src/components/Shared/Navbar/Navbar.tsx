@@ -70,7 +70,7 @@ const Navbar = () => {
                 key={item?.label}
                 href={item?.path}
                 className={`text-base font-medium leading-5 hover:underline
-             ${pathname !== "/" ? "text-neutral-05" : "text-neutral-10"}
+             ${pathname.startsWith("/products") ? "text-neutral-05" : "text-neutral-10"}
                 `}
               >
                 {item?.label}
