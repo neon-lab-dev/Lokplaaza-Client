@@ -73,6 +73,8 @@ import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
 
+import cartGif from "../assets/Gifs/cart.gif"
+
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -143,3 +145,7 @@ export const ICONS = {
   blackCube,
   walk360degree
 };
+
+export const GIFS={
+  cartGif
+}
