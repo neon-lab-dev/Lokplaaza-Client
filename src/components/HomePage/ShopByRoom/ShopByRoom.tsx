@@ -1,11 +1,31 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
+import BreadCrumps from "@/components/Reusable/BreadCrumps/BreadCrumps";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
+import Modal from "@/components/Reusable/Modal/Modal";
 import Image from "next/image";
+import { useState } from "react";
+import { BiX } from "react-icons/bi";
+import { CgCross } from "react-icons/cg";
 
 const ShopByRoom = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const Rooms = [
+    { room: "Kitchen", imageUrl: IMAGES.HotSellerCTAbg },
+    {
+      room: "Bedroom",
+      imageUrl: IMAGES.ShopByRoom,
+    },
+    { room: "Living room", imageUrl: IMAGES.customFurniture },
+    {
+      room: "Dining room",
+      imageUrl: IMAGES.authImg,
+    },
+  ];
+
   return (
     <div className="pt-[76px] xl:py-[216px] font-Satoshi bg-neutral-10">
       <Container>
@@ -26,7 +46,7 @@ const ShopByRoom = () => {
               bgColor="bg-success-05"
               textColor="text-success-10"
               icon={ICONS.rightArrow}
-              onClick={() => {console.log("Clicked!")}}
+              onClick={() => setIsModalOpen(true)}
             />
           </div>
           <div className="flex flex-col xl:flex-row items-center justify-baseline w-full xl:w-[40%] ">
@@ -34,10 +54,51 @@ const ShopByRoom = () => {
             <div className=" xl:hidden w-[80%] xl:w-[284px] h-[27px] bg-neutral-35 rounded-t-3xl"></div>
             <div className="hidden xl:flex xl:h-[237px] xl:w-[27px] bg-neutral-15 rounded-l-3xl"></div>
             <div className="hidden xl:flex xl:h-[284px] xl:w-[27px] bg-neutral-35 rounded-l-3xl"></div>
-            <Image src={IMAGES.ShopByRoom} alt={"shop by room"} className="w-full h-[380px] xl:size-[380px] object-cover rounded-t-3xl xl:rounded-3xl" />
+            <Image
+              src={IMAGES.ShopByRoom}
+              alt={"shop by room"}
+              className="w-full h-[380px] xl:size-[380px] object-cover rounded-t-3xl xl:rounded-3xl"
+            />
           </div>
         </div>
       </Container>
+
+      <Modal isModalOpen={isModalOpen}>
+        <div className="px-6 pt-6  h-[76vh] w-[80vw]">
+          <div className="w-full flex justify-between items-center">  <BreadCrumps path={["Home", "Products", "Laptops"]} />
+           <BiX className="text-neutral-20 text-2xl" onClick={()=>{setIsModalOpen(false)}} />
+          </div>
+         
+          <div className="h-[52vh] grid grid-cols-1 md:grid-cols-2  gap-6 my-8 overflow-y-scroll scrollbar-none">
+            {Rooms.map((room) => (
+              <div key={room.room} className="relative shadow-md  ">
+                <Image
+                  src={room.imageUrl}
+                  alt={room.room}
+                  width={300}
+                  height={350}
+                  className="w-full h-[200px] object-cover rounded-3xl"
+                />
+
+                <div className="absolute w-full rounded-3xl h-full bg-gray-gradient bottom-0 right-0 p-4 font-semibold capitalize text-neutral-10 text-3xl flex gap-1 items-end justify-between ">
+                  <div className="flex gap-1 items-center justify-between "><p>{room.room}</p>
+                  <div className="p-2 rounded-full flex items-center bg-neutral-10  justify-center">
+                    <Image src={ICONS.downArrow} alt={room.room} className=" rotate-270" />
+                  </div></div>
+                  
+                  
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Button
+            label="Shop by Room"
+            className="w-full"
+            onClick={() => setIsModalOpen(false)}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };
