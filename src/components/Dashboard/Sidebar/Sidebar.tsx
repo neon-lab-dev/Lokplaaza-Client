@@ -24,6 +24,11 @@ const Sidebar = () => {
       icon: <MdPeople />,
       path: "/admin/dashboard/users",
     },
+    {
+      label: "Products",
+      icon: <MdPeople />,
+      path: "/admin/dashboard/products",
+    },
   ];
 
   const handleLogout = async () => {
