@@ -53,7 +53,7 @@ const Sidebar = () => {
     {
       label: "Setting",
       icon: <MdSettings size={20} />,
-      path: "/dashboard/admin/setting",
+      path: "/dashboard/user/setting",
     },
   ];
 
