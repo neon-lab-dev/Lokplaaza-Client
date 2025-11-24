@@ -7,8 +7,8 @@ import {persistReducer, persistStore, FLUSH,
   REGISTER,
   PersistConfig,} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { baseApi } from './api/baseApi';
-import authReducer,{ AuthState } from './features/Auth/authSlice';
+import authReducer,{ AuthState } from './Features/Auth/authSlice';
+import { baseApi } from './Api/baseApi';
 
 
 

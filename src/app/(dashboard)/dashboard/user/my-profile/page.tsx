@@ -13,7 +13,6 @@ import {
   FiClock,
   FiCheckCircle,
   FiHeart,
-  FiRepeat,
   FiSettings,
 } from "react-icons/fi";
 

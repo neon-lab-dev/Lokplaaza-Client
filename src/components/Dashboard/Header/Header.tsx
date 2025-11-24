@@ -1,5 +1,5 @@
 "use client";
-import { useCurrentUser } from "@/redux/features/Auth/authSlice";
+import { useCurrentUser } from "@/redux/Features/Auth/authSlice";
 import { useSelector } from "react-redux";
 
 const Header = () => {

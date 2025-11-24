@@ -12,8 +12,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import { setUser } from "@/redux/features/Auth/authSlice";
 import { useLoginMutation } from "@/redux/Features/Auth/authApi";
+import { setUser } from "@/redux/Features/Auth/authSlice";
 
 type TFormData = {
   email: string;

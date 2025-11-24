@@ -1,7 +1,6 @@
 "use client";
 import Button from "../../Reusable/Button/Button";
 import { MdDashboard, MdPeople, MdPerson, MdSettings } from "react-icons/md";
-import { logout, useCurrentUser } from "../../../redux/features/Auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { IMAGES } from "@/assets";
 import Link from "next/link";
 import { FiBox, FiPackage } from "react-icons/fi";
 import { AiOutlineShopping } from "react-icons/ai";
+import { logout, useCurrentUser } from "@/redux/Features/Auth/authSlice";
 
 const Sidebar = () => {
   const user = useSelector(useCurrentUser);
