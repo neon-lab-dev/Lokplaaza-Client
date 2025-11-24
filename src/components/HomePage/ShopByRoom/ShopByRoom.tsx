@@ -8,21 +8,21 @@ import Modal from "@/components/Reusable/Modal/Modal";
 import Image from "next/image";
 import { useState } from "react";
 import { BiX } from "react-icons/bi";
-import { CgCross } from "react-icons/cg";
 
 const ShopByRoom = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const Rooms = [
-    { room: "Kitchen", imageUrl: IMAGES.HotSellerCTAbg },
+    { room: "Kitchen", imageUrl: IMAGES.HotSellerCTAbg,link:"/modular-kitchen" },
     {
       room: "Bedroom",
       imageUrl: IMAGES.ShopByRoom,
+      link:"modular-kitchen" 
     },
-    { room: "Living room", imageUrl: IMAGES.customFurniture },
+    { room: "Living room", imageUrl: IMAGES.customFurniture,link:"/custom-furniture"  },
     {
       room: "Dining room",
-      imageUrl: IMAGES.authImg,
+      imageUrl: IMAGES.authImg,link:"modular-kitchen" 
     },
   ];
 
@@ -95,7 +95,9 @@ const ShopByRoom = () => {
           <Button
             label="Shop by Room"
             className="w-full"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => setIsModalOpen(false)
+
+            }
           />
         </div>
       </Modal>

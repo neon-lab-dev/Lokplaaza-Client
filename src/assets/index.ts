@@ -76,6 +76,8 @@ import number4 from "../assets/Icons/number-4.svg";
 
 import cartGif from "../assets/Gifs/cart.gif"
 
+import sofa from "../assets/Images/dummySofa.png"
+
 
 export const IMAGES = {
   lokplaazaLogo,
@@ -118,7 +120,8 @@ export const IMAGES = {
   modularKitchen,
   shopView,
   customFurniture,
-  inspiration
+  inspiration,
+  sofa
 };
 
 export const ICONS = {
