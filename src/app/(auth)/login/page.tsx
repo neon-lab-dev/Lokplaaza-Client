@@ -62,7 +62,7 @@ const Login = () => {
         if (userRole === "admin") {
           router.push("/dashboard/admin");
         } else if (userRole === "user") {
-          router.push("/dashboard/user");
+          router.push("/dashboard/user/my-profile");
         }
       }
     } catch (err: any) {
@@ -109,6 +109,7 @@ const Login = () => {
             bgColor="bg-success-05"
             icon={ICONS.rightArrow}
             className="w-full"
+            isDisabled={isLoading}
           />
 
           <p className="text-neutral-55 leading-5 text-center mt-6">

@@ -12,6 +12,7 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset";
   className?: string;
   iconClassName?: string;
+  isDisabled?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   type,
   className,
+  isDisabled,
 }) => {
   const buttonClasses = twMerge(
     `
@@ -42,7 +44,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <button type={type} onClick={onClick} className={buttonClasses}>
+    <button type={type} onClick={onClick} className={buttonClasses} disabled={isDisabled}>
       <p className={twMerge("font-medium", textColor)}>{label}</p>
       {icon && (
         <Image

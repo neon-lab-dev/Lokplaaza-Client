@@ -361,12 +361,6 @@ const MyProfile = () => {
                     path: "/wishlist",
                   },
                   {
-                    label: "Order Again",
-                    description: "Reorder your previous purchases",
-                    icon: <FiRepeat className="w-5 h-5" />,
-                    path: "/orders",
-                  },
-                  {
                     label: "Browse Products",
                     description: "Explore our latest collection",
                     icon: <FiShoppingBag className="w-5 h-5" />,
