@@ -178,7 +178,7 @@ const Table = ({
 
                     {/* Action Menu */}
                     {actions && (
-                      <td className="px-6 py-4 relative whitespace-nowrap text-right">
+                      <td className="px-6 py-4 relative whitespace-nowrap">
                         <button
                           className="p-2 rounded hover:bg-gray-100 cursor-pointer"
                           onClick={() => toggleMenu(index)}

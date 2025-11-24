@@ -7,6 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { IMAGES } from "@/assets";
 import Link from "next/link";
+import { FiBox } from "react-icons/fi";
+import { AiOutlineShopping } from "react-icons/ai";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -26,8 +28,13 @@ const Sidebar = () => {
     },
     {
       label: "Products",
-      icon: <MdPeople />,
+      icon: <FiBox />,
       path: "/admin/dashboard/products",
+    },
+    {
+      label: "Order",
+      icon: <AiOutlineShopping />,
+      path: "/admin/dashboard/orders",
     },
   ];
 

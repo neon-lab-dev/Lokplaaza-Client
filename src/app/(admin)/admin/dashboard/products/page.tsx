@@ -10,7 +10,7 @@ const products = [
     name: "Wooden King Size Bed",
     category: "Bed",
     price: 45000,
-    count: 12,
+    stock: 12,
     image: "https://i.ibb.co/ZH6dS6s/bed1.jpg",
   },
   {
@@ -18,7 +18,7 @@ const products = [
     name: "Queen Size Storage Bed",
     category: "Bed",
     price: 38000,
-    count: 8,
+    stock: 8,
     image: "https://i.ibb.co/kx9wYsb/bed2.jpg",
   },
   {
@@ -26,7 +26,7 @@ const products = [
     name: "Non-stick Cookware Set",
     category: "Kitchen",
     price: 5200,
-    count: 20,
+    stock: 20,
     image: "https://i.ibb.co/DfkBv6q/cookware.jpg",
   },
   {
@@ -34,7 +34,7 @@ const products = [
     name: "Steel Knife Set",
     category: "Kitchen",
     price: 1800,
-    count: 30,
+    stock: 30,
     image: "https://i.ibb.co/cN0wZyw/knife.jpg",
   },
   {
@@ -42,7 +42,7 @@ const products = [
     name: "Premium Pillow (Set of 2)",
     category: "Bedroom Accessories",
     price: 1400,
-    count: 50,
+    stock: 50,
     image: "https://i.ibb.co/rp6tT7C/pillow.jpg",
   },
   {
@@ -50,7 +50,7 @@ const products = [
     name: "Cotton Bedsheet with Pillow Covers",
     category: "Bedroom Accessories",
     price: 2200,
-    count: 40,
+    stock: 40,
     image: "https://i.ibb.co/6bCwngp/bedsheet.jpg",
   },
   {
@@ -58,7 +58,7 @@ const products = [
     name: "Wooden Wardrobe 4 Door",
     category: "Furniture",
     price: 55000,
-    count: 6,
+    stock: 6,
     image: "https://i.ibb.co/NsJPm1V/wardrobe.jpg",
   },
   {
@@ -66,7 +66,7 @@ const products = [
     name: "Ergonomic Office Chair",
     category: "Furniture",
     price: 7500,
-    count: 15,
+    stock: 15,
     image: "https://i.ibb.co/pf72j7Z/chair.jpg",
   },
 ];
@@ -106,7 +106,7 @@ const AllProducts = () => {
         categories={categories}
         selectedCategory={category}
         onCategoryChange={setCategory}
-        tableHeaders={["ID", "Image", "Name", "Category", "Price", "Count"]}
+        tableHeaders={["ID", "Image", "Name", "Category", "Price", "Available Stock"]}
         tableData={filteredProducts.map((p) => ({
           id: p.id,
 
@@ -121,7 +121,7 @@ const AllProducts = () => {
           name: p.name,
           category: p.category,
           price: `৳ ${p.price}`,
-          count: p.count,
+          count: p.stock,
         }))}
         actions={[
           { label: "View", onClick: (row) => console.log("View", row) },
