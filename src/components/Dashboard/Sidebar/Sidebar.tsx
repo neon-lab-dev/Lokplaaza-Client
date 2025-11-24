@@ -66,7 +66,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[280px] bg-gray-900 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
+    <div className="w-[280px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
       <div className="flex flex-col gap-16">
         <Link href={"/"}>
           <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />
@@ -79,7 +79,7 @@ const Sidebar = () => {
               href={item?.path}
               className={`p-3 rounded-lg font-medium transition duration-300 ease-in-out flex items-center gap-2 ${
                 pathname === item?.path
-                  ? "bg-success-05 text-white"
+                  ? "bg-green-50 text-neutral-05"
                   : "text-gray-300"
               }`}
             >
@@ -94,8 +94,8 @@ const Sidebar = () => {
         type="button"
         label="Logout"
         onClick={handleLogout}
-        bgColor="bg-gray-800"
-        textColor="text-gray-300"
+        bgColor="bg-green-50"
+        textColor="text-neutral-05"
       />
     </div>
   );

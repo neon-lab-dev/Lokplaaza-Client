@@ -1,19 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import Link from "next/link";
 import { useState } from "react";
 import {
-  FiUser,
   FiMail,
   FiPhone,
   FiMapPin,
   FiEdit2,
   FiCamera,
-  FiShoppingBag,
-  FiClock,
-  FiCheckCircle,
-  FiHeart,
-  FiSettings,
 } from "react-icons/fi";
 
 interface Address {
@@ -104,7 +97,6 @@ const MyProfile = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
           {/* Left Column - Profile & Addresses */}
           <div className="xl:col-span-3 space-y-8">
             {/* Profile Card - Larger */}
@@ -302,98 +294,6 @@ const MyProfile = () => {
               </div>
             </div>
           </div>
-
-          {/* Right Column - Stats & Security */}
-          <div className="xl:col-span-1 space-y-8">
-            {/* Account Summary - Larger */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Account Summary
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <FiShoppingBag className="w-5 h-5 text-gray-500" />
-                    <span className="text-gray-600 text-lg">Total Orders</span>
-                  </div>
-                  <span className="font-bold text-gray-900 text-lg">24</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <FiClock className="w-5 h-5 text-yellow-500" />
-                    <span className="text-gray-600 text-lg">
-                      Pending Orders
-                    </span>
-                  </div>
-                  <span className="font-bold text-yellow-600 text-lg">2</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                  <div className="flex items-center gap-3">
-                    <FiCheckCircle className="w-5 h-5 text-green-500" />
-                    <span className="text-gray-600 text-lg">
-                      Delivered Orders
-                    </span>
-                  </div>
-                  <span className="font-bold text-green-600 text-lg">22</span>
-                </div>
-                <div className="flex justify-between items-center py-3">
-                  <div className="flex items-center gap-3">
-                    <FiUser className="w-5 h-5 text-blue-500" />
-                    <span className="text-gray-600 text-lg">Member Since</span>
-                  </div>
-                  <span className="font-bold text-gray-900 text-lg">2024</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Quick Actions
-              </h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    label: "Wishlist",
-                    description: "View your saved items",
-                    icon: <FiHeart className="w-5 h-5" />,
-                    path: "/wishlist",
-                  },
-                  {
-                    label: "Browse Products",
-                    description: "Explore our latest collection",
-                    icon: <FiShoppingBag className="w-5 h-5" />,
-                    path: "/products",
-                  },
-                  {
-                    label: "Settings",
-                    description: "Manage your account preferences",
-                    icon: <FiSettings className="w-5 h-5" />,
-                    path: "/settings",
-                  },
-                ].map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item.path}
-                    className="w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-success-05 transition-all duration-300 group block"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="text-gray-500 group-hover:text-success-05 transition-colors duration-300">
-                        {item.icon}
-                      </div>
-                      <div className="font-semibold text-gray-900 text-lg group-hover:text-success-05 transition-colors duration-300">
-                        {item.label}
-                      </div>
-                    </div>
-                    <div className="text-gray-600 text-sm group-hover:text-success-07 transition-colors duration-300">
-                      {item.description}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
