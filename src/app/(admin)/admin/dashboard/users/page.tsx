@@ -8,7 +8,7 @@ interface User {
   name: string;
   email: string;
   phoneNumber: string;
-  dateOfBirth : string;
+  dateOfBirth: string;
   role: string;
   createdAt: string;
   updatedAt: string;
@@ -107,7 +107,6 @@ const Users = () => {
 
   return (
     <div>
-      
       <div>
         {/* Header */}
         <div className="mb-8">
@@ -240,8 +239,6 @@ const Users = () => {
                           </div>
                         </div>
                       </td>
-
-                      
 
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {user?.phoneNumber || "N/A"}

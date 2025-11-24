@@ -37,7 +37,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[280px] bg-success-05 min-h-screen font-Montserrat p-4 flex flex-col justify-between">
+    <div className="w-[280px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
       <div className="flex flex-col gap-16">
         <Link href={"/"}>
         <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />

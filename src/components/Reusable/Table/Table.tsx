@@ -63,7 +63,7 @@ const Table = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">{heading}</h1>
@@ -172,7 +172,7 @@ const Table = ({
                         key={i}
                         className="px-6 py-4 whitespace-nowrap text-sm text-gray-700"
                       >
-                        {value}
+                        {value as ReactNode}
                       </td>
                     ))}
 

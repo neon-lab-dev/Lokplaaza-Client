@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Table from "@/components/Reusable/Table/Table";
+import Link from "next/link";
 import { useState } from "react";
 
 const products = [
@@ -84,51 +85,53 @@ const AllProducts = () => {
   });
 
   const children = (
-    <button
-      className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 
-                  bg-primary-05 focus:outline-none text-white transition-colors capitalize cursor-pointer"
+    <Link
+      href="/admin/dashboard/add-product"
+      className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 bg-primary-05 focus:outline-none text-white transition-colors capitalize cursor-pointer"
     >
       Add new product
-    </button>
+    </Link>
   );
 
   return (
-    <Table
-      heading="Products"
-      subHeading="Manage all store products"
-      searchPlaceholder="Search products..."
-      searchValue={keyword}
-      onSearch={setKeyword}
-      limit={limit}
-      onLimitChange={setLimit}
-      categories={categories}
-      selectedCategory={category}
-      onCategoryChange={setCategory}
-      tableHeaders={["ID", "Image", "Name", "Category", "Price", "Count"]}
-      tableData={filteredProducts.map((p) => ({
-        id: p.id,
+    <div>
+      <Table
+        heading="Products"
+        subHeading="Manage all store products"
+        searchPlaceholder="Search products..."
+        searchValue={keyword}
+        onSearch={setKeyword}
+        limit={limit}
+        onLimitChange={setLimit}
+        categories={categories}
+        selectedCategory={category}
+        onCategoryChange={setCategory}
+        tableHeaders={["ID", "Image", "Name", "Category", "Price", "Count"]}
+        tableData={filteredProducts.map((p) => ({
+          id: p.id,
 
-        image: (
-          <img
-            src={p.image}
-            alt={p.name}
-            className="w-12 h-12 rounded-md object-cover border"
-          />
-        ),
+          image: (
+            <img
+              src={p.image}
+              alt={p.name}
+              className="w-12 h-12 rounded-md object-cover border"
+            />
+          ),
 
-        name: p.name,
-        category: p.category,
-        price: `৳ ${p.price}`,
-        count: p.count,
-      }))}
-      actions={[
-        { label: "View", onClick: (row) => console.log("View", row) },
-        { label: "Edit", onClick: (row) => console.log("Edit", row) },
-        { label: "Delete", onClick: (row) => console.log("Delete", row) },
-      ]}
-    >
-      {children}
-    </Table>
+          name: p.name,
+          category: p.category,
+          price: `৳ ${p.price}`,
+          count: p.count,
+        }))}
+        actions={[
+          { label: "View", onClick: (row) => console.log("View", row) },
+          { label: "Edit", onClick: (row) => console.log("Edit", row) },
+          { label: "Delete", onClick: (row) => console.log("Delete", row) },
+        ]}
+      >
+        {children}
+      </Table>
+    </div>
   );
 };
 
