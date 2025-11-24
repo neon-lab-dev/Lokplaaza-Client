@@ -19,22 +19,22 @@ const Sidebar = () => {
     {
       label: "Dashboard",
       icon: <MdDashboard />,
-      path: "/admin/dashboard",
+      path: "/dashboard/admin",
     },
     {
       label: "Users",
       icon: <MdPeople />,
-      path: "/admin/dashboard/users",
+      path: "/dashboard/admin/users",
     },
     {
       label: "Products",
       icon: <FiBox />,
-      path: "/admin/dashboard/products",
+      path: "/dashboard/admin/products",
     },
     {
       label: "Order",
       icon: <AiOutlineShopping />,
-      path: "/admin/dashboard/orders",
+      path: "/dashboard/admin/orders",
     },
   ];
 
@@ -44,7 +44,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[280px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
+    <div className="w-[280px] bg-gray-900 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
       <div className="flex flex-col gap-16">
         <Link href={"/"}>
         <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />
@@ -55,10 +55,10 @@ const Sidebar = () => {
             <Link
               key={item?.label}
               href={item?.path}
-              className={`p-3 rounded-lg font-medium hover:bg-primary-10/10 transition duration-300 ease-in-out flex items-center gap-2 ${
+              className={`p-3 rounded-lg font-medium transition duration-300 ease-in-out flex items-center gap-2 ${
                 pathname === item?.path
-                  ? "bg-primary-10/10 text-primary-10"
-                  : "text-neutral-10"
+                  ? "bg-success-05 text-white"
+                  : "text-gray-300"
               }`}
             >
               {item?.icon}
@@ -72,8 +72,8 @@ const Sidebar = () => {
         type="button"
         label="Logout"
         onClick={handleLogout}
-        bgColor="bg-success-10"
-        textColor="text-gray-800"
+        bgColor="bg-gray-800"
+        textColor="text-gray-300"
       />
     </div>
   );

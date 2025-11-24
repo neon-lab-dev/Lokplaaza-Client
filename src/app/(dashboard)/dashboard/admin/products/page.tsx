@@ -11,6 +11,7 @@ const products = [
     category: "Bed",
     price: 45000,
     stock: 12,
+    color: "Brown",
     image: "https://i.ibb.co/ZH6dS6s/bed1.jpg",
   },
   {
@@ -19,6 +20,7 @@ const products = [
     category: "Bed",
     price: 38000,
     stock: 8,
+    color: "Dark Brown",
     image: "https://i.ibb.co/kx9wYsb/bed2.jpg",
   },
   {
@@ -27,6 +29,7 @@ const products = [
     category: "Kitchen",
     price: 5200,
     stock: 20,
+    color: "Black",
     image: "https://i.ibb.co/DfkBv6q/cookware.jpg",
   },
   {
@@ -35,6 +38,7 @@ const products = [
     category: "Kitchen",
     price: 1800,
     stock: 30,
+    color: "Silver",
     image: "https://i.ibb.co/cN0wZyw/knife.jpg",
   },
   {
@@ -43,6 +47,7 @@ const products = [
     category: "Bedroom Accessories",
     price: 1400,
     stock: 50,
+    color: "White",
     image: "https://i.ibb.co/rp6tT7C/pillow.jpg",
   },
   {
@@ -51,6 +56,7 @@ const products = [
     category: "Bedroom Accessories",
     price: 2200,
     stock: 40,
+    color: "Light Blue",
     image: "https://i.ibb.co/6bCwngp/bedsheet.jpg",
   },
   {
@@ -59,6 +65,7 @@ const products = [
     category: "Furniture",
     price: 55000,
     stock: 6,
+    color: "Oak",
     image: "https://i.ibb.co/NsJPm1V/wardrobe.jpg",
   },
   {
@@ -67,6 +74,7 @@ const products = [
     category: "Furniture",
     price: 7500,
     stock: 15,
+    color: "Black",
     image: "https://i.ibb.co/pf72j7Z/chair.jpg",
   },
 ];
@@ -86,7 +94,7 @@ const AllProducts = () => {
 
   const children = (
     <Link
-      href="/admin/dashboard/add-product"
+      href="/dashboard/admin/add-product"
       className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 bg-primary-05 focus:outline-none text-white transition-colors capitalize cursor-pointer"
     >
       Add new product
@@ -106,7 +114,15 @@ const AllProducts = () => {
         categories={categories}
         selectedCategory={category}
         onCategoryChange={setCategory}
-        tableHeaders={["ID", "Image", "Name", "Category", "Price", "Available Stock"]}
+        tableHeaders={[
+          "ID",
+          "Image",
+          "Name",
+          "Category",
+          "Color",
+          "Price",
+          "Available Stock",
+        ]}
         tableData={filteredProducts.map((p) => ({
           id: p.id,
 
@@ -120,6 +136,7 @@ const AllProducts = () => {
 
           name: p.name,
           category: p.category,
+          color: p.color,
           price: `৳ ${p.price}`,
           count: p.stock,
         }))}

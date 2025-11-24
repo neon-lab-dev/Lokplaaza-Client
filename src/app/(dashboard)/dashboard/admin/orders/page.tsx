@@ -51,8 +51,8 @@ const orders = [
     orderDate: "2025-11-21",
     status: "Shipped",
     customer: {
-      name: "Rahul Mehta",
-      email: "rahul.mehta@example.com",
+      name: "Rahul Sutradhar",
+      email: "rahul@example.com",
       phone: "+91 9988776655",
       address: "Banashankari, Bengaluru, Karnataka",
     },
@@ -274,12 +274,6 @@ const OrderModal: React.FC<OrderModalProps> = ({
                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
               >
                 Close
-              </button>
-              <button
-                onClick={() => console.log("Print order", order.id)}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200"
-              >
-                Print Invoice
               </button>
             </div>
           </motion.div>

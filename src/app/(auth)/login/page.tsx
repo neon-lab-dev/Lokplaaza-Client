@@ -60,9 +60,9 @@ const Login = () => {
         toast.success(response?.message);
 
         if (userRole === "admin") {
-          router.push("/admin/dashboard");
+          router.push("/dashboard/admin");
         } else if (userRole === "user") {
-          router.push("/dashboard");
+          router.push("/dashboard/user");
         }
       }
     } catch (err: any) {
