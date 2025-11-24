@@ -1,30 +1,64 @@
 "use client";
 import Button from "../../Reusable/Button/Button";
-import { MdDashboard, MdPeople } from "react-icons/md";
-import { logout } from "../../../redux/features/Auth/authSlice";
-import { useDispatch } from "react-redux";
+import { MdDashboard, MdPeople, MdPerson, MdSettings } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { IMAGES } from "@/assets";
 import Link from "next/link";
+import { FiBox, FiPackage } from "react-icons/fi";
+import { AiOutlineShopping } from "react-icons/ai";
+import { logout, useCurrentUser } from "@/redux/Features/Auth/authSlice";
 
 const Sidebar = () => {
+  const user = useSelector(useCurrentUser);
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
 
-  const sidebarLinks = [
+  const adminSidebarLinks = [
     {
       label: "Dashboard",
       icon: <MdDashboard />,
-      path: "/admin/dashboard",
+      path: "/dashboard/admin",
     },
     {
       label: "Users",
       icon: <MdPeople />,
-      path: "/admin/dashboard/users",
+      path: "/dashboard/admin/users",
+    },
+    {
+      label: "Products",
+      icon: <FiBox />,
+      path: "/dashboard/admin/products",
+    },
+    {
+      label: "Order",
+      icon: <AiOutlineShopping />,
+      path: "/dashboard/admin/orders",
     },
   ];
+
+  const userSidebarLinks = [
+    {
+      label: "My Profile",
+      icon: <MdPerson size={20} />,
+      path: "/dashboard/user/my-profile",
+    },
+    {
+      label: "My Orders",
+      icon: <FiPackage size={20} />,
+      path: "/dashboard/user/my-orders",
+    },
+    {
+      label: "Setting",
+      icon: <MdSettings size={20} />,
+      path: "/dashboard/user/setting",
+    },
+  ];
+
+  const sidebarLinks =
+    user?.role === "admin" ? adminSidebarLinks : userSidebarLinks;
 
   const handleLogout = async () => {
     dispatch(logout());
@@ -32,10 +66,10 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[280px] bg-success-05 min-h-screen font-Montserrat p-4 flex flex-col justify-between">
+    <div className="w-[280px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
       <div className="flex flex-col gap-16">
         <Link href={"/"}>
-        <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />
+          <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />
         </Link>
 
         <div className="flex flex-col">
@@ -43,10 +77,10 @@ const Sidebar = () => {
             <Link
               key={item?.label}
               href={item?.path}
-              className={`p-3 rounded-lg font-medium hover:bg-primary-10/10 transition duration-300 ease-in-out flex items-center gap-2 ${
+              className={`p-3 rounded-lg font-medium transition duration-300 ease-in-out flex items-center gap-2 ${
                 pathname === item?.path
-                  ? "bg-primary-10/10 text-primary-10"
-                  : "text-neutral-10"
+                  ? "bg-green-50 text-neutral-05"
+                  : "text-gray-300"
               }`}
             >
               {item?.icon}
@@ -60,8 +94,8 @@ const Sidebar = () => {
         type="button"
         label="Logout"
         onClick={handleLogout}
-        bgColor="bg-success-10"
-        textColor="text-gray-800"
+        bgColor="bg-green-50"
+        textColor="text-neutral-05"
       />
     </div>
   );

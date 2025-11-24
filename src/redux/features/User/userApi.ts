@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { baseApi } from "@/redux/api/baseApi";
+import { baseApi } from "@/redux/Api/baseApi";
 
 export interface IGetAllUsersQuery {
   keyword?: string;

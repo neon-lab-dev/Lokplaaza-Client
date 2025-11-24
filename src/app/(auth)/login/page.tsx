@@ -12,8 +12,8 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import { useLoginMutation } from "@/redux/features/Auth/authApi";
-import { setUser } from "@/redux/features/Auth/authSlice";
+import { useLoginMutation } from "@/redux/Features/Auth/authApi";
+import { setUser } from "@/redux/Features/Auth/authSlice";
 
 type TFormData = {
   email: string;
@@ -60,9 +60,9 @@ const Login = () => {
         toast.success(response?.message);
 
         if (userRole === "admin") {
-          router.push("/admin/dashboard");
+          router.push("/dashboard/admin");
         } else if (userRole === "user") {
-          router.push("/dashboard");
+          router.push("/dashboard/user/my-profile");
         }
       }
     } catch (err: any) {
@@ -109,6 +109,7 @@ const Login = () => {
             bgColor="bg-success-05"
             icon={ICONS.rightArrow}
             className="w-full"
+            isDisabled={isLoading}
           />
 
           <p className="text-neutral-55 leading-5 text-center mt-6">
