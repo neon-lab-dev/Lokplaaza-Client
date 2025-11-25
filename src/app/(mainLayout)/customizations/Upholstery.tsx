@@ -4,7 +4,7 @@ import { IMAGES } from "@/assets";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
-import { setColor, setFabric, setStep } from "@/redux/Features/Customizations/customizationSlice";
+import { setColor, setFabric, setStep } from "@/redux/features/Customizations/customizationSlice";
 
 const dummyFabrics = [
   {

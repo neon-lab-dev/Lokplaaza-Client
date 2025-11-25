@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import { useRouter } from "next/navigation";
-import { setStep } from "@/redux/Features/Customizations/customizationSlice";
+import { setStep } from "@/redux/features/Customizations/customizationSlice";
 
 const ReviewPage = () => {
   const dispatch = useDispatch();
