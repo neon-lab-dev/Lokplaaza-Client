@@ -11,7 +11,6 @@ import authReducer,{ AuthState } from './features/Auth/authSlice';
 import customizationReducer from "./features/Customizations/customizationSlice";
 import { baseApi } from './api/baseApi';
 
-
 const persistConfig: PersistConfig<AuthState> = {
   key: "auth",
   storage,

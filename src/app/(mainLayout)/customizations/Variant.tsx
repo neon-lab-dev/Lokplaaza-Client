@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
-import { setStep, setVariant } from "@/redux/Features/Customizations/customizationSlice";
+import { setStep, setVariant } from "@/redux/features/Customizations/customizationSlice";
 
 const variantOptions = [
   {
