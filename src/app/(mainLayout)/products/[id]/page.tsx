@@ -3,12 +3,14 @@ import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const ProductDetails = () => {
   const carouselItems = [IMAGES.sofa1, IMAGES.heroImgGreen, IMAGES.heroImgRed];
   const rating = 4.5;
+  const router= useRouter()
 
   const renderStars = () => {
     const stars = [];
@@ -113,6 +115,9 @@ const ProductDetails = () => {
               label="Customize Now"
               icon={ICONS.rightArrow}
               className="w-full mt-5"
+              onClick={()=>{
+                router.push("/customizations")
+              }}
             />
           </div>
         </div>

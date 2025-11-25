@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import BreadCrumps from "@/components/Reusable/BreadCrumps/BreadCrumps";
@@ -6,23 +7,26 @@ import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
 import Modal from "@/components/Reusable/Modal/Modal";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BiX } from "react-icons/bi";
-import { CgCross } from "react-icons/cg";
 
 const ShopByRoom = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selected, setSelected]= useState<any>(null)
+  const router= useRouter()
 
   const Rooms = [
-    { room: "Kitchen", imageUrl: IMAGES.HotSellerCTAbg },
+    { room: "Kitchen", imageUrl: IMAGES.HotSellerCTAbg,link:"/modular-kitchen" },
     {
       room: "Bedroom",
       imageUrl: IMAGES.ShopByRoom,
+      link:"modular-kitchen" 
     },
-    { room: "Living room", imageUrl: IMAGES.customFurniture },
+    { room: "Living room", imageUrl: IMAGES.customFurniture,link:"/custom-furniture"  },
     {
       room: "Dining room",
-      imageUrl: IMAGES.authImg,
+      imageUrl: IMAGES.authImg,link:"modular-kitchen" 
     },
   ];
 
@@ -71,7 +75,11 @@ const ShopByRoom = () => {
          
           <div className="h-[52vh] grid grid-cols-1 md:grid-cols-2  gap-6 my-8 overflow-y-scroll scrollbar-none">
             {Rooms.map((room) => (
-              <div key={room.room} className="relative shadow-md  ">
+              <div 
+              onClick={()=>{
+                setSelected(room)
+              }}
+              key={room.room} className="relative shadow-md  ">
                 <Image
                   src={room.imageUrl}
                   alt={room.room}
@@ -80,7 +88,7 @@ const ShopByRoom = () => {
                   className="w-full h-[200px] object-cover rounded-3xl"
                 />
 
-                <div className="absolute w-full rounded-3xl h-full bg-gray-gradient bottom-0 right-0 p-4 font-semibold capitalize text-neutral-10 text-3xl flex gap-1 items-end justify-between ">
+                <div className={`absolute w-full rounded-3xl h-full  bottom-0 right-0 p-4 font-semibold capitalize text-neutral-10 text-3xl flex gap-1 items-end justify-between ${selected?.link === room?.link?"bg-black/20":"bg-gray-gradient" }`}>
                   <div className="flex gap-1 items-center justify-between "><p>{room.room}</p>
                   <div className="p-2 rounded-full flex items-center bg-neutral-10  justify-center">
                     <Image src={ICONS.downArrow} alt={room.room} className=" rotate-270" />
@@ -95,7 +103,10 @@ const ShopByRoom = () => {
           <Button
             label="Shop by Room"
             className="w-full"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => {setIsModalOpen(false);
+              router.push(selected?.link)
+
+            }}
           />
         </div>
       </Modal>
