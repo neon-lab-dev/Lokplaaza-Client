@@ -1,96 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Table from "@/components/Reusable/Table/Table";
+import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import Link from "next/link";
 import { useState } from "react";
 
-const products = [
-  {
-    id: "p1",
-    name: "Wooden King Size Bed",
-    category: "Bed",
-    price: 45000,
-    stock: 12,
-    color: "Brown",
-    image: "https://i.ibb.co/ZH6dS6s/bed1.jpg",
-  },
-  {
-    id: "p2",
-    name: "Queen Size Storage Bed",
-    category: "Bed",
-    price: 38000,
-    stock: 8,
-    color: "Dark Brown",
-    image: "https://i.ibb.co/kx9wYsb/bed2.jpg",
-  },
-  {
-    id: "p3",
-    name: "Non-stick Cookware Set",
-    category: "Kitchen",
-    price: 5200,
-    stock: 20,
-    color: "Black",
-    image: "https://i.ibb.co/DfkBv6q/cookware.jpg",
-  },
-  {
-    id: "p4",
-    name: "Steel Knife Set",
-    category: "Kitchen",
-    price: 1800,
-    stock: 30,
-    color: "Silver",
-    image: "https://i.ibb.co/cN0wZyw/knife.jpg",
-  },
-  {
-    id: "p5",
-    name: "Premium Pillow (Set of 2)",
-    category: "Bedroom Accessories",
-    price: 1400,
-    stock: 50,
-    color: "White",
-    image: "https://i.ibb.co/rp6tT7C/pillow.jpg",
-  },
-  {
-    id: "p6",
-    name: "Cotton Bedsheet with Pillow Covers",
-    category: "Bedroom Accessories",
-    price: 2200,
-    stock: 40,
-    color: "Light Blue",
-    image: "https://i.ibb.co/6bCwngp/bedsheet.jpg",
-  },
-  {
-    id: "p7",
-    name: "Wooden Wardrobe 4 Door",
-    category: "Furniture",
-    price: 55000,
-    stock: 6,
-    color: "Oak",
-    image: "https://i.ibb.co/NsJPm1V/wardrobe.jpg",
-  },
-  {
-    id: "p8",
-    name: "Ergonomic Office Chair",
-    category: "Furniture",
-    price: 7500,
-    stock: 15,
-    color: "Black",
-    image: "https://i.ibb.co/pf72j7Z/chair.jpg",
-  },
-];
-
 const AllProducts = () => {
+  const { data } = useGetAllProductsQuery({});
+  const products = data?.data?.products || []; // ✅ Correct list of products
+
   const [keyword, setKeyword] = useState("");
   const [limit, setLimit] = useState(10);
   const [category, setCategory] = useState("");
 
   const categories = ["Bed", "Kitchen", "Bedroom Accessories", "Furniture"];
 
-  const filteredProducts = products.filter((p) => {
-    const matchesKeyword = p.name.toLowerCase().includes(keyword.toLowerCase());
-    const matchesCategory = category ? p.category === category : true;
-    return matchesKeyword && matchesCategory;
-  });
+  // FILTER PRODUCTS
+  // const filteredProducts = products.filter((p: any) => {
+  //   const matchesKeyword = p.name.toLowerCase().includes(keyword.toLowerCase());
+  //   const matchesCategory = category ? p.category === category : true;
+  //   return matchesKeyword && matchesCategory;
+  // });
 
   const children = (
     <Link
@@ -119,27 +50,57 @@ const AllProducts = () => {
           "Image",
           "Name",
           "Category",
-          "Color",
-          "Price",
-          "Available Stock",
+          "Colors, Sizes and Prices",
         ]}
-        tableData={filteredProducts.map((p) => ({
-          id: p.id,
+        tableData={products.map((p: any) => {
+          return {
+            id: p.productId,
 
-          image: (
-            <img
-              src={p.image}
-              alt={p.name}
-              className="w-12 h-12 rounded-md object-cover border"
-            />
-          ),
+            image: (
+              <img
+                src={p.imageUrls[0]}
+                alt={p.name}
+                className="w-12 h-12 rounded-md object-cover border"
+              />
+            ),
 
-          name: p.name,
-          category: p.category,
-          color: p.color,
-          price: `৳ ${p.price}`,
-          count: p.stock,
-        }))}
+            name: p.name,
+            category: p.category,
+
+            /** PRICES */
+            /** PRICES */
+            prices: (
+              <div className="space-y-1">
+                {" "}
+                {/* Reduce vertical spacing */}
+                {p.colors?.map((color: any) => (
+                  <div key={color.colorName}>
+                    {/* Color name */}
+                    <p className="font-semibold mb-1">{color.colorName}</p>
+
+                    {/* Sizes with prices */}
+                    {color.sizes.map((size: any) => (
+                      <div
+                        key={size._id}
+                        className="flex items-center text-sm gap-2" // Use gap instead of justify-between
+                      >
+                        <span className="w-12">{size.size}</span>{" "}
+                        {/* fixed width for alignment */}
+                        <span className="line-through text-red-500">
+                          {size.basePrice}
+                        </span>
+                        <span>→</span>
+                        <span className="text-green-600 font-semibold">
+                          {size.discountedPrice}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ),
+          };
+        })}
         actions={[
           { label: "View", onClick: (row) => console.log("View", row) },
           { label: "Edit", onClick: (row) => console.log("Edit", row) },
