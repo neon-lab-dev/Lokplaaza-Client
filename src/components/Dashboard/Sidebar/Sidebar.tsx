@@ -8,7 +8,7 @@ import { IMAGES } from "@/assets";
 import Link from "next/link";
 import { FiBox, FiPackage } from "react-icons/fi";
 import { AiOutlineShopping } from "react-icons/ai";
-import { logout, useCurrentUser } from "@/redux/Features/Auth/authSlice";
+import { logout, useCurrentUser } from "@/redux/features/Auth/authSlice";
 
 const Sidebar = () => {
   const user = useSelector(useCurrentUser);

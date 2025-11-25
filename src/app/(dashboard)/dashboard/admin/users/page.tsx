@@ -1,6 +1,6 @@
 "use client";
 import Loader from "@/components/Reusable/Loader/Loader";
-import { useGetAllUsersQuery } from "@/redux/Features/User/userApi";
+import { useGetAllUsersQuery } from "@/redux/features/User/userApi";
 import { useState, useEffect } from "react";
 
 interface User {

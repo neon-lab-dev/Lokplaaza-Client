@@ -6,7 +6,8 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import { useRouter } from "next/navigation";
-import { setStep } from "@/redux/Features/Customizations/customizationSlice";
+import StepHeader from "@/components/CustomizationsPage/StepHeader";
+import { setStep } from "@/redux/features/Customizations/customizationSlice";
 
 const ReviewPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const ReviewPage = () => {
 
   return (
     <div className="max-w-[784px] mx-auto">
+        <StepHeader title="Review" /> 
       {/* Main Card */}
       <Container >
         {/* Header + Back */}
