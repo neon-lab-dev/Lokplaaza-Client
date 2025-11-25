@@ -2,12 +2,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Table from "@/components/Reusable/Table/Table";
-import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
+import { useDeleteProductMutation, useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AllProducts = () => {
-  const { data } = useGetAllProductsQuery({});
+   const [deleteProduct] = useDeleteProductMutation();
+  const { data, isLoading } = useGetAllProductsQuery({});
   const products = data?.data?.products || []; // ✅ Correct list of products
 
   const [keyword, setKeyword] = useState("");
@@ -22,6 +24,15 @@ const AllProducts = () => {
   //   const matchesCategory = category ? p.category === category : true;
   //   return matchesKeyword && matchesCategory;
   // });
+
+    const handleDeleteProduct = async (id: string) => {
+      console.log(id);
+    toast.promise(deleteProduct(id).unwrap(), {
+      loading: "Deleting product...",
+      success: "Product deleted successfully.",
+      error: (err: any) => err?.data?.message || "Something went wrong!",
+    });
+  };
 
   const children = (
     <Link
@@ -45,6 +56,7 @@ const AllProducts = () => {
         categories={categories}
         selectedCategory={category}
         onCategoryChange={setCategory}
+        isLoading={isLoading} 
         tableHeaders={[
           "ID",
           "Image",
@@ -54,6 +66,7 @@ const AllProducts = () => {
         ]}
         tableData={products.map((p: any) => {
           return {
+            _id: p._id,
             id: p.productId,
 
             image: (
@@ -104,7 +117,7 @@ const AllProducts = () => {
         actions={[
           { label: "View", onClick: (row) => console.log("View", row) },
           { label: "Edit", onClick: (row) => console.log("Edit", row) },
-          { label: "Delete", onClick: (row) => console.log("Delete", row) },
+          { label: "Delete", onClick: (row) => handleDeleteProduct(row?._id) },
         ]}
       >
         {children}
