@@ -9,7 +9,7 @@ import {persistReducer, persistStore, FLUSH,
 import storage from 'redux-persist/lib/storage';
 import authReducer,{ AuthState } from './features/Auth/authSlice';
 import customizationReducer from "./features/Customizations/customizationSlice";
-import { baseApi } from './Api/baseApi';
+import { baseApi } from './api/baseApi';
 
 const persistConfig: PersistConfig<AuthState> = {
   key: "auth",
