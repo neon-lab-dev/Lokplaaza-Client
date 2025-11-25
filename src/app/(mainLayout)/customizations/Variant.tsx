@@ -11,6 +11,7 @@ import {
   setStep,
 } from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
+import StepHeader from "@/components/CustomizationsPage/StepHeader";
 
 const variantOptions = [
   {
@@ -42,6 +43,7 @@ const VariantPage = () => {
 
   return (
     <div className="max-w-[784px] mx-auto">
+      <StepHeader title="Select Variant" /> 
       <Container>
         <Image
           src={IMAGES.sofa}

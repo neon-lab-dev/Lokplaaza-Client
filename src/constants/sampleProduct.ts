@@ -34,7 +34,7 @@ export const sampleProducts = [
       price: "12,000",
     },
     {
-      id: 15,
+      id: 16,
       image: IMAGES.GotInspiration,
       category: "Sofa",
       title: "Modern 3-Seater",

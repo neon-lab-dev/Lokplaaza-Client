@@ -12,6 +12,7 @@ import {
   updateCustomization,
 } from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
+import StepHeader from "@/components/CustomizationsPage/StepHeader";
 
 const customizationOptions = {
   reclinerType: [
@@ -142,6 +143,7 @@ const CustomizationPage = () => {
 
   return (
     <div className="max-w-[784px] mx-auto">
+        <StepHeader title="Customize" /> 
       <Container>
         <Image
           src={IMAGES.sofa}
