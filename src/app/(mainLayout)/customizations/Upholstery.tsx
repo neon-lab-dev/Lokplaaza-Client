@@ -4,6 +4,7 @@ import { IMAGES } from "@/assets";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
+import StepHeader from "@/components/CustomizationsPage/StepHeader";
 import { setColor, setFabric, setStep } from "@/redux/features/Customizations/customizationSlice";
 
 const dummyFabrics = [
@@ -53,6 +54,7 @@ const UpholsteryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#F8F8F8] flex flex-col justify-between">
+        <StepHeader title="Customize" /> 
       <div className="w-[785px] max-w-[784px] mx-auto">
         <Image src={IMAGES.sofa} alt="sofa" className="w-full rounded-none" />
 
