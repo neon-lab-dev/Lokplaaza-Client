@@ -32,7 +32,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ) => {
     return (
       <div className="flex flex-col gap-2 font-Satoshi w-full">
-        <label htmlFor={name} className="text-neutral-65">
+        <label htmlFor={name} className="text-neutral-05">
           {label}
           {isRequired && <span className="text-red-600"> *</span>}
         </label>

@@ -1,43 +1,24 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/no-unescaped-entities */
 "use client";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useState, useRef } from "react";
+import { useForm, FormProvider, useFieldArray } from "react-hook-form";
+import { useState } from "react";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
-
-interface ProductFormData {
-  name: string;
-  basePrice: number;
-  discountedPrice: number;
-  category: string;
-  size: string;
-  customSize?: string;
-  material: string;
-  color: string;
-  description: string;
-  images: FileList;
-}
-
-interface ImagePreview {
-  url: string;
-  file: File;
-  id: string;
-}
+import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
+import Textarea from "@/components/Reusable/TextArea/TextArea";
+import Button from "@/components/Reusable/Button/Button";
+import ColorAndSizesField from "@/components/Dashboard/AddProduct/ColorAndSizesField";
+import toast from "react-hot-toast";
+import { useAddProductMutation } from "@/redux/features/Product/productApi";
+import { FiTrash2 } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 const AddProduct = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-  } = useForm<ProductFormData>();
+  const router = useRouter();
 
-  const size = watch("size");
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [imagePreviews, setImagePreviews] = useState<ImagePreview[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [addProduct, { isLoading }] = useAddProductMutation();
 
   const categories = [
     "Bed",
@@ -55,344 +36,262 @@ const AddProduct = () => {
   ];
 
   const sizes = ["Single", "Double", "Queen", "King", "Custom"];
+  const [previews, setPreviews] = useState<string[]>([]);
 
-  // Handle image selection
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files) return;
+  const methods = useForm<any>({
+    defaultValues: {
+      colors: [
+        {
+          colorName: "",
+          sizes: [{ size: "", quantity: 0, basePrice: 0, discountedPrice: 0 }],
+        },
+      ],
+      imageUrls: [],
+    },
+  });
 
-    const newImages: ImagePreview[] = [];
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    formState: { errors },
+  } = methods;
 
-    // Convert FileList to array and take only up to 6 images
-    const filesArray = Array.from(files).slice(0, 6 - imagePreviews.length);
+  const {
+    fields: colorFields,
+    append: appendColor,
+    remove: removeColor,
+  } = useFieldArray({
+    control,
+    name: "colors",
+  });
 
-    filesArray.forEach((file) => {
-      const url = URL.createObjectURL(file);
-      newImages.push({
-        url,
-        file,
-        id: Math.random().toString(36).substr(2, 9),
+  const {
+    fields: imageFields,
+    append: appendImage,
+    remove: removeImage,
+  } = useFieldArray({
+    control,
+    name: "imageUrls",
+  });
+  const action = "add";
+  const handleSubmitProduct = async (
+    data: any & { imageUrls?: { file?: File | string }[] }
+  ) => {
+    const formData = new FormData();
+
+    formData.append("name", data.name);
+    formData.append("category", data.category);
+    if (data.clothDetails) formData.append("clothDetails", data.clothDetails);
+    if (data.madeIn) formData.append("madeIn", data.madeIn);
+    formData.append("description", data.description);
+    if (data.productStory) formData.append("productStory", data.productStory);
+
+    data.colors?.forEach((color, colorIndex) => {
+      formData.append(`colors[${colorIndex}][colorName]`, color.colorName);
+      color.sizes.forEach((size, sizeIndex) => {
+        formData.append(
+          `colors[${colorIndex}][sizes][${sizeIndex}][size]`,
+          size.size
+        );
+        formData.append(
+          `colors[${colorIndex}][sizes][${sizeIndex}][quantity]`,
+          size.quantity.toString()
+        );
+        formData.append(
+          `colors[${colorIndex}][sizes][${sizeIndex}][basePrice]`,
+          size.basePrice.toString()
+        );
+        formData.append(
+          `colors[${colorIndex}][sizes][${sizeIndex}][discountedPrice]`,
+          size.discountedPrice.toString()
+        );
       });
     });
 
-    setImagePreviews((prev) => [...prev, ...newImages]);
+    data.imageUrls?.forEach((imgObj) => {
+      if (imgObj.file instanceof File) {
+        formData.append("files", imgObj.file);
+      }
+    });
 
-    // Update react-hook-form value
-    const dataTransfer = new DataTransfer();
-    [...imagePreviews, ...newImages].forEach((img) =>
-      dataTransfer.items.add(img.file)
-    );
-    setValue("images", dataTransfer.files);
-  };
-
-  // Remove image from preview
-  const removeImage = (id: string) => {
-    const updatedPreviews = imagePreviews.filter((img) => img.id !== id);
-    setImagePreviews(updatedPreviews);
-
-    // Update react-hook-form value
-    const dataTransfer = new DataTransfer();
-    updatedPreviews.forEach((img) => dataTransfer.items.add(img.file));
-    setValue("images", dataTransfer.files);
-
-    // Clean up URL
-    const removedImage = imagePreviews.find((img) => img.id === id);
-    if (removedImage) {
-      URL.revokeObjectURL(removedImage.url);
-    }
-  };
-
-  // Trigger file input click
-  const triggerFileInput = () => {
-    fileInputRef.current?.click();
-  };
-
-  const onSubmit: SubmitHandler<ProductFormData> = async (data) => {
-    setIsSubmitting(true);
     try {
-      console.log("Product data:", data);
-      console.log("Images:", imagePreviews);
-
-      // You would typically upload images and send data to your API here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      alert("Product added successfully!");
-
-      // Clean up image URLs
-      imagePreviews.forEach((img) => URL.revokeObjectURL(img.url));
-      setImagePreviews([]);
-    } catch (error) {
-      console.error("Error adding product:", error);
-      alert("Error adding product. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+      // if (action === "update") {
+      //   const response = await updateProduct({ data: formData, id }).unwrap();
+      //   toast.success(
+      //     response?.data?.message || "Product updated successfully!"
+      //   );
+      //   navigate("/dashboard/admin/products");
+      // } else {
+      //   const response = await addProduct(formData).unwrap();
+      //   if(response?,success){
+      //     toast.success(response?.data?.message || "Product added successfully!");
+      //   router.push("/dashboard/admin/products");
+      //   }
+      // }
+      const response = await addProduct(formData).unwrap();
+      if (response?.success) {
+        toast.success(response?.data?.message || "Product added successfully!");
+        router.push("/dashboard/admin/products");
+      }
+    } catch (err: any) {
+      toast.error(err?.data?.message || "Something went wrong!");
     }
   };
 
-  const basePrice = watch("basePrice");
-  const discountedPrice = watch("discountedPrice");
-  const discountPercentage =
-    basePrice && discountedPrice
-      ? Math.round(((basePrice - discountedPrice) / basePrice) * 100)
-      : 0;
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setValue(`imageUrls.${index}.file`, file);
+    const newPreviews = [...previews];
+    newPreviews[index] = URL.createObjectURL(file);
+    setPreviews(newPreviews);
+  };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Add New Product</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Product Name */}
-        <TextInput
-          label="Product Name"
-          placeholder="Enter product name"
-          type="text"
-          error={errors.name}
-          {...register("name", {
-            required: "Product name is required",
-            minLength: {
-              value: 2,
-              message: "Product name must be at least 2 characters",
-            },
-          })}
-        />
+      <FormProvider {...methods}>
+        <form
+          onSubmit={handleSubmit(handleSubmitProduct)}
+          className="flex flex-col gap-4 mt-6 w-full"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Product Name */}
+            <TextInput
+              label="Product Name"
+              placeholder="Enter product name"
+              error={errors.name}
+              {...register("name", {
+                required: "Product name is required",
+              })}
+            />
 
-        {/* Category Selection */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Category
-          </label>
-          <select
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            {...register("category", { required: "Category is required" })}
-          >
-            <option value="">Select a category</option>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          {errors.category && (
-            <p className="mt-1 text-sm text-red-600">
-              {errors.category.message}
-            </p>
-          )}
-        </div>
-
-        {/* Size Selection */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Size
-          </label>
-          <select
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            {...register("size", { required: "Size is required" })}
-          >
-            <option value="">Select size</option>
-            {sizes.map((size) => (
-              <option key={size} value={size}>
-                {size}
-              </option>
-            ))}
-          </select>
-          {errors.size && (
-            <p className="mt-1 text-sm text-red-600">{errors.size.message}</p>
-          )}
-        </div>
-
-        {/* Size */}
-        {size === "Custom" && (
-          <TextInput
-            label="Custom Size"
-            placeholder="e.g. 200cm x 150cm, 20st x 15st etc."
-            type="text"
-            error={errors.customSize}
-            {...register("customSize", {
-              required: "Custom size is required when Custom is selected",
-            })}
-          />
-        )}
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Base Price */}
-          <TextInput
-            label="Base Price(₹)"
-            placeholder="Enter base price"
-            type="number"
-            error={errors.basePrice}
-            {...register("basePrice", {
-              required: "Base price is required",
-              min: {
-                value: 0,
-                message: "Price must be positive",
-              },
-            })}
-          />
-
-          {/* Discounted Price */}
-          <TextInput
-            label="Discounted Price(₹)"
-            placeholder="Enter discounted price"
-            type="number"
-            error={errors.discountedPrice}
-            {...register("discountedPrice", {
-              required: "Discounted price is required",
-              min: {
-                value: 0,
-                message: "Price must be positive",
-              },
-              validate: (value) => {
-                const basePrice = watch("basePrice");
-                if (basePrice && value > basePrice) {
-                  return "Discounted price cannot be higher than base price";
-                }
-                return true;
-              },
-            })}
-          />
-        </div>
-
-        {/* Discount Display */}
-        {basePrice && discountedPrice && discountedPrice < basePrice && (
-          <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
-            <p className="text-green-700 font-medium">
-              Discount: {discountPercentage}% off
-            </p>
-            <p className="text-green-600 text-sm">
-              You're saving ₹{(basePrice - discountedPrice).toFixed(2)}
-            </p>
+            {/* Category */}
+            <SelectDropdown
+              label="Category"
+              {...register(`category`, {
+                required: "Category is required",
+              })}
+              error={errors?.category}
+              options={categories || []}
+            />
           </div>
-        )}
-
-        {/* Material */}
-        <TextInput
-          label="Material"
-          placeholder="e.g., Wood, Metal, Fabric"
-          type="text"
-          error={errors.material}
-          {...register("material", {
-            required: "Material is required",
-          })}
-        />
-
-        {/* Color */}
-        <TextInput
-          label="Color"
-          placeholder="e.g., Red, Blue, Green"
-          type="text"
-          error={errors.color}
-          {...register("color", {
-            required: "Color is required",
-          })}
-        />
-
-        {/* Description */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Description
-          </label>
-          <textarea
-            placeholder="Enter product description"
+          {/* Description */}
+          <Textarea
+            label="Description"
+            placeholder="Write product description..."
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            error={errors.description}
             {...register("description", {
               required: "Description is required",
-              minLength: {
-                value: 10,
-                message: "Description must be at least 10 characters",
-              },
             })}
           />
-          {errors.description && (
-            <p className="mt-1 text-sm text-red-600">
-              {errors.description.message}
-            </p>
-          )}
-        </div>
+          {/* Images */}
+          <div className="space-y-4">
+            <h3 className="text-neutral-05 leading-[18px] text-[15px] font-medium tracking-[-0.16] ">
+              Product Images (max 4)
+            </h3>
+            {imageFields.map((field, index) => {
+              const isExistingUrl = typeof field.file === "string";
+              const previewSource = isExistingUrl
+                ? field.file
+                : previews[index];
 
-        {/* Image Upload */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Product Images {`(${imagePreviews.length}/6)`}
-          </label>
+              return (
+                <div
+                  key={field.id}
+                  className="flex flex-col md:flex-row items-center gap-3"
+                >
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className=" rounded-lg p-2 w-[300px] border border-neutral-05/20"
+                    onChange={(e) => handleFileChange(e, index)}
+                  />
 
-          {/* Hidden file input */}
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            className="hidden"
-            ref={fileInputRef}
-            onChange={handleImageChange}
-          />
-
-          {/* Upload button */}
-          <button
-            type="button"
-            onClick={triggerFileInput}
-            disabled={imagePreviews.length >= 6}
-            className="w-full px-3 py-2 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <div className="flex flex-col items-center justify-center py-4">
-              <svg
-                className="w-8 h-8 text-gray-400 mb-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <p className="text-sm text-gray-600">
-                Click to upload images ({6 - imagePreviews.length} remaining)
-              </p>
-            </div>
-          </button>
-
-          {/* Image Previews */}
-          {imagePreviews.length > 0 && (
-            <div className="mt-4">
-              <h4 className="text-sm font-medium text-gray-700 mb-3">
-                Selected Images:
-              </h4>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {imagePreviews.map((image) => (
-                  <div key={image.id} className="relative group">
+                  {/* Show preview */}
+                  {previewSource && (
                     <img
-                      src={image.url}
+                      src={previewSource}
                       alt="Preview"
-                      className="w-full h-24 object-cover rounded-lg border border-gray-200"
+                      className="w-16 h-16 object-cover rounded-md"
                     />
-                    <button
-                      type="button"
-                      onClick={() => removeImage(image.id)}
-                      className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+                  )}
 
-          {errors.images && (
-            <p className="mt-1 text-sm text-red-600">{errors.images.message}</p>
-          )}
-        </div>
+                  {imageFields.length > 1 && (
+                    <FiTrash2
+                      className="cursor-pointer size-5 text-red-500"
+                      onClick={() => {
+                        removeImage(index);
+                        const newPreviews = previews.filter(
+                          (_, i) => i !== index
+                        );
+                        setPreviews(newPreviews);
+                      }}
+                    />
+                  )}
+                </div>
+              );
+            })}
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isSubmitting || imagePreviews.length === 0}
-          className="w-full bg-success-05 text-white py-3 px-4 rounded-lg font-medium hover:bg-success-06 focus:outline-none focus:ring-2 focus:ring-success-05 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-        >
-          {isSubmitting ? "Adding Product..." : "Add Product"}
-        </button>
-      </form>
+            {imageFields.length < 4 && (
+              <Button
+                variant="primary"
+                type="button"
+                label="Add Image"
+                classNames="py-2 px-4"
+                onClick={() => appendImage({ file: undefined })}
+              />
+            )}
+          </div>
+
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold">Colors & Sizes</h3>
+
+            {colorFields.map((color, colorIndex) => (
+              <ColorAndSizesField
+                key={color.id}
+                colorIndex={colorIndex}
+                removeColor={removeColor}
+              />
+            ))}
+
+            <Button
+              variant="primary"
+              type="button"
+              label="Add Color"
+              classNames="py-2 px-4"
+              onClick={() =>
+                appendColor({
+                  colorName: "",
+                  sizes: [
+                    {
+                      size: "",
+                      quantity: 0,
+                      basePrice: 0,
+                      discountedPrice: 0,
+                    },
+                  ],
+                })
+              }
+            />
+          </div>
+
+          {/* Actions */}
+          <div className="flex justify-end gap-4">
+            <Button
+              label={isLoading ? "Loading..." : "Save Product"}
+              type="submit"
+            />
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 };
