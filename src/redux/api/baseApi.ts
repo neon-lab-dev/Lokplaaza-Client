@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setUser } from "../features/Auth/authSlice";
 import type {
   BaseQueryApi,
   BaseQueryFn,
@@ -8,6 +7,7 @@ import type {
 } from "@reduxjs/toolkit/query";
 import type { DefinitionType } from "@reduxjs/toolkit/query";
 import type { RootState } from "../store";
+import { setUser } from "../Features/Auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:5000/api/v1",

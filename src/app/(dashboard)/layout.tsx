@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 const AdminLayout = ({children} : {children: ReactNode}) => {
   return (
-    <div className="flex bg-neutral-150">
+    <div className="flex bg-neutral-150 h-full">
       <Sidebar />
       <div className="w-full flex flex-col">
         <Header/>
