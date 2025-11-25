@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useSelector } from "react-redux";
@@ -7,7 +8,7 @@ import ReviewPage from "./Review";
 import CustomizationPage from "./customizatoin";
 
 const Customizations = () => {
-  const step = useSelector((state) => state.customization.step);
+  const step = useSelector((state: any) => state.customization.step);
 
   if (step === 1) return <VariantPage />;
   if (step === 2) return <CustomizationPage />;

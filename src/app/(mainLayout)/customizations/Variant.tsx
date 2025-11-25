@@ -6,30 +6,32 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setVariant, setStep } from "@/redux/features/Customizations/customizationSlice";
+import {
+  setVariant,
+  setStep,
+} from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
 
 const variantOptions = [
   {
     title: "Compact Size",
     description:
-      "Best for small living rooms, studio apartments, or when you want maximum comfort without occupying too much space."
+      "Best for small living rooms, studio apartments, or when you want maximum comfort without occupying too much space.",
   },
   {
     title: "Standard Size",
     description:
-      "Perfect balance of comfort and seating space. Ideal for regular households offering ample room without being bulky."
+      "Perfect balance of comfort and seating space. Ideal for regular households offering ample room without being bulky.",
   },
   {
     title: "Luxury Size",
     description:
-      "Designed for spacious living areas. Offers maximum seating, high back support and premium comfort."
-  }
+      "Designed for spacious living areas. Offers maximum seating, high back support and premium comfort.",
+  },
 ];
 
 const VariantPage = () => {
   const dispatch = useDispatch();
-  const { variant } = useSelector((state) => state.customization);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -64,7 +66,9 @@ const VariantPage = () => {
               >
                 {/* TITLE + TOGGLE ICON */}
                 <div className="flex items-center justify-between">
-                  <h5 className="text-lg font-semibold text-neutral-20">{item.title}</h5>
+                  <h5 className="text-lg font-semibold text-neutral-20">
+                    {item.title}
+                  </h5>
                   <motion.span
                     initial={false}
                     animate={{ rotate: isOpen ? 180 : 0 }}
@@ -89,8 +93,7 @@ const VariantPage = () => {
 
                       {/* CTA BUTTON */}
                       <Button
-                        onClick={(e) => {
-                          e.stopPropagation(); // prevent closing accordion when pressing button
+                        onClick={() => {
                           handleContinue(item.title);
                         }}
                         className="w-full hover:scale-[100%] my-5"

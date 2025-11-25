@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { IMAGES } from "@/assets";
@@ -56,7 +57,7 @@ const ReviewPage = () => {
                   {key.replace(/([A-Z])/g, " $1")}
                 </span>
                 <span className="text-sm font-medium text-neutral-900">
-                 - {val}
+                 - {String(val)}
                 </span>
               </div>
             ))}

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { setStep } from "@/redux/features/Customizations/customizationSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const StepHeader = ({ title }) => {
+const StepHeader = ({ title }:{title:string}) => {
   const dispatch = useDispatch();
 
   const step = useSelector((state: any) => state?.customization?.step ?? 1);
