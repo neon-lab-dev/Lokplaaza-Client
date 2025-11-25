@@ -5,13 +5,10 @@ import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setVariant,
-  setStep,
-} from "@/redux/features/Customizations/customizationSlice";
+import { useDispatch } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
+import { setStep, setVariant } from "@/redux/Features/Customizations/customizationSlice";
 
 const variantOptions = [
   {

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
-import { setStep } from "@/redux/features/Customizations/customizationSlice";
+import { setStep } from "@/redux/Features/Customizations/customizationSlice";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import { IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { setStep } from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
 import { useRouter } from "next/navigation";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
+import { setStep } from "@/redux/features/Customizations/customizationSlice";
 
 const ReviewPage = () => {
   const dispatch = useDispatch();
