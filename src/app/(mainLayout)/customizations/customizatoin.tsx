@@ -7,12 +7,9 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setStep,
-  updateCustomization,
-} from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
+import { setStep, updateCustomization } from "@/redux/Features/Customizations/customizationSlice";
 
 const customizationOptions = {
   reclinerType: [

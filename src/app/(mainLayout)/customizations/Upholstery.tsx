@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { setFabric, setColor, setStep } from "@/redux/features/Customizations/customizationSlice";
 import Button from "@/components/Reusable/Button/Button";
+import { setColor, setFabric, setStep } from "@/redux/Features/Customizations/customizationSlice";
 
 const dummyFabrics = [
   {
