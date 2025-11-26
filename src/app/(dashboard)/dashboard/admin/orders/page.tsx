@@ -5,8 +5,6 @@ import { useState } from "react";
 import { useGetAllOrdersQuery } from "@/redux/features/Order/orderApi";
 import OrderDetailsModal from "@/components/Dashboard/OrdersPage/OrderDetailsModal/OrderDetailsModal";
 
-
-
 const Orders = () => {
   const [keyword, setKeyword] = useState("");
   const [page, setPage] = useState(1);
@@ -35,7 +33,7 @@ const Orders = () => {
   };
 
   return (
-    <div className="p-5">
+    <div className="">
       <Table
         heading="Orders"
         subHeading="Manage all customer orders"
