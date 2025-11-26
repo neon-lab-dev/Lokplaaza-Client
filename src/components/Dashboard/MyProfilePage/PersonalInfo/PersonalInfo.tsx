@@ -93,7 +93,7 @@ const PersonalInfo = ({ isEditing, setIsEditing, data }: any) => {
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="bg-gray-300 text-gray-700 px-8 py-3 rounded-xl hover:bg-gray-400 transition-colors font-medium text-lg"
+                className="bg-gray-300 text-gray-700 px-8 py-3 rounded-xl hover:bg-gray-400 transition-colors font-medium text-lg cursor-pointer"
               >
                 Cancel
               </button>

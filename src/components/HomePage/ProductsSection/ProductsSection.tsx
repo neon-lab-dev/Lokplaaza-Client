@@ -1,7 +1,9 @@
 "use client";
-import { ICONS, IMAGES } from "@/assets";
+import { ICONS } from "@/assets";
 import Products from "@/components/Reusable/Products/Products";
 import { sampleProducts } from "@/constants/sampleProduct";
+import { useGetAllCategoriesQuery } from "@/redux/features/Category/categoryApi";
+import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -11,14 +13,19 @@ const ProductsSection = () => {
     setViewMore(!viewMore);
   };
 
-  const categories = ["All", "Sofa", "Chair", "Table"];
+  const { data:allProducts } = useGetAllProductsQuery({});
+  const { data, isLoading} = useGetAllCategoriesQuery({});
+  const allCategories = [
+  { name: "All" },
+  ...(data?.data?.categories || []),
+];
   return (
     <div>
       <Products
         title="Home Furniture"
-        productCategories={categories}
-        products={sampleProducts}
-        defaultCategory="All"
+        productCategories={allCategories || []}
+        products={allProducts?.data?.products || []}
+        isLoading={isLoading}
       />
       {!viewMore && (
         <div
@@ -29,23 +36,23 @@ const ProductsSection = () => {
           <Image src={ICONS.downArrow} alt="view more" className="size-6" />
         </div>
       )}
-      {viewMore && (
+      {/* {viewMore && (
         <div>
           {" "}
           <Products
             title="Home Furniture"
-            productCategories={categories}
+            productCategories={data?.data?.categories || []}
             products={sampleProducts}
             defaultCategory="All"
           />
           <Products
             title="Home Furniture"
-            productCategories={categories}
+            productCategories={data?.data?.categories || []}
             products={sampleProducts}
             defaultCategory="All"
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

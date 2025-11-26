@@ -6,7 +6,7 @@ import GotInspiration from "@/components/HomePage/GotInspiration/GotInspiration"
 import HeroSection from "@/components/HomePage/Hero/HeroSection";
 import HotSellers from "@/components/HomePage/HotSellers/HotSellers";
 import OfflineStore from "@/components/HomePage/OfflineStore/OfflineStore";
-import PhotoGallery from "@/components/HomePage/PhotoGallery/PhotoGallery";
+// import PhotoGallery from "@/components/HomePage/PhotoGallery/PhotoGallery";
 import ShopByRoom from "@/components/HomePage/ShopByRoom/ShopByRoom";
 import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
 import TryARView from "@/components/HomePage/TryARView/TryARView";
