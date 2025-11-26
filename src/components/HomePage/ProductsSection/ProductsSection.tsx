@@ -1,7 +1,6 @@
 "use client";
 import { ICONS } from "@/assets";
 import Products from "@/components/Reusable/Products/Products";
-import { sampleProducts } from "@/constants/sampleProduct";
 import { useGetAllCategoriesQuery } from "@/redux/features/Category/categoryApi";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 import Image from "next/image";
@@ -13,7 +12,7 @@ const ProductsSection = () => {
     setViewMore(!viewMore);
   };
 
-  const { data:allProducts } = useGetAllProductsQuery({});
+  const { data:allProducts } = useGetAllProductsQuery({page:1, limit:16});
   const { data, isLoading} = useGetAllCategoriesQuery({});
   const allCategories = [
   { name: "All" },

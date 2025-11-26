@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 const AllProducts = () => {
   const [deleteProduct] = useDeleteProductMutation();
   const { data, isLoading } = useGetAllProductsQuery({});
-  const products = data?.data?.products || []; // ✅ Correct list of products
+  const products = data?.data?.products || [];
 
   const [keyword, setKeyword] = useState("");
   const [limit, setLimit] = useState(10);
