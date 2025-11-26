@@ -14,11 +14,7 @@ const RecommendedAccessories = () => {
             sampleProducts.map((product) => (
               <ProductCard
                 key={`${product.id}-${product.title}`}
-                image={product.image}
-                category={product.category}
-                title={product.title}
-                rating={product.rating}
-                price={product.price}
+                product={product}
               />
             ))
           ) : (
