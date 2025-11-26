@@ -103,7 +103,7 @@ export default function ProductAR() {
 
   return (
     <div>
-      {!isMobile && (
+      {isMobile && (
         <Button
           onClick={launchAR}
           label="  View in Your Room"
