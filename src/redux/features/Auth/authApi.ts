@@ -1,6 +1,5 @@
 import { baseApi } from "@/redux/api/baseApi";
 
-
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation({
@@ -10,7 +9,7 @@ const authApi = baseApi.injectEndpoints({
         body: loginData,
         credentials: "include",
       }),
-      invalidatesTags: ["users"],
+      invalidatesTags: ["user"],
     }),
 
     login: builder.mutation({
@@ -20,7 +19,7 @@ const authApi = baseApi.injectEndpoints({
         body: loginData,
         credentials: "include",
       }),
-      invalidatesTags: ["users"],
+      invalidatesTags: ["user"],
     }),
 
     changePassword: builder.mutation({
@@ -30,7 +29,7 @@ const authApi = baseApi.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      invalidatesTags: ["users"],
+      invalidatesTags: ["user"],
     }),
   }),
 });
