@@ -11,7 +11,7 @@ import TryByMobileModal from "../HomePage/TryARView/TryByMobileModal";
 export default function ProductAR() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     // detect mobile device or small screen
     const checkDevice = () => {
@@ -24,24 +24,28 @@ export default function ProductAR() {
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
   const launchAR = () => {
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-    if (isIOS) {
-      const quickLook = document.createElement("a");
-      quickLook.rel = "ar";
-      quickLook.href = "/models/testImage.usdz";
-      quickLook.click();
+    if (isMobile) {
+      setShowModal(true);
     } else {
-      const sceneViewerUrl =
-        `intent://arvr.google.com/scene-viewer/1.0?file=` +
-        encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
-        `&mode=ar_only&link=${encodeURIComponent(
-          window.location.href
-        )}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
-        encodeURIComponent(window.location.origin) +
-        ";end;";
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-      window.location.href = sceneViewerUrl;
+      if (isIOS) {
+        const quickLook = document.createElement("a");
+        quickLook.rel = "ar";
+        quickLook.href = "/models/testImage.usdz";
+        quickLook.click();
+      } else {
+        const sceneViewerUrl =
+          `intent://arvr.google.com/scene-viewer/1.0?file=` +
+          encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
+          `&mode=ar_only&link=${encodeURIComponent(
+            window.location.href
+          )}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
+          encodeURIComponent(window.location.origin) +
+          ";end;";
+
+        window.location.href = sceneViewerUrl;
+      }
     }
   };
 
@@ -108,6 +112,7 @@ export default function ProductAR() {
           onClick={launchAR}
           label="  View in Your Room"
           icon={ICONS.cube}
+          className="m-4"
         />
       )}
 
