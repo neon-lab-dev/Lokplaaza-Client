@@ -63,12 +63,13 @@ const ProductDetails = () => {
                 fill
                 className="object-cover"
               />
+               <div className="absolute bottom-0 right-0"> <ProductAR/> </div>
             </div>
 
             {/* slider container */}
-            <div className="relative flex items-center gap-3 p-2">
+            <div className="flex items-center gap-3 p-2">
               {/* sliders */}
-              <div className="absolute bottom-0 right-0"> <ProductAR/> </div>
+             
               {carouselItems.map((slide, inx) => (
                 <Image
                   width={1200}
