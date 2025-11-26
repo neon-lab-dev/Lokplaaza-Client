@@ -39,7 +39,7 @@ const ordersApi = baseApi.injectEndpoints({
       providesTags: ["order"],
     }),
 
-    getMyProductOrders: builder.query({
+    getMyOrders: builder.query({
       query: ({
         keyword,
         page,
@@ -110,7 +110,7 @@ const ordersApi = baseApi.injectEndpoints({
 export const {
   useGetAllOrdersQuery,
   useGetSingleProductOrderByIdQuery,
-  useGetMyProductOrdersQuery,
+  useGetMyOrdersQuery,
   useAddProductMutation,
   useUpdateOrderStatusMutation,
   useCheckoutMutation,

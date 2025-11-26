@@ -40,7 +40,11 @@ const Products: React.FC<ProductsProps> = ({
         {/* Category Filter */}
         {showCategoryFilter && (
           <div className="flex items-center justify-center mt-12">
-            <div className={`w-fit flex justify-center scrollbar-none bg-neutral-15 rounded-full p-2 overflow-auto ${isLoading ? "gap-3" : "gap-0"}`}>
+            <div
+              className={`w-fit flex justify-center scrollbar-none bg-neutral-15 rounded-full p-2 overflow-auto ${
+                isLoading ? "gap-3" : "gap-0"
+              }`}
+            >
               {isLoading
                 ? Array(5)
                     .fill(0)
