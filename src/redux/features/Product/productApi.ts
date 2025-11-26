@@ -9,12 +9,14 @@ const productApi = baseApi.injectEndpoints({
         minPrice,
         maxPrice,
         page,
+        limit
       }: {
         keyword?: string;
         category?: string;
         minPrice?: number;
         maxPrice?: number;
         page?: number;
+        limit?: number
       }) => {
         const params = new URLSearchParams();
 
@@ -25,6 +27,7 @@ const productApi = baseApi.injectEndpoints({
         if (maxPrice !== undefined)
           params.append("maxPrice", maxPrice.toString());
         if (page) params.append("page", page.toString());
+        if (limit) params.append("limit", limit.toString());
 
         return {
           url: `/product${params.toString() ? `?${params.toString()}` : ""}`,

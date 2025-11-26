@@ -13,21 +13,13 @@ import toast from "react-hot-toast";
 const AllProducts = () => {
   const [deleteProduct] = useDeleteProductMutation();
   const { data, isLoading } = useGetAllProductsQuery({});
-  const products = data?.data?.products || []; // ✅ Correct list of products
+  const products = data?.data?.products || [];
 
   const [keyword, setKeyword] = useState("");
   const [limit, setLimit] = useState(10);
   const [category, setCategory] = useState("");
 
   const categories = ["Bed", "Kitchen", "Bedroom Accessories", "Furniture"];
-
-  // FILTER PRODUCTS
-  // const filteredProducts = products.filter((p: any) => {
-  //   const matchesKeyword = p.name.toLowerCase().includes(keyword.toLowerCase());
-  //   const matchesCategory = category ? p.category === category : true;
-  //   return matchesKeyword && matchesCategory;
-  // });
-
   const handleDeleteProduct = async (id: string) => {
     console.log(id);
     toast.promise(deleteProduct(id).unwrap(), {

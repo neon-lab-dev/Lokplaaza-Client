@@ -1,40 +1,46 @@
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unescaped-entities */
-import { useForm } from "react-hook-form";
+"use client";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "@/components/Reusable/Button/Button";
 import PasswordInput from "@/components/Reusable/PasswordInput/PasswordInput";
 import { FiKey, FiCheck } from "react-icons/fi";
+import toast from "react-hot-toast";
+import { useChangePasswordMutation } from "@/redux/features/Auth/authApi";
 
-interface ChangePasswordForm {
+type FormData = {
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;
-}
+};
 
 const Setting = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     watch,
     reset,
-  } = useForm<ChangePasswordForm>();
+  } = useForm<FormData>();
+
+  const [changePassword, { isLoading: isChangingPassword }] =
+    useChangePasswordMutation();
 
   const newPassword = watch("newPassword");
 
-  const onSubmit = async (data: ChangePasswordForm) => {
+  const handleResetPassword: SubmitHandler<FormData> = async (data) => {
     try {
-      // Simulate API call
-      console.log("Changing password:", data);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await changePassword({
+        currentPassword: data.currentPassword,
+        newPassword: data.newPassword,
+      }).unwrap();
 
-      // Handle successful password change
-      console.log("Password changed successfully!");
+      toast.success("Password changed successfully!");
       reset();
-      // You can add a success toast/message here
-    } catch (error) {
-      console.error("Error changing password:", error);
-      // Handle error
+    } catch (error: any) {
+      const message =
+        error?.data?.message || "Failed to change password. Please try again.";
+      toast.error(message);
     }
   };
 
@@ -54,7 +60,7 @@ const Setting = () => {
 
         {/* Password Change Form */}
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleResetPassword)}
           className="mt-8 space-y-6 bg-white p-8 rounded-2xl shadow-sm border border-gray-200"
         >
           {/* Current Password */}
@@ -126,10 +132,12 @@ const Setting = () => {
           {/* Submit Button */}
           <Button
             type="submit"
-            label={isSubmitting ? "Updating Password..." : "Update Password"}
+            label={
+              isChangingPassword ? "Updating Password..." : "Update Password"
+            }
             bgColor="bg-success-05"
             className="w-full py-3 text-base font-medium"
-            isDisabled={isSubmitting}
+            isDisabled={isChangingPassword}
           />
         </form>
 

@@ -1,24 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import Container from "@/components/Reusable/Container/Container";
 import ProductCard from "@/components/Reusable/ProductCard/ProductCard";
 import SecondaryHeading from "@/components/Reusable/SecondaryHeading/SecondaryHeading";
-import { StaticImageData } from "next/image";
-
-interface Product {
-  id: number;
-  image: string|StaticImageData;
-  category: string;
-  title: string;
-  rating: number;
-  price: string;
-}
 
 interface ProductsProps {
   title?: string;
   productCategories: string[];
-  products: Product[];
+  products: any[];
   showCategoryFilter?: boolean;
-  defaultCategory?: string;
+  isLoading?: boolean;
 }
 
 const Products: React.FC<ProductsProps> = ({
@@ -26,11 +17,9 @@ const Products: React.FC<ProductsProps> = ({
   productCategories,
   products,
   showCategoryFilter = true,
-  defaultCategory,
+  isLoading,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState(
-    defaultCategory || productCategories[0]
-  );
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredProducts =
     selectedCategory === "All"
@@ -51,44 +40,49 @@ const Products: React.FC<ProductsProps> = ({
         {/* Category Filter */}
         {showCategoryFilter && (
           <div className="flex items-center justify-center mt-12">
-            <div className="w-fit flex justify-center scrollbar-none gap-3 bg-neutral-15 rounded-full py-2 px-5 overflow-auto">
-              {productCategories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-white text-neutral-900 shadow-sm"
-                      : "bg-transparent text-neutral-600 hover:bg-white/70"
-                  } whitespace-nowrap`}
-                >
-                  {category}
-                </button>
-              ))}
+            <div
+              className={`w-fit flex justify-center scrollbar-none bg-neutral-15 rounded-full p-2 overflow-auto ${
+                isLoading ? "gap-3" : "gap-0"
+              }`}
+            >
+              {isLoading
+                ? Array(5)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-16 px-5 py-4 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"
+                      ></div>
+                    ))
+                : // Actual category buttons
+                  productCategories?.map((category: any, index: number) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedCategory(category?.name)}
+                      className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+                        selectedCategory === category?.name
+                          ? "bg-success-05 text-white shadow-sm"
+                          : "bg-transparent text-neutral-600 hover:bg-white/70"
+                      } whitespace-nowrap`}
+                    >
+                      {category?.name}
+                    </button>
+                  ))}
             </div>
           </div>
         )}
 
         {/* Products Grid */}
-        <div className="flex items-center justify-center">
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-20 place-items-center mt-20">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
-                <ProductCard
-                  key={`${product.id}-${product.title}`}
-                  image={product.image}
-                  category={product.category}
-                  title={product.title}
-                  rating={product.rating}
-                  price={product.price}
-                />
-              ))
-            ) : (
-              <p className="text-neutral-600 text-center col-span-full">
-                No products found in this category.
-              </p>
-            )}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-20 place-items-center mt-20 w-full">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <ProductCard key={`${product._id}`} product={product} />
+            ))
+          ) : (
+            <p className="text-neutral-600 text-center col-span-full">
+              No products found in this category.
+            </p>
+          )}
         </div>
       </Container>
     </div>

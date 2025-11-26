@@ -46,7 +46,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           ref={ref}
           disabled={isDisabled}
           className={`px-[18px] py-3.5 rounded-lg  border focus:outline-none focus:border-primary-10 transition duration-300 ${
-            isDisabled ? "bg-neutral-10/30" : "bg-neutral-70"
+            isDisabled ? "bg-neutral-05/20" : "bg-neutral-70"
           } ${error ? "border-red-500" : "border-neutral-35"}`}
           {...rest}
         />

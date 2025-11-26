@@ -11,6 +11,25 @@ export interface IGetAllUsersQuery {
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getMe: builder.query({
+      query: () => ({
+        url: "/user/me",
+        method: "GET",
+        credentials: "include",
+      }),
+      providesTags: ["user"],
+    }),
+
+    updateProfile: builder.mutation({
+      query: (data) => ({
+        url: `/user/update-profile`,
+        method: "PATCH",
+        body: data,
+        credentials: "include",
+      }),
+      invalidatesTags: ["user"],
+    }),
+
     getAllUsers: builder.query<any, IGetAllUsersQuery | void>({
       query: (params) => ({
         url: "/user/all",
@@ -23,18 +42,18 @@ const userApi = baseApi.injectEndpoints({
           ...(params?.role && { role: params.role }),
         },
       }),
-      providesTags: ["users"],
+      providesTags: ["user"],
     }),
 
-    // deleteVideo: builder.mutation({
-    //   query: ({ courseId, lectureId }) => ({
-    //     url: `/lectures?courseId=${courseId}&lectureId=${lectureId}`,
-    //     method: "DELETE",
-    //     credentials: "include",
-    //   }),
-    //   invalidatesTags: ["course"],
-    // }),
+    getRazorpayKey: builder.query({
+      query: () => ({
+        url: "/get-key",
+        method: "GET",
+        credentials: "include",
+      }),
+      providesTags: ["user"],
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery } = userApi;
+export const {  useGetMeQuery, useUpdateProfileMutation, useGetAllUsersQuery , useGetRazorpayKeyQuery } = userApi;

@@ -28,6 +28,11 @@ const Sidebar = () => {
       path: "/dashboard/admin/users",
     },
     {
+      label: "Categories",
+      icon: <FiBox />,
+      path: "/dashboard/admin/category",
+    },
+    {
       label: "Products",
       icon: <FiBox />,
       path: "/dashboard/admin/products",
