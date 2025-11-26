@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
-import { setStep, updateCustomization } from "@/redux/Features/Customizations/customizationSlice";
+import { setStep, updateCustomization } from "@/redux/features/Customizations/customizationSlice";
 
 const customizationOptions = {
   reclinerType: [

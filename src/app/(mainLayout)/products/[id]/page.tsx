@@ -1,5 +1,6 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
+import ProductAR from "@/components/ARViewer/ARViewer";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
@@ -65,8 +66,9 @@ const ProductDetails = () => {
             </div>
 
             {/* slider container */}
-            <div className="flex items-center gap-3 p-2">
+            <div className="relative flex items-center gap-3 p-2">
               {/* sliders */}
+              <div className="absolute bottom-0 right-0"> <ProductAR/> </div>
               {carouselItems.map((slide, inx) => (
                 <Image
                   width={1200}

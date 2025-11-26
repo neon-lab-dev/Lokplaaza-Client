@@ -37,7 +37,7 @@
     "**/*.mts",
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts"
-, "src/redux/Features/Customizations/customizationSlice.ts"  ],
+, "src/redux/features/Customizations/customizationSlice.ts"  ],
   "exclude": [
     "node_modules"
   ]
