@@ -52,17 +52,25 @@ const MyProfile = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setUser((prev) => ({
-          ...prev,
-          profileImage: e.target?.result as string,
-        }));
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUser((prev) => ({
+        ...prev,
+        profileImage: reader.result as string,
+      }));
+    };
+    reader.readAsDataURL(file);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      await updateProfile(formData).unwrap();
+    } catch (error) {
+      console.error("Profile image update failed:", error);
     }
   };
 
@@ -105,11 +113,27 @@ const MyProfile = () => {
               <div className="relative">
                 <div className="w-40 h-40 rounded-full bg-gray-200 overflow-hidden border-4 border-white shadow-xl">
                   <img
-                    src={user.profileImage}
+                    src={myProfile?.data?.imageUrl}
                     alt="Profile"
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${
+                      isUpdatingProfile ? "opacity-60" : ""
+                    }`}
                   />
                 </div>
+
+                {/* Loader Overlay */}
+                {isUpdatingProfile && (
+                  <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/30">
+                    <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full">
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-success-05" />
+                      <span className="text-xs font-medium text-gray-600">
+                        Uploading...
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Upload Button */}
                 <label
                   htmlFor="profileImage"
                   className="absolute bottom-4 right-4 bg-success-05 text-white p-3 rounded-full cursor-pointer shadow-lg hover:bg-success-06 transition-colors"
@@ -126,7 +150,11 @@ const MyProfile = () => {
               </div>
 
               {/* Profile Info - Larger */}
-              <PersonalInfo isEditing={isEditing} setIsEditing={setIsEditing} data={myProfile?.data}/>
+              <PersonalInfo
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+                data={myProfile?.data}
+              />
             </div>
           </div>
 
