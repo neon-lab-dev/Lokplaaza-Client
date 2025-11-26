@@ -1,5 +1,4 @@
 "use client";
-import Button from "@/components/Reusable/Button/Button";
 import ConfirmationModal from "@/components/Reusable/ConfirmationModal/ConfirmationModal";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Table from "@/components/Reusable/Table/Table";
