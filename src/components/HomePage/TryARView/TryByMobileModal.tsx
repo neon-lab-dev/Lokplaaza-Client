@@ -9,7 +9,7 @@ interface TryByMobileModalProps {
 
 const TryByMobileModal: React.FC<TryByMobileModalProps> = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center font-Satoshi bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-1000 flex items-center justify-center font-Satoshi bg-black/50 backdrop-blur-sm">
       <div className="flex flex-col items-center justify-center bg-neutral-10 p-12 rounded-3xl text-center max-w-md w-[90%] relative py-[114px]">
         <Image
           src={ICONS.blackCube}
