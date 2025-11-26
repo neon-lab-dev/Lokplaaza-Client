@@ -20,14 +20,6 @@ const AllProducts = () => {
   const [category, setCategory] = useState("");
 
   const categories = ["Bed", "Kitchen", "Bedroom Accessories", "Furniture"];
-
-  // FILTER PRODUCTS
-  // const filteredProducts = products.filter((p: any) => {
-  //   const matchesKeyword = p.name.toLowerCase().includes(keyword.toLowerCase());
-  //   const matchesCategory = category ? p.category === category : true;
-  //   return matchesKeyword && matchesCategory;
-  // });
-
   const handleDeleteProduct = async (id: string) => {
     console.log(id);
     toast.promise(deleteProduct(id).unwrap(), {
