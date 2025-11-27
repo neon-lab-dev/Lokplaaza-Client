@@ -71,7 +71,7 @@ const ProductCard: React.FC<TProps> = ({ product }) => {
         {/* Product Info */}
         <div className="p-4">
           {/* Product Name */}
-          <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">
+          <h3 className="font-semibold text-gray-900 text-lg mb-1 line-clamp-1 group-hover:text-primary-05 transition-colors">
             {product.name}
           </h3>
 
