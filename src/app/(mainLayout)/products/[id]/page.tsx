@@ -3,12 +3,16 @@ import { ICONS, IMAGES } from "@/assets";
 import ProductAR from "@/components/ARViewer/ARViewer";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
+import { useGetSingleProductByIdQuery } from "@/redux/features/Product/productApi";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const ProductDetails = () => {
+  const {id} = useParams();
+  const {data} = useGetSingleProductByIdQuery(id);
+  console.log(data?.data);
   const carouselItems = [IMAGES.sofa1, IMAGES.heroImgGreen, IMAGES.heroImgRed];
   const rating = 4.5;
   const router= useRouter()
