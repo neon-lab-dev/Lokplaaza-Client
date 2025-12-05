@@ -13,14 +13,14 @@ const ProductCard: React.FC<TProps> = ({ product }) => {
 
   // Get the lowest price from all color sizes
   const lowestPrice = Math.min(
-    ...product.colors.flatMap((color: any) =>
+    ...product?.colors?.flatMap((color: any) =>
       color.sizes.map((size: any) => size.discountedPrice)
     )
   );
 
   // Get the original price for comparison
   const originalPrice = Math.min(
-    ...product.colors.flatMap((color: any) =>
+    ...product?.colors?.flatMap((color: any) =>
       color.sizes.map((size: any) => size.basePrice)
     )
   );

@@ -6,9 +6,13 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import Button from "../Reusable/Button/Button";
 import { ICONS } from "@/assets";
-import TryByMobileModal from "../HomePage/TryARView/TryByMobileModal";
 
-export default function ProductAR() {
+interface Props {
+  fileUrl: string;       
+  // fileUrlIOS: string;  
+}
+
+export default function ProductAR({ fileUrl }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -29,15 +33,17 @@ export default function ProductAR() {
     } else {
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-      if (isIOS) {
-        const quickLook = document.createElement("a");
-        quickLook.rel = "ar";
-        quickLook.href = "/models/testImage.usdz";
-        quickLook.click();
-      } else {
+      // if (isIOS) {
+      //   const quickLook = document.createElement("a");
+      //   quickLook.rel = "ar";
+      //   quickLook.href = fileUrlIOS;
+      //   quickLook.click();
+      // } 
+      // else 
+        // {
         const sceneViewerUrl =
           `intent://arvr.google.com/scene-viewer/1.0?file=` +
-          encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
+          encodeURIComponent(fileUrl) +
           `&mode=ar_only&link=${encodeURIComponent(
             window.location.href
           )}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
@@ -45,7 +51,7 @@ export default function ProductAR() {
           ";end;";
 
         window.location.href = sceneViewerUrl;
-      }
+      // }
     }
   };
 
@@ -74,22 +80,25 @@ export default function ProductAR() {
 
     // --- FIX: Dynamic import for GLTFLoader ---
     const loadModel = async () => {
-      const { GLTFLoader } = await import(
-        "three/examples/jsm/loaders/GLTFLoader.js"
-      );
+      try {
+        const { GLTFLoader } = await import(
+          "three/examples/jsm/loaders/GLTFLoader.js"
+        );
+        const loader = new GLTFLoader();
 
-      const loader = new GLTFLoader();
-
-      loader.load(
-        "/models/testImage.glb",
-        (gltf) => {
-          const model = gltf.scene;
-          model.scale.set(1, 1, 1);
-          scene.add(model);
-        },
-        undefined,
-        (err) => console.error("GLB Load Error:", err)
-      );
+        loader.load(
+          fileUrl,
+          (gltf) => {
+            const model = gltf.scene;
+            model.scale.set(1, 1, 1);
+            scene.add(model);
+          },
+          undefined,
+          (err) => console.error("GLB Load Error:", err)
+        );
+      } catch (error) {
+        console.error("Failed dynamic import:", error);
+      }
     };
 
     loadModel();
@@ -102,8 +111,9 @@ export default function ProductAR() {
 
     return () => {
       container.innerHTML = "";
+       renderer.dispose();
     };
-  }, []);
+  }, [fileUrl]);
 
   return (
     <div>
