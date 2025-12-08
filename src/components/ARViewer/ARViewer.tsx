@@ -15,11 +15,13 @@ export default function ProductAR() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const vasible = visible ? "visible" : "not visible";
   useEffect(() => {
     // detect mobile device or small screen
     const checkDevice = () => {
       if (typeof window !== "undefined") {
-        setIsMobile(window.innerWidth <= 768);
+      setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
       }
     };
     checkDevice();
@@ -27,6 +29,7 @@ export default function ProductAR() {
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
   const launchAR = () => {
+    setVisible(true);
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     if (isIOS) {
@@ -107,7 +110,7 @@ export default function ProductAR() {
       {isMobile && (
         <Button
           onClick={launchAR}
-          label="  View in Your Room"
+          label={vasible ||"  View in Your Room"}
           icon={ICONS.cube}
           className="m-4"
         />
