@@ -1,5 +1,6 @@
 "use client";
 
+
 // this file is working fine, have some loading issues
 
 import { useEffect, useRef, useState } from "react";
@@ -7,12 +8,10 @@ import * as THREE from "three";
 import Button from "../Reusable/Button/Button";
 import { ICONS } from "@/assets";
 
-interface Props {
-  fileUrl: string;       
-  // fileUrlIOS: string;  
-}
+const GLB_URL =
+  "https://ik.imagekit.io/ivvxvense/1764783124737-testImage.compressed.glb";
 
-export default function ProductAR({ fileUrl }: Props) {
+export default function ProductAR() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -28,30 +27,22 @@ export default function ProductAR({ fileUrl }: Props) {
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
   const launchAR = () => {
-    if (isMobile) {
-      setShowModal(true);
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      const quickLook = document.createElement("a");
+      quickLook.rel = "ar";
+      quickLook.href = "/models/testImage.usdz";
+      quickLook.click();
     } else {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const sceneViewerUrl =
+        `intent://arvr.google.com/scene-viewer/1.0?file=` +
+        encodeURIComponent(GLB_URL) +
+        `&mode=ar_only&link=${encodeURIComponent(window.location.href)}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
+        encodeURIComponent(window.location.origin) +
+        ";end;";
 
-      // if (isIOS) {
-      //   const quickLook = document.createElement("a");
-      //   quickLook.rel = "ar";
-      //   quickLook.href = fileUrlIOS;
-      //   quickLook.click();
-      // } 
-      // else 
-        // {
-        const sceneViewerUrl =
-          `intent://arvr.google.com/scene-viewer/1.0?file=` +
-          encodeURIComponent(fileUrl) +
-          `&mode=ar_only&link=${encodeURIComponent(
-            window.location.href
-          )}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
-          encodeURIComponent(window.location.origin) +
-          ";end;";
-
-        window.location.href = sceneViewerUrl;
-      // }
+      window.location.href = sceneViewerUrl;
     }
   };
 
@@ -80,25 +71,22 @@ export default function ProductAR({ fileUrl }: Props) {
 
     // --- FIX: Dynamic import for GLTFLoader ---
     const loadModel = async () => {
-      try {
-        const { GLTFLoader } = await import(
-          "three/examples/jsm/loaders/GLTFLoader.js"
-        );
-        const loader = new GLTFLoader();
+      const { GLTFLoader } = await import(
+        "three/examples/jsm/loaders/GLTFLoader.js"
+      );
 
-        loader.load(
-          fileUrl,
-          (gltf) => {
-            const model = gltf.scene;
-            model.scale.set(1, 1, 1);
-            scene.add(model);
-          },
-          undefined,
-          (err) => console.error("GLB Load Error:", err)
-        );
-      } catch (error) {
-        console.error("Failed dynamic import:", error);
-      }
+      const loader = new GLTFLoader();
+
+      loader.load(
+        GLB_URL,
+        (gltf) => {
+          const model = gltf.scene;
+          model.scale.set(1, 1, 1);
+          scene.add(model);
+        },
+        undefined,
+        (err) => console.error("GLB Load Error:", err)
+      );
     };
 
     loadModel();
@@ -111,9 +99,8 @@ export default function ProductAR({ fileUrl }: Props) {
 
     return () => {
       container.innerHTML = "";
-       renderer.dispose();
     };
-  }, [fileUrl]);
+  }, []);
 
   return (
     <div>
@@ -130,3 +117,6 @@ export default function ProductAR({ fileUrl }: Props) {
     </div>
   );
 }
+
+
+
