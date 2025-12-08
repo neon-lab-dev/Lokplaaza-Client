@@ -110,7 +110,7 @@ export default function ProductAR() {
       {isMobile && (
         <Button
           onClick={launchAR}
-          label={vasible ||"  View in Your Room"}
+          label={vasible}
           icon={ICONS.cube}
           className="m-4"
         />
