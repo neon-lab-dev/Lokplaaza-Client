@@ -8,7 +8,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Button from "@/components/Reusable/Button/Button";
 import StepHeader from "@/components/CustomizationsPage/StepHeader";
-import { setStep, setVariant } from "@/redux/features/Customizations/customizationSlice";
+import {
+  setStep,
+  setVariant,
+} from "@/redux/features/Customizations/customizationSlice";
 
 const variantOptions = [
   {
@@ -39,72 +42,78 @@ const VariantPage = () => {
   };
 
   return (
-    <div className="max-w-[784px] mx-auto">
-      <StepHeader title="Select Variant" /> 
+    <div className="max-w-[784px] lg:max-w-[1028px] mx-auto">
+      <StepHeader title="Select Variant" />
       <Container>
-        <Image
+        <div className="lg:flex ">
+          <Image
           src={IMAGES.sofa}
           alt=""
-          className="w-full lg:w-[930px] rounded-3xl mx-auto"
+          className="w-full md:w-[930px] lg:w-[50%] rounded-3xl mx-auto lg:mx-0"
         />
+        <div className="mx-10">
+          {" "}
+          <h2 className="font-semibold text-neutral-05 mt-6 mb-2 text-lg">
+            Select Your Furniture Size *
+          </h2>
+          {/* LOOP UI */}
+          <div className="space-y-3">
+            {variantOptions.map((item, index) => {
+              const isOpen = openIndex === index;
 
-        <h2 className="font-semibold text-neutral-05 mt-6 mb-2 text-lg">
-          Select Your Furniture Size *
-        </h2>
-
-        {/* LOOP UI */}
-        <div className="space-y-3">
-          {variantOptions.map((item, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <div
-                key={index}
-                className="border-b  px-4 py-3 cursor-pointer select-none border-neutral-10"
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-              >
-                {/* TITLE + TOGGLE ICON */}
-                <div className="flex items-center justify-between">
-                  <h5 className="text-lg font-semibold text-neutral-20">
-                    {item.title}
-                  </h5>
-                  <motion.span
-                    initial={false}
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-2xl font-bold text-primary-05"
-                  >
-                    {isOpen ? "−" : "+"}
-                  </motion.span>
-                </div>
-
-                {/* COLLAPSING CONTENT */}
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35 }}
-                      className="overflow-hidden"
+              return (
+                <div
+                  key={index}
+                  className="border-b  px-4 py-3 cursor-pointer select-none border-neutral-10"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                >
+                  {/* TITLE + TOGGLE ICON */}
+                  <div className="flex items-center justify-between">
+                    <h5 className="text-lg font-semibold text-neutral-20">
+                      {item.title}
+                    </h5>
+                    <motion.span
+                      initial={false}
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-2xl font-bold text-primary-05"
                     >
-                      <p className="mt-3 text-neutral-20">{item.description}</p>
+                      {isOpen ? "−" : "+"}
+                    </motion.span>
+                  </div>
 
-                      {/* CTA BUTTON */}
-                      <Button
-                        onClick={() => {
-                          handleContinue(item.title);
-                        }}
-                        className="w-full hover:scale-[100%] my-5"
-                        label={`  Continue With ${item.title} →`}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+                  {/* COLLAPSING CONTENT */}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="mt-3 text-neutral-20">
+                          {item.description}
+                        </p>
+
+                        {/* CTA BUTTON */}
+                        <Button
+                          onClick={() => {
+                            handleContinue(item.title);
+                          }}
+                          className="w-full hover:scale-[100%] my-5"
+                          label={`  Continue With ${item.title} →`}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
+        </div>
+        
       </Container>
     </div>
   );
