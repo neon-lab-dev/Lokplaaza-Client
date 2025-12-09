@@ -1,51 +1,33 @@
 "use client";
 
+
+import { ICONS } from "@/assets";
 // this file is working fine, have some loading issues
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import Button from "../Reusable/Button/Button";
-import { ICONS } from "@/assets";
-import TryByMobileModal from "../HomePage/TryARView/TryByMobileModal";
 
 export default function ProductAR() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  useEffect(() => {
-    // detect mobile device or small screen
-    const checkDevice = () => {
-      if (typeof window !== "undefined") {
-        setIsMobile(window.innerWidth <= 768);
-      }
-    };
-    checkDevice();
-    window.addEventListener("resize", checkDevice);
-    return () => window.removeEventListener("resize", checkDevice);
-  }, []);
+
   const launchAR = () => {
-    if (isMobile) {
-      setShowModal(true);
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      const quickLook = document.createElement("a");
+      quickLook.rel = "ar";
+      quickLook.href = "/models/testImage.usdz";
+      quickLook.click();
     } else {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const sceneViewerUrl =
+        `intent://arvr.google.com/scene-viewer/1.0?file=` +
+        encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
+        `&mode=ar_only&link=${encodeURIComponent(window.location.href)}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
+        encodeURIComponent(window.location.origin) +
+        ";end;";
 
-      if (isIOS) {
-        const quickLook = document.createElement("a");
-        quickLook.rel = "ar";
-        quickLook.href = "/models/testImage.usdz";
-        quickLook.click();
-      } else {
-        const sceneViewerUrl =
-          `intent://arvr.google.com/scene-viewer/1.0?file=` +
-          encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
-          `&mode=ar_only&link=${encodeURIComponent(
-            window.location.href
-          )}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
-          encodeURIComponent(window.location.origin) +
-          ";end;";
-
-        window.location.href = sceneViewerUrl;
-      }
+      window.location.href = sceneViewerUrl;
     }
   };
 
@@ -106,17 +88,14 @@ export default function ProductAR() {
   }, []);
 
   return (
-    <div>
-      {isMobile && (
-        <Button
+    <div >
+      <Button
           onClick={launchAR}
           label="  View in Your Room"
-          icon={ICONS.cube}
+          // icon={ICONS.cube}
           className="m-4"
         />
-      )}
-
-      {/* {showModal && <TryByMobileModal onClose={() => setShowModal(false)} />} */}
+     
     </div>
   );
 }
