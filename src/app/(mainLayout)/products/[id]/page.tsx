@@ -112,9 +112,8 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
                 />
 
                 {/* AR Viewer */}
-                <div className="absolute bottom-0 right-0 p-2">
-                  <ProductAR 
-/>
+               <div className="absolute bottom-0 right-0 p-2">
+                  <ProductAR />
                 </div>
               </div>
             )}
