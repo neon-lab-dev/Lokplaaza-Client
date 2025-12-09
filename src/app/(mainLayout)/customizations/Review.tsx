@@ -22,17 +22,7 @@ const ReviewPage = () => {
       {/* Main Card */}
       <Container >
         {/* Header + Back */}
-        <div className="p-4 flex items-center justify-between">
-          <button
-            className="text-xl text-neutral-700"
-            onClick={() => dispatch(setStep(4))}
-          >
-            ←
-          </button>
-          <p className="font-medium text-sm text-neutral-900">
-            Back To Upholstery
-          </p>
-        </div>
+     
 
         {/* Sofa Image */}
         <Image src={IMAGES.sofa} alt="sofa" className="w-full rounded-none" />
