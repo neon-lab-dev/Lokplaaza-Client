@@ -22,7 +22,7 @@ export default function ProductAR() {
     } else {
       const sceneViewerUrl =
         `intent://arvr.google.com/scene-viewer/1.0?file=` +
-        encodeURIComponent(`${window.location.origin}/models/testImage.glb`) +
+        encodeURIComponent(`${window.location.origin}/models/text2.glb`) +
         `&mode=ar_only&link=${encodeURIComponent(window.location.href)}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
         encodeURIComponent(window.location.origin) +
         ";end;";
@@ -63,7 +63,7 @@ export default function ProductAR() {
       const loader = new GLTFLoader();
 
       loader.load(
-        "/models/testImage.glb",
+        "/models/text2.glb",
         (gltf) => {
           const model = gltf.scene;
           model.scale.set(1, 1, 1);
