@@ -17,7 +17,7 @@ export default function ProductAR() {
     if (isIOS) {
       const quickLook = document.createElement("a");
       quickLook.rel = "ar";
-      quickLook.href = "/models/testImage.usdz";
+      quickLook.href = "/models/test2.usdz";
       quickLook.click();
     } else {
       const sceneViewerUrl =
@@ -91,7 +91,7 @@ export default function ProductAR() {
     <div >
       <Button
           onClick={launchAR}
-          label="  View in Your Rooms"
+          label="  View in Your Room"
           icon={ICONS.cube}
           className="m-4"
         />
