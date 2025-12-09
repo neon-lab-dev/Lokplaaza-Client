@@ -92,7 +92,7 @@ export default function ProductAR() {
       <Button
           onClick={launchAR}
           label="  View in Your Room"
-          // icon={ICONS.cube}
+          icon={ICONS.cube}
           className="m-4"
         />
      
