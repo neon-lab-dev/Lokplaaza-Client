@@ -5,16 +5,19 @@ import { ICONS } from "@/assets";
 import ProductAR from "@/components/ARViewer/ARViewer";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
+import { addToCart } from "@/redux/features/Cart/cartSlice";
 import { useGetSingleProductByIdQuery } from "@/redux/features/Product/productApi";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 
 interface Size {
   size: string;
   quantity: number;
   discountedPrice?: number;
+  _id:string;
 }
 
 interface ColorVariant {
@@ -24,6 +27,7 @@ interface ColorVariant {
 }
 
 interface Product {
+  productId?: string;  // ADD THIS
   name?: string;
   description?: string;
   imageUrls?: string[];
@@ -42,18 +46,26 @@ const ProductDetails = () => {
   const colors = product.colors || [];
   const [currentSlider, setCurrentSlider] = useState(0);
 
-  // ⭐ Auto Select First Color + First Available Size
-const initialColor = colors.find((c) =>
-  c.sizes.some((s) => s.quantity > 0)
-) || null;
+  const [selectedColor, setSelectedColor] = useState<ColorVariant | null>(null);
+  const [selectedSize, setSelectedSize] = useState<Size | null>(null);
 
-const [selectedColor, setSelectedColor] = useState<ColorVariant | null>(initialColor);
+  useEffect(() => {
+    if (!product?.colors?.length) return;
 
-const initialSize =
-  initialColor?.sizes.find((s) => s.quantity > 0) || null;
+    // pick first color that has at least one size in stock
+    const firstAvailableColor =
+      product.colors.find((c) => c.sizes.some((s) => s.quantity > 0)) ||
+      product.colors[0];
 
-const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
+    setSelectedColor(firstAvailableColor);
 
+    // pick first available size for that color
+    const firstAvailableSize =
+      firstAvailableColor.sizes.find((s) => s.quantity > 0) ||
+      firstAvailableColor.sizes[0];
+
+    setSelectedSize(firstAvailableSize);
+  }, [product]);
 
   // ⭐ Image Auto Slider
   useEffect(() => {
@@ -75,18 +87,51 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
     [...Array(5)].map((_, i) => {
       const index = i + 1;
 
-      if (index <= Math.floor(rating)) return <FaStar key={i} className="text-yellow-500" />;
+      if (index <= Math.floor(rating))
+        return <FaStar key={i} className="text-yellow-500" />;
       if (index === Math.ceil(rating) && rating % 1 !== 0)
         return <FaStarHalfAlt key={i} className="text-yellow-500" />;
 
       return <FaRegStar key={i} className="text-yellow-500" />;
     });
 
+  const dispatch = useDispatch();
+
+ const handleAddToCart = () => {
+  if (!product || !selectedColor || !selectedSize) {
+    console.log("Cannot add: missing required selections");
+    return;
+  }
+
+  dispatch(
+    addToCart({
+      productId: selectedSize._id,
+      name: product.name!,
+      image: product?.imageUrls?.[0] as string,
+      color: selectedColor.colorName,
+      size: selectedSize.size,
+      quantity: 1,
+      price: selectedSize.discountedPrice!,
+    })
+  );
+
+  console.log("DISPATCH PAYLOAD →", {
+  id: selectedSize._id,
+  name: product.name,
+  image: product.imageUrls?.[0],
+  color: selectedColor?.colorName,
+  size: selectedSize?.size,
+  price: selectedSize?.discountedPrice,
+});
+};
+
   // ⭐ Loading State
   if (isLoading || !product)
     return (
       <Container>
-        <div className="py-20 text-center text-neutral-30">Loading product...</div>
+        <div className="py-20 text-center text-neutral-30">
+          Loading product...
+        </div>
       </Container>
     );
 
@@ -112,7 +157,7 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
                 />
 
                 {/* AR Viewer */}
-               <div className="absolute bottom-0 right-0 p-2">
+                <div className="absolute bottom-0 right-0 p-2">
                   <ProductAR />
                 </div>
               </div>
@@ -138,17 +183,28 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
 
           {/* RIGHT SIDE - PRODUCT DETAILS */}
           <div className="w-full lg:w-[50%]">
-            <h1 className="text-neutral-20 text-2xl font-bold leading-8">
-              {product.name}
-            </h1>
+            <div className="flex justify-between items-center">
+              {" "}
+              <h1 className="text-neutral-20 text-2xl font-bold leading-8">
+                {product.name}
+              </h1>
+              <button
+                onClick={() => handleAddToCart()}
+                className="flex items-center justify-center size-12 rounded-full bg-neutral-10"
+              >
+                <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
+              </button>
+            </div>
 
-            <h2 className="text-neutral-20 font-bold leading-8 mt-5">
+            <h2 className="text-neutral-20 font-bold leading-8">
               {selectedSize?.discountedPrice
                 ? `₹ ${selectedSize.discountedPrice}/-`
                 : "Price Unavailable"}
             </h2>
 
-            <p className="text-neutral-40 text-sm font-medium">incl. all taxes</p>
+            <p className="text-neutral-40 text-sm font-medium">
+              incl. all taxes
+            </p>
 
             <div className="flex items-center gap-1 mt-2">
               {renderStars()}
@@ -170,8 +226,11 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
                       onClick={() => {
                         setSelectedColor(color);
 
-                        const firstSize = color.sizes.find((s) => s.quantity > 0);
-                        setSelectedSize(firstSize || null);
+                        const firstAvailableSize =
+                          color.sizes.find((s) => s.quantity > 0) ||
+                          color.sizes[0];
+
+                        setSelectedSize(firstAvailableSize);
                       }}
                       className={`px-3 py-2 rounded-lg border ${
                         selectedColor?._id === color._id
@@ -200,7 +259,11 @@ const [selectedSize, setSelectedSize] = useState<Size | null>(initialSize);
                         selectedSize?.size === size.size
                           ? "border-black"
                           : "border-neutral-30"
-                      } ${size.quantity === 0 ? "opacity-40 cursor-not-allowed" : ""}`}
+                      } ${
+                        size.quantity === 0
+                          ? "opacity-40 cursor-not-allowed"
+                          : ""
+                      }`}
                     >
                       {size.size}
                     </button>
