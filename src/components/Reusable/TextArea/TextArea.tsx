@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { forwardRef } from "react";
-import { FieldError } from "react-hook-form";
+import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 
 interface TextareaProps {
   label: string;
   name: string;
   placeholder?: string;
   rows?: number;
-  error?: FieldError;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -30,7 +31,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           }`}
           {...rest}
         ></textarea>
-        {error && <span className="text-red-500 text-sm">{error.message}</span>}
+        {error && typeof error.message === 'string' && <p className="text-sm text-red-500">{error.message}</p>}
       </div>
     );
   }

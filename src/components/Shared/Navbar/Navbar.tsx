@@ -5,6 +5,7 @@ import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { RiShoppingCart2Line } from "react-icons/ri";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -80,9 +81,9 @@ const Navbar = () => {
           <div className=" hidden lg:flex items-center justify-center gap-6">
             <Link
               href={"/cart"}
-              className="flex items-center justify-center size-12 rounded-full bg-neutral-10"
+              className="flex items-center justify-center size-12 rounded-full bg-neutral-10 text-primary-05 hover:bg-primary-05 hover:text-white cursor-pointer text-2xl transition duration-300"
             >
-              <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
+              <RiShoppingCart2Line />
             </Link>
 
             <Link href={"/login"}>
