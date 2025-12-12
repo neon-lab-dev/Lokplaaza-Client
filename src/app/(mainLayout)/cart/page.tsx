@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { GIFS, ICONS } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
@@ -13,7 +14,7 @@ const Cart = () => {
 
   const isEmpty = cartItems.length === 0;
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum:any, item:any) => sum + item.price * item.quantity,
     0
   );
   const gst = totalPrice * 0.18;
@@ -36,7 +37,7 @@ const Cart = () => {
           <div className="py-6 pb-28">
             {/* Cart items list */}
             <div className="space-y-4">
-              {cartItems.map((item) => (
+              {cartItems.map((item:any) => (
                 <div
                   key={item?.productId}
                   className="flex items-center gap-3 border-b pb-4"
