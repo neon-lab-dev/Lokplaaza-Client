@@ -17,7 +17,7 @@ export default function ProductAR() {
     if (isIOS) {
       const quickLook = document.createElement("a");
       quickLook.rel = "ar";
-      quickLook.href = "/models/test2.usdz";
+      quickLook.href = "/models/testImage.usdz";
       quickLook.click();
     } else {
       const sceneViewerUrl =
