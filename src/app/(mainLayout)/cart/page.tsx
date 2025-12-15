@@ -8,10 +8,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { FiTrash2 } from "react-icons/fi";
 import { removeFromCart } from "@/redux/features/Cart/cartSlice";
+import { useEffect, useState } from "react";
+import { useCurrentUser } from "@/redux/features/Auth/authSlice";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useCheckoutMutation } from "@/redux/features/Order/orderApi";
+import { backendBaseUrl } from "@/redux/api/baseApi";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const [loading, setLoading] = useState<boolean>(false);
+  const user = useSelector(useCurrentUser) as any;
+  const [checkout] = useCheckoutMutation();
 
   const isEmpty = cartItems.length === 0;
   const totalPrice = cartItems.reduce(
@@ -25,7 +34,73 @@ const Cart = () => {
     dispatch(removeFromCart(productId));
   };
 
-  console.log(cartItems);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handleCheckout = async () => {
+    console.log(user);
+    if (!user) {
+      toast.error("Please login to checkout");
+      return;
+    }
+    try {
+      setLoading(true);
+
+      const keyData = await axios.get(
+        `${backendBaseUrl}/get-key`
+      );
+
+      const payload = {
+        amount: totalPrice,
+      };
+
+      let response;
+      try {
+        response = await checkout(payload).unwrap();
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+        return;
+      }
+
+      console.log(response, "response");
+
+      const options = {
+        key: keyData?.data?.key, // Razorpay key_id
+        amount: response?.data?.amount,
+        currency: "INR",
+        name: "Lokplaaza",
+        description: "Test Transaction",
+        image: "https://i.ibb.co.com/twVj4hnp/Lokplaazalogo.png",
+        order_id: response?.data?.id, // the order id
+        callback_url:
+          `${backendBaseUrl}/order/verify-payment`, // success URL
+        prefill: {
+          id: user?._id,
+          name: user?.name,
+          email: user?.email,
+        },
+        theme: {
+          color: "#2b8963",
+        },
+      };
+      console.log(options, "options");
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white min-h-screen font-Satoshi">
@@ -36,7 +111,7 @@ const Cart = () => {
             <p className="text-3xl font-medium text-neutral-20 mt-6 m-3">
               Your Cart is Empty!
             </p>
-            <p className="text-lg text-neutral-40 leading-[120%] text-center max-w-[300px] mx-auto">
+            <p className="text-lg text-neutral-40 leading-[120%] text-center max-w-75 mx-auto">
               Add products in cart to see them here.
             </p>
             {/* CTA for empty cart */}
@@ -67,13 +142,13 @@ const Cart = () => {
                   key={item?.productId}
                   className="flex items-start gap-4 border-b border-neutral-05/30 pb-4 flex-col sm:flex-row"
                 >
-                  <div className="w-full sm:w-[148px] shrink-0">
+                  <div className="w-full sm:w-37 shrink-0">
                     <Image
                       src={item.image}
                       alt={item.name}
                       width={148}
                       height={148}
-                      className="rounded-md object-cover w-full h-[148px]"
+                      className="rounded-md object-cover w-full h-37"
                     />
                   </div>
 
@@ -133,9 +208,10 @@ const Cart = () => {
                 </p>
                 <div className="w-1/2 sm:w-1/3">
                   <Button
-                    label="Checkout"
+                    label={loading ? "Please wait..." : "Checkout"}
                     className="w-full"
                     icon={ICONS.rightArrow}
+                    onClick={handleCheckout}
                   />
                 </div>
               </div>

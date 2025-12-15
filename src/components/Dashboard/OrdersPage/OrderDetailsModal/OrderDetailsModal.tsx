@@ -22,6 +22,8 @@ const OrderDetailsModal: React.FC<OrderModalProps> = ({
   const order = data?.data || {};
   const [updateOrderStatus] = useUpdateOrderStatusMutation();
 
+  console.log(order);
+
   const handleUpdateStatus = async (status: string) => {
     const payload = {
       orderId: order?._id,
@@ -36,13 +38,13 @@ const OrderDetailsModal: React.FC<OrderModalProps> = ({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Delivered":
+      case "delivered":
         return "bg-green-100 text-green-800 border-green-200";
-      case "Shipped":
+      case "shipped":
         return "bg-blue-100 text-blue-800 border-blue-200";
-      case "Pending":
+      case "pending":
         return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "Cancelled":
+      case "cancelled":
         return "bg-red-100 text-red-800 border-red-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
@@ -172,13 +174,29 @@ const OrderDetailsModal: React.FC<OrderModalProps> = ({
                           {order?.userId?.phoneNumber}
                         </span>
                       </div>
-                      <div>
-                        <span className="text-gray-500 block mb-1">
-                          Address:
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 block">
+                          City
                         </span>
-                        <p className="text-gray-700 text-right text-sm">
-                          {order?.userId?.address}
-                        </p>
+                        <span className="text-gray-700 text-right text-sm">
+                          {order?.userId?.city} - {order?.userId?.pinCode}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 block">
+                          Address Line 1:
+                        </span>
+                        <span className="text-gray-700 text-right text-sm">
+                          {order?.userId?.addressLine1 || "N/A"}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 block">
+                          Address Line 2:
+                        </span>
+                        <span className="text-gray-700 text-right text-sm">
+                          {order?.userId?.addressLine2 || "N/A"}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -244,7 +262,7 @@ const OrderDetailsModal: React.FC<OrderModalProps> = ({
                 <div className="flex justify-end space-x-3 p-6 border-t border-gray-200 bg-gray-50 rounded-b-xl">
                   <button
                     onClick={onClose}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
                   >
                     Close
                   </button>
