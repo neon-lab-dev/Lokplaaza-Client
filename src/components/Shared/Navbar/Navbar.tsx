@@ -2,13 +2,17 @@
 import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
+import { useCurrentUser } from "@/redux/features/Auth/authSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const user = useSelector(useCurrentUser);
+  console.log(user);
   // const navlinks = [
   //   {
   //     label: "Home",
@@ -53,6 +57,9 @@ const Navbar = () => {
       path: "/",
     },
   ];
+
+  const dashboardNavigationPath =
+    user?.role === "admin" ? "/dashboard/admin" : "/dashboard/user";
   return (
     <div className="bg-transparent font-Satoshi w-full">
       <Container>
@@ -71,7 +78,11 @@ const Navbar = () => {
                 key={item?.label}
                 href={item?.path}
                 className={`text-base font-medium leading-5 hover:underline
-             ${pathname.startsWith("/products") || pathname.startsWith("/cart") ? "text-neutral-05" : "text-neutral-10"}
+             ${
+               pathname.startsWith("/products") || pathname.startsWith("/cart")
+                 ? "text-neutral-05"
+                 : "text-neutral-10"
+             }
                 `}
               >
                 {item?.label}
@@ -86,14 +97,25 @@ const Navbar = () => {
               <RiShoppingCart2Line />
             </Link>
 
-            <Link href={"/login"}>
-              <Button
-                label="Sign in"
-                bgColor="bg-success-05"
-                textColor="text-success-10"
-                icon={ICONS.rightArrow}
-              />
-            </Link>
+            {user?.role ? (
+              <Link href={dashboardNavigationPath}>
+                <Button
+                  label="Dashboard"
+                  bgColor="bg-success-05"
+                  textColor="text-success-10"
+                  icon={ICONS.rightArrow}
+                />
+              </Link>
+            ) : (
+              <Link href={"/login"}>
+                <Button
+                  label="Login"
+                  bgColor="bg-success-05"
+                  textColor="text-success-10"
+                  icon={ICONS.rightArrow}
+                />
+              </Link>
+            )}
           </div>
 
           <Link
