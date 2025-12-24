@@ -10,6 +10,8 @@ import Button from "../Reusable/Button/Button";
 
 export default function ProductAR() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const GLB_URL =
+  "https://ik.imagekit.io/ivvxvense/42ebacbe2d1e497283a3a06f4d472bb3_opt-compressed.glb";
 
   const launchAR = () => {
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -17,15 +19,13 @@ export default function ProductAR() {
     if (isIOS) {
       const quickLook = document.createElement("a");
       quickLook.rel = "ar";
-      quickLook.href = "/models/test2.usdz";
+      quickLook.href = "/models/42ebacbe2d1e497283a3a06f4d472bb3_opt-compressed.usdz";
       quickLook.click();
     } else {
       const sceneViewerUrl =
         `intent://arvr.google.com/scene-viewer/1.0?file=` +
-        encodeURIComponent(`${window.location.origin}/models/text2.glb`) +
-        `&mode=ar_only&link=${encodeURIComponent(window.location.href)}#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=` +
-        encodeURIComponent(window.location.origin) +
-        ";end;";
+       encodeURIComponent(GLB_URL) +
+        `&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;`;
 
       window.location.href = sceneViewerUrl;
     }
@@ -63,7 +63,7 @@ export default function ProductAR() {
       const loader = new GLTFLoader();
 
       loader.load(
-        "/models/text2.glb",
+        GLB_URL,
         (gltf) => {
           const model = gltf.scene;
           model.scale.set(1, 1, 1);
