@@ -3,7 +3,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useForm, FormProvider, useFieldArray } from "react-hook-form";
+import {
+  useForm,
+  FormProvider,
+  useFieldArray,
+} from "react-hook-form";
 import { useState } from "react";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
@@ -35,7 +39,6 @@ const AddProduct = () => {
     "Bookshelf",
   ];
 
-  const sizes = ["Single", "Double", "Queen", "King", "Custom"];
   const [previews, setPreviews] = useState<string[]>([]);
 
   const methods = useForm<any>({
@@ -75,7 +78,7 @@ const AddProduct = () => {
     control,
     name: "imageUrls",
   });
-  const action = "add";
+
   const handleSubmitProduct = async (
     data: any & { imageUrls?: { file?: File | string }[] }
   ) => {
@@ -88,9 +91,9 @@ const AddProduct = () => {
     formData.append("description", data.description);
     if (data.productStory) formData.append("productStory", data.productStory);
 
-    data.colors?.forEach((color, colorIndex) => {
+    data.colors?.forEach((color:any, colorIndex:number) => {
       formData.append(`colors[${colorIndex}][colorName]`, color.colorName);
-      color.sizes.forEach((size, sizeIndex) => {
+      color.sizes.forEach((size:any, sizeIndex:number) => {
         formData.append(
           `colors[${colorIndex}][sizes][${sizeIndex}][size]`,
           size.size
@@ -110,7 +113,7 @@ const AddProduct = () => {
       });
     });
 
-    data.imageUrls?.forEach((imgObj) => {
+    data.imageUrls?.forEach((imgObj:any) => {
       if (imgObj.file instanceof File) {
         formData.append("files", imgObj.file);
       }
@@ -187,7 +190,7 @@ const AddProduct = () => {
             label="Description"
             placeholder="Write product description..."
             rows={4}
-            error={errors.description}
+            error={errors?.description}
             {...register("description", {
               required: "Description is required",
             })}
@@ -242,15 +245,15 @@ const AddProduct = () => {
 
             {imageFields.length < 4 && (
               <Button
-                variant="primary"
                 type="button"
                 label="Add Image"
-                classNames="py-2 px-4"
+                className="py-2 px-4"
                 onClick={() => appendImage({ file: undefined })}
               />
             )}
           </div>
 
+          {/* Color and sizes */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold">Colors & Sizes</h3>
 

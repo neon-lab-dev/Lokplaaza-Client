@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { ICONS } from "@/assets";
@@ -10,7 +9,9 @@ import { useGetSingleProductByIdQuery } from "@/redux/features/Product/productAp
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { RiShoppingCart2Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 
 interface Size {
@@ -41,7 +42,6 @@ const ProductDetails = () => {
 
   const { data, isLoading } = useGetSingleProductByIdQuery(id);
   const product: Product = data?.data || {};
-  console.log(product);
   const imageUrls = product.imageUrls || [];
   const colors = product.colors || [];
   const [currentSlider, setCurrentSlider] = useState(0);
@@ -114,15 +114,8 @@ const ProductDetails = () => {
       price: selectedSize.discountedPrice!,
     })
   );
-
-  console.log("DISPATCH PAYLOAD →", {
-  id: selectedSize._id,
-  name: product.name,
-  image: product.imageUrls?.[0],
-  color: selectedColor?.colorName,
-  size: selectedSize?.size,
-  price: selectedSize?.discountedPrice,
-});
+  toast.success("Product added to cart!");
+  router.push("/cart");
 };
 
   // ⭐ Loading State
@@ -190,9 +183,9 @@ const ProductDetails = () => {
               </h1>
               <button
                 onClick={() => handleAddToCart()}
-                className="flex items-center justify-center size-12 rounded-full bg-neutral-10"
+                className="flex items-center justify-center size-12 rounded-full bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer text-2xl transition duration-300"
               >
-                <Image src={ICONS.cart} alt="lokplazza" className="size-6" />
+                <RiShoppingCart2Line />
               </button>
             </div>
 

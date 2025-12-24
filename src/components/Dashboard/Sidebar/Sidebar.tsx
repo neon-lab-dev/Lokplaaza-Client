@@ -8,7 +8,8 @@ import { IMAGES } from "@/assets";
 import Link from "next/link";
 import { FiBox, FiPackage } from "react-icons/fi";
 import { AiOutlineShopping } from "react-icons/ai";
-import { logout, useCurrentUser } from "@/redux/features/Auth/authSlice";
+import { logout, setUser, useCurrentUser } from "@/redux/features/Auth/authSlice";
+import Cookies from "js-cookie";
 
 const Sidebar = () => {
   const user = useSelector(useCurrentUser);
@@ -66,7 +67,10 @@ const Sidebar = () => {
     user?.role === "admin" ? adminSidebarLinks : userSidebarLinks;
 
   const handleLogout = async () => {
+    dispatch(setUser({ user: null, token: null }));
     dispatch(logout());
+    Cookies.remove("accessToken");
+    Cookies.remove("role");
     router.push("/");
   };
 

@@ -40,40 +40,8 @@ const CallToAction: React.FC<CallToActionProps> = ({
         src={image}
         alt="cta-banner"
         fill
-        className="object-cover"
         priority
       />
-
-      {/* Optional Overlay */}
-      <div className={`absolute inset-0 ${overlayClass}`} />
-
-      {/* Content */}
-      <div className="absolute inset-0 flex items-center ">
-        <Container>
-          <div
-            className={`flex flex-col gap-4 ${
-              textAlign === 'center'
-                ? 'items-center text-center'
-                : textAlign === 'right'
-                ? 'items-end text-right'
-                : 'items-start text-left'
-            }`}
-          >
-            <h3 className="text-white font-medium text-xl md:text-3xl">
-              {heading}
-            </h3>
-            {subtext && <p className="text-white text-sm md:text-lg">{subtext}</p>}
-            <Button
-              label={buttonLabel}
-              icon={buttonIcon}
-              onClick={onButtonClick}
-              bgColor={bgColor}
-              textColor={textColor}
-              iconClassName={iconClassName}
-            />
-          </div>
-        </Container>
-      </div>
     </div>
   )
 }

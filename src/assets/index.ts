@@ -5,11 +5,11 @@ import heroImgGreen from "../assets/Images/hero-img-green.webp";
 import heroImgRed from "../assets/Images/hero-img-red.webp";
 import heroImgYellow from "../assets/Images/hero-img-yellow.webp";
 import shopView from "../assets/Images/shopView.webp";
-import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.png";
+import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.webp";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
 import GotInspiration from "../assets/Images/gotInspiration.png";
 import TryARView from "../assets/Images/TryARView.png";
-import offerBanner from "../assets/Images/offer-banner.png";
+import offerBanner from "../assets/Images/offer-banner.webp";
 import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
@@ -26,6 +26,7 @@ import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
 import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
 import perfectKitchen3 from "../assets/Images/perfect-kitchen-3.webp";
 import perfectKitchen4 from "../assets/Images/perfect-kitchen-4.webp";
+import sofa from "../assets/Images/dummySofa.png"
 //Benefits of Modular Kitchen
 import flexible from "../assets/Images/flexible.webp";
 import easyToAssemble from "../assets/Images/easy-to-assemble.webp";
@@ -73,10 +74,9 @@ import number1 from "../assets/Icons/number-1.svg";
 import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
+import tickMark from "./icons/tick-mark.svg";
 
 import cartGif from "../assets/Gifs/cart.gif"
-
-import sofa from "../assets/Images/dummySofa.png"
 
 
 export const IMAGES = {
@@ -138,6 +138,7 @@ export const ICONS = {
   number2,
   number3,
   number4,
+  tickMark,
   rupee,
   sparkles,
   collection,
