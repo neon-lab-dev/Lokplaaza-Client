@@ -1,3 +1,4 @@
+"use client";
 import { ICONS } from "@/assets";
 import Loader from "@/components/Reusable/Loader/Loader";
 import { clearCart } from "@/redux/features/Cart/cartSlice";

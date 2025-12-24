@@ -33,12 +33,9 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
-    const res = await fetch(
-      `${backendBaseUrl}/auth/refresh-token`,
-      {
-        credentials: "include",
-      }
-    );
+    const res = await fetch(`${backendBaseUrl}/auth/refresh-token`, {
+      credentials: "include",
+    });
 
     const data = await res.json();
     const user = (api.getState() as RootState).auth.user;

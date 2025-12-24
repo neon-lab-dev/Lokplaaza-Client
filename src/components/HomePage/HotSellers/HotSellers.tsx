@@ -121,22 +121,17 @@ const HotSellers = () => {
           </div>
         </div>
       </Container>
-      <div className="relative h-[400px] md:h-[500px] w-full">
+      <Container>
+        <div className="relative h-[400px] md:h-[500px] w-full rounded-2xl">
         <Image
           src={IMAGES.HotSellerCTAbg}
           alt="hotsellers"
-          fill // make image cover parent
-          className="object-cover"
+          fill
           priority
+          className="rounded-2xl"
         />
-          <div className="absolute inset-0 flex items-center justify-end">
-        <Container>
-            <h3 className="text-white font-medium text-xl md:text-3xl flex items-center justify-end ">
-              Upto 50% off on <br /> Hotsellers
-            </h3>
-        </Container>
-          </div>
       </div>
+      </Container>
     </div>
   );
 };
