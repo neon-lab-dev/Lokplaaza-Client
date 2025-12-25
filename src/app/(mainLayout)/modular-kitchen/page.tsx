@@ -8,11 +8,13 @@ import RecommendedAccessories from "@/components/ModularKitchenPage/RecommendedA
 import StartDreamKitchenBanner from "@/components/ModularKitchenPage/StartDreamKitchenBanner/StartDreamKitchenBanner";
 import StepsOfCustomizedKitchen from "@/components/ModularKitchenPage/StepsOfCustomizedKitchen/StepsOfCustomizedKitchen";
 import TalkToDesignExpert from "@/components/ModularKitchenPage/TalkToDesignExpert/TalkToDesignExpert";
+import WhyChooseLokplaaza from "@/components/Shared/WhyChooseLokplaaza/WhyChooseLokplaaza";
 
 const ModularKitchen = () => {
   return (
     <div className="bg-neutral-10">
       <ModularKitchenHero />
+      <WhyChooseLokplaaza/>
       <FindPerfectKitchen/>
       <StartDreamKitchenBanner />
       <BenefitsOfModularKitchen />
