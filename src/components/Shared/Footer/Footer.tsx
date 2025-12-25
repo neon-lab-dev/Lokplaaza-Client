@@ -157,25 +157,25 @@ const Footer = () => {
                 </h3>
                 <ul className="space-y-3">
                   {section?.links.map((link) => {
-                      const Icon = 'icon' in link ? link.icon : undefined;
-  
-                      return (
-                        <li key={link.label}>
-                          <Link
-                            href={link.path}
-                            className="text-neutral-600 hover:text-success-600 transition-colors duration-200 flex items-center gap-2 group"
-                          >
-                            {Icon && (
-                              <Icon className="opacity-70 group-hover:text-success-600 transition-colors" />
-                            )}
-  
-                            <span className="group-hover:translate-x-1 transition-transform">
-                              {link.label}
-                            </span>
-                          </Link>
-                        </li>
-                      );
-                    })}
+                    const Icon = "icon" in link ? link.icon : undefined;
+
+                    return (
+                      <li key={link.label}>
+                        <Link
+                          href={link.path}
+                          className="text-neutral-600 hover:text-success-600 transition-colors duration-200 flex items-center gap-2 group"
+                        >
+                          {Icon && (
+                            <Icon className="opacity-70 group-hover:text-success-600 transition-colors" />
+                          )}
+
+                          <span className="group-hover:translate-x-1 transition-transform">
+                            {link.label}
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
