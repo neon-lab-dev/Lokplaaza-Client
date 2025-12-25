@@ -16,10 +16,10 @@ const ModularKitchen = () => {
       <ModularKitchenHero />
       <WhyChooseLokplaaza/>
       <ModularKitchenSolutions/>
+      <StepsOfCustomizedKitchen />
       <StartDreamKitchenBanner />
       <BenefitsOfModularKitchen />
       <GetCustomizedKitchenBanner />
-      <StepsOfCustomizedKitchen />
       <OurRange />
       <OurCollection/>
       <RecommendedAccessories/>

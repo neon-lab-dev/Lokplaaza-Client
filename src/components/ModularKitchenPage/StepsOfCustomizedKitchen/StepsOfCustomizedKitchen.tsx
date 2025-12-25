@@ -36,54 +36,66 @@ const StepsOfCustomizedKitchen = () => {
 
   return (
     <Container>
-      <div className="py-14 font-Satoshi">
-        <Heading title="Steps to get your customized kitchen" alignClass="text-left" />
+      <div className="py-16 md:py-24 font-Satoshi">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <Heading
+            title="Steps to get your customized kitchen"
+            alignClass="text-center"
+          />
+          <p className="text-lg text-neutral-600 mt-4 max-w-2xl mx-auto">
+            Follow our structured process from concept to completion
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[68px] mt-12 2xl:mt-[92px]">
-          {stepsOfCustomizedKitchen.map((step, index) => {
-            const positionClass =
-              index % 2 === 0
-                ? "left-0 -top-6 md:-top-8"
-                : "right-0 -top-6 md:-top-8";
-
-            return (
-              <div key={index} className="relative">
-                {/* Number icon floating above card */}
-                <div className={`absolute z-30 ${positionClass}`}>
-                  <Image
-                    src={step.numberIcon}
-                    alt={`Step ${index + 1}`}
-                    width={78}
-                    height={98}
-                  />
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stepsOfCustomizedKitchen.map((step, index) => (
+            <div key={index} className="relative">
+              {/* Step Card */}
+              <div className="bg-white border border-neutral-200 rounded-lg overflow-hidden h-full hover:border-success-300 transition-colors duration-200">
+                {/* Step Number */}
+                <div className="absolute top-4 left-4 z-10">
+                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-200 flex items-center justify-center">
+                    <span className="text-lg font-semibold text-neutral-700">
+                      {index + 1}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Card container */}
-                <div className="rounded-xl overflow-hidden h-[281px] relative">
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gray-900/50 z-10 h-full"></div>
-
-                  {/* Background Image */}
+                {/* Image */}
+                <div className="relative h-48 bg-neutral-100">
                   <Image
                     src={step.image}
                     alt={step.title}
-                    className="object-cover w-full h-full"
                     fill
+                    className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-black/10" />
+                </div>
 
-                  {/* Text at bottom */}
-                  <div className="absolute bottom-5 left-5 right-5 text-white flex flex-col gap-3 z-20">
-                    <h3 className="text-xl font-bold leading-6">
-                      {step.title}
-                    </h3>
-                    <p className="text-success-10 text-sm lg:text-base">
-                      {step.description}
-                    </p>
-                  </div>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-neutral-800 mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
+        </div>
+
+        {/* Process Flow Note */}
+        <div className="mt-10 pt-3 border-t border-neutral-200">
+          <div className="text-center">
+            <p className="text-neutral-05 mb-6">
+              Our streamlined process ensures clear communication and timely
+              delivery
+            </p>
+          </div>
         </div>
       </div>
     </Container>
