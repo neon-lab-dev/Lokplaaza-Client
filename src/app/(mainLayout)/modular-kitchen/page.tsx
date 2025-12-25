@@ -1,7 +1,7 @@
 import BenefitsOfModularKitchen from "@/components/ModularKitchenPage/BenefitsOfModularKitchen/BenefitsOfModularKitchen";
-import FindPerfectKitchen from "@/components/ModularKitchenPage/FindPerfectKitchen/FindPerfectKitchen";
 import GetCustomizedKitchenBanner from "@/components/ModularKitchenPage/GetCustomizedKitchenBanner/GetCustomizedKitchenBanner";
 import ModularKitchenHero from "@/components/ModularKitchenPage/ModularKitchenHero/ModularKitchenHero";
+import ModularKitchenSolutions from "@/components/ModularKitchenPage/ModularKitchenSolutions/ModularKitchenSolutions";
 import OurCollection from "@/components/ModularKitchenPage/OurCollection/OurCollection";
 import OurRange from "@/components/ModularKitchenPage/OurRange/OurRange";
 import RecommendedAccessories from "@/components/ModularKitchenPage/RecommendedAccessories/RecommendedAccessories";
@@ -15,7 +15,7 @@ const ModularKitchen = () => {
     <div className="bg-neutral-10">
       <ModularKitchenHero />
       <WhyChooseLokplaaza/>
-      <FindPerfectKitchen/>
+      <ModularKitchenSolutions/>
       <StartDreamKitchenBanner />
       <BenefitsOfModularKitchen />
       <GetCustomizedKitchenBanner />

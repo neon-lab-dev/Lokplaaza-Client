@@ -26,10 +26,9 @@ import bedroom from "../assets/Images/bedroom.webp";
 import livingRoom from "../assets/Images/living-room.webp"; 
 import diningRoom from "../assets/Images/dining-room.webp"; 
 // Perfect kitchen
-import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
-import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
-import perfectKitchen3 from "../assets/Images/perfect-kitchen-3.webp";
-import perfectKitchen4 from "../assets/Images/perfect-kitchen-4.webp";
+import lShapedKitchen from "../assets/Images/l-shaped-modular-kitchen.webp";
+import uShapedKitchen from "../assets/Images/u-shaped-modular-kitchen.webp";
+import islandKitchen from "../assets/Images/island-kitchen.webp";
 import sofa from "../assets/Images/dummySofa.png"
 //Benefits of Modular Kitchen
 import flexible from "../assets/Images/flexible.webp";
@@ -99,10 +98,9 @@ export const IMAGES = {
   authImg,
   modularKitchenHero,
   sofa1,
-  perfectKitchen1,
-  perfectKitchen2,
-  perfectKitchen3,
-  perfectKitchen4,
+  lShapedKitchen,
+  uShapedKitchen,
+  islandKitchen,
   flexible,
   easyToAssemble,
   customizable,
