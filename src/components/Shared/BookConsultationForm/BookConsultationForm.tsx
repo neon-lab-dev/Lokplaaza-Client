@@ -18,7 +18,7 @@ const BookConsultationForm = () => {
   };
 
   return (
-    <div className="bg-white border border-neutral-200 rounded-xl shadow-sm">
+    <div id="book-consultation" className="bg-white border border-neutral-200 rounded-xl shadow-sm">
       {/* Form Header */}
       <div className="bg-success-50 border-b border-success-05 px-6 py-6">
         <h2 className="text-xl font-semibold text-neutral-800 mb-1">

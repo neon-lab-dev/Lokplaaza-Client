@@ -1,7 +1,9 @@
+"use client";
 import { ICONS, IMAGES } from "@/assets";
 import Container from "../../Reusable/Container/Container";
 import Image from "next/image";
 import Heading from "@/components/Reusable/Heading/Heading";
+import Button from "@/components/Reusable/Button/Button";
 
 const StepsOfCustomizedKitchen = () => {
   const stepsOfCustomizedKitchen = [
@@ -89,13 +91,20 @@ const StepsOfCustomizedKitchen = () => {
         </div>
 
         {/* Process Flow Note */}
-        <div className="mt-10 pt-3 border-t border-neutral-200">
-          <div className="text-center">
-            <p className="text-neutral-05 mb-6">
-              Our streamlined process ensures clear communication and timely
-              delivery
-            </p>
-          </div>
+        <div className="mt-10 pt-10 border-t border-neutral-200 flex flex-col items-center justify-center">
+          <p className="text-neutral-05 mb-6">
+            Our streamlined process ensures clear communication and timely
+            delivery
+          </p>
+          <Button
+            type="submit"
+            label="Book Free Consultation"
+            icon={ICONS.rightArrow}
+            onClick={() => {
+              const section = document.getElementById("book-consultation");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
         </div>
       </div>
     </Container>

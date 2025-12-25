@@ -1,9 +1,7 @@
 import BenefitsOfModularKitchen from "@/components/ModularKitchenPage/BenefitsOfModularKitchen/BenefitsOfModularKitchen";
-import GetCustomizedKitchenBanner from "@/components/ModularKitchenPage/GetCustomizedKitchenBanner/GetCustomizedKitchenBanner";
 import ModularKitchenHero from "@/components/ModularKitchenPage/ModularKitchenHero/ModularKitchenHero";
 import ModularKitchenSolutions from "@/components/ModularKitchenPage/ModularKitchenSolutions/ModularKitchenSolutions";
-import OurCollection from "@/components/ModularKitchenPage/OurCollection/OurCollection";
-import OurRange from "@/components/ModularKitchenPage/OurRange/OurRange";
+// import OurCollection from "@/components/ModularKitchenPage/OurCollection/OurCollection";
 import RecommendedAccessories from "@/components/ModularKitchenPage/RecommendedAccessories/RecommendedAccessories";
 import StartDreamKitchenBanner from "@/components/ModularKitchenPage/StartDreamKitchenBanner/StartDreamKitchenBanner";
 import StepsOfCustomizedKitchen from "@/components/ModularKitchenPage/StepsOfCustomizedKitchen/StepsOfCustomizedKitchen";
@@ -19,9 +17,7 @@ const ModularKitchen = () => {
       <StepsOfCustomizedKitchen />
       <StartDreamKitchenBanner />
       <BenefitsOfModularKitchen />
-      <GetCustomizedKitchenBanner />
-      <OurRange />
-      <OurCollection/>
+      {/* <OurCollection/> */}
       <RecommendedAccessories/>
       <TalkToDesignExpert />
     </div>
