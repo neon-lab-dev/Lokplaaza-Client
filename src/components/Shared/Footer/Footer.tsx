@@ -56,9 +56,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-linear-to-b from-white to-neutral-50 border-t border-neutral-100">
+    <footer className="bg-linear-to-b from-white to-neutral-50">
       {/* Newsletter Section */}
-      <div className="bg-success-50 border-y border-success-100">
+      <div className="bg-success-50 border-y border-neutral-15">
         <Container>
           <div className="py-10 md:py-12">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">

@@ -30,7 +30,7 @@ const Products: React.FC<ProductsProps> = ({
         );
 
   return (
-    <div className="bg-neutral-10 py-10">
+    <div className="bg-neutral-10 py-10 xl:py-20">
       <Container>
         {/* Section Title */}
         <div className="text-center">
@@ -39,7 +39,7 @@ const Products: React.FC<ProductsProps> = ({
 
         {/* Category Filter */}
         {showCategoryFilter && (
-          <div className="flex items-center justify-center mt-12">
+          <div className="flex items-center justify-center mt-6">
             <div
               className={`w-fit flex justify-center scrollbar-none bg-neutral-15 rounded-full p-2 overflow-auto ${
                 isLoading ? "gap-3" : "gap-0"
@@ -73,7 +73,7 @@ const Products: React.FC<ProductsProps> = ({
         )}
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-20 place-items-center mt-20 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-20 place-items-center mt-12 w-full">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard key={`${product._id}`} product={product} />

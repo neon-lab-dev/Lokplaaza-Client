@@ -32,14 +32,14 @@ const Testimonials = () => {
     },
   ];
   return (
-    <div className="bg-neutral-10 py-[55px] xl:pt[56px] xl:pb-[93px]">
+    <div className="bg-neutral-10 py-[55px] xl:py-[93px]">
       <Container>
         <Heading
           heading="TESTIMONIALS"
           title="Our Client Reviews"
           alignClass="text-center"
         />
-        <div className="flex flex-col xl:flex-row justify-center items-center gap-12 mt-12 xl:mt-32">
+        <div className="flex flex-col xl:flex-row justify-center items-center gap-12 mt-12">
           {testimonials.map((t, index) => (
             <TestimonialCard
               key={index}
