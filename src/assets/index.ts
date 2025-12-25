@@ -49,7 +49,7 @@ import testimonial1 from "../assets/Images/tesimonial1.webp";
 import testimonial2 from "../assets/Images/tesimonial2.webp";
 import testimonial3 from "../assets/Images/tesimonial3.webp";
 
-// paymment icons
+// payment icons
 import visaCard from "../assets/Icons/payment-options/visa.svg";
 import amex from "../assets/Icons/payment-options/amex.svg";
 import unionPay from "../assets/Icons/payment-options/union-pay.svg";
