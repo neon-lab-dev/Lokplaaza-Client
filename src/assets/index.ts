@@ -21,6 +21,10 @@ import blackCube from "../assets/Icons/black-cube.svg";
 import walk360degree from "../assets/Icons/360-dergee.svg";
 import sofa1 from "../assets/Images/sofa1.jpg";    // Dummy
 import inspiration from "../assets/Images/amico.svg"; 
+import kitchen from "../assets/Images/kitchen.webp"; 
+import bedroom from "../assets/Images/bedroom.webp"; 
+import livingRoom from "../assets/Images/living-room.webp"; 
+import diningRoom from "../assets/Images/dining-room.webp"; 
 // Perfect kitchen
 import perfectKitchen1 from "../assets/Images/perfect-kitchen-1.webp";
 import perfectKitchen2 from "../assets/Images/perfect-kitchen-2.webp";
@@ -121,7 +125,11 @@ export const IMAGES = {
   shopView,
   customFurniture,
   inspiration,
-  sofa
+  sofa,
+  kitchen,
+  bedroom,
+  livingRoom,
+  diningRoom,
 };
 
 export const ICONS = {

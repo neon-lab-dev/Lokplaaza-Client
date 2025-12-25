@@ -4,7 +4,6 @@ import CallToAction from "@/components/Reusable/CallToAction/CallToAction";
 import Explore from "@/components/HomePage/Explore/Explore";
 import GotInspiration from "@/components/HomePage/GotInspiration/GotInspiration";
 import HeroSection from "@/components/HomePage/Hero/HeroSection";
-import HotSellers from "@/components/HomePage/HotSellers/HotSellers";
 import OfflineStore from "@/components/HomePage/OfflineStore/OfflineStore";
 // import PhotoGallery from "@/components/HomePage/PhotoGallery/PhotoGallery";
 import ShopByRoom from "@/components/HomePage/ShopByRoom/ShopByRoom";
@@ -16,13 +15,25 @@ import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSecti
 import Accessories from "@/components/HomePage/Accessories/Accessories";
 import Appliances from "@/components/HomePage/Appliances/Appliances";
 import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
+import Container from "@/components/Reusable/Container/Container";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
       <HeroSection />
       <ProductsSection />
-      <HotSellers />
+      <Container>
+        <div className="relative h-100 md:h-125 w-full rounded-2xl">
+          <Image
+            src={IMAGES.HotSellerCTAbg}
+            alt="hotsellers"
+            fill
+            priority
+            className="rounded-2xl"
+          />
+        </div>
+      </Container>
       <ShopByRoom />
       <GotInspiration />
       <VirtualWalk />
