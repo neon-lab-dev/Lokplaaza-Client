@@ -56,7 +56,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-white to-neutral-50 border-t border-neutral-100">
+    <footer className="bg-linear-to-b from-white to-neutral-50 border-t border-neutral-100">
       {/* Newsletter Section */}
       <div className="bg-success-50 border-y border-success-100">
         <Container>

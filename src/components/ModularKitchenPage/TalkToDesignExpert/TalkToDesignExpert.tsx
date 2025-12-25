@@ -25,7 +25,7 @@ const TalkToDesignExpert = () => {
   };
 
   return (
-    <div className="relative min-h-[600px] md:min-h-[700px] flex items-center">
+    <div className="relative min-h-150 md:min-h-175 flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -36,7 +36,7 @@ const TalkToDesignExpert = () => {
           priority
         />
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
       </div>
 
       <Container>

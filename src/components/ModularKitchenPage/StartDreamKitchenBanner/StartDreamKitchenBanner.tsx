@@ -71,7 +71,7 @@ const StartDreamKitchenBanner = () => {
                 {/* Main Button */}
                 <div className="relative bg-success-05 text-white px-10 py-5 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                   {/* Shine Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 
                   <div className="relative flex items-center justify-center gap-4">
                     <span className="text-xl font-semibold">

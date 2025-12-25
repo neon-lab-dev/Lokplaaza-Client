@@ -1,7 +1,6 @@
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import CallToAction from "@/components/Reusable/CallToAction/CallToAction";
-import Explore from "@/components/HomePage/Explore/Explore";
 import GotInspiration from "@/components/HomePage/GotInspiration/GotInspiration";
 import HeroSection from "@/components/HomePage/Hero/HeroSection";
 import OfflineStore from "@/components/HomePage/OfflineStore/OfflineStore";
@@ -17,6 +16,7 @@ import Appliances from "@/components/HomePage/Appliances/Appliances";
 import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
+import TalkToDesignExpert from "@/components/ModularKitchenPage/TalkToDesignExpert/TalkToDesignExpert";
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
       <ShopByRoom />
       <GotInspiration />
       <VirtualWalk />
-      <Explore />
+      <TalkToDesignExpert />
       <TryARView />
       <CallToAction
         image={IMAGES.offerBanner}
