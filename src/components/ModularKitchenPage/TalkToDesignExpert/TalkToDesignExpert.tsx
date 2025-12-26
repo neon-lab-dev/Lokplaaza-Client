@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { ICONS, IMAGES } from "@/assets";
 import Image from "next/image";
@@ -5,23 +6,37 @@ import Container from "../../Reusable/Container/Container";
 import TextInput from "../../Reusable/TextInput/TextInput";
 import Button from "../../Reusable/Button/Button";
 import { useForm } from "react-hook-form";
+import { useBookConsultationMutation } from "@/redux/features/Consultation/consultationApi";
+import toast from "react-hot-toast";
 
 type TFormData = {
   name: string;
   email: string;
-  mobile: string;
+  phoneNumber: string;
 };
 
 const TalkToDesignExpert = () => {
+  const [bookConsultation, { isLoading }] = useBookConsultationMutation();
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    reset,
+    formState: { errors },
   } = useForm<TFormData>();
 
-  const handleBookConsultation = (data: TFormData) => {
-    console.log("Consultation Data:", data);
-    // Handle form submission
+  const handleBookConsultation = async (data: TFormData) => {
+    try {
+      const payload = {
+        ...data,
+      };
+      const response = await bookConsultation(payload).unwrap();
+      if (response?.success) {
+        toast.success(response?.message);
+        reset();
+      }
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Something went wrong!");
+    }
   };
 
   return (
@@ -146,36 +161,32 @@ const TalkToDesignExpert = () => {
                     type="email"
                     error={errors.email}
                     {...register("email", {
-                      required: "Email is required",
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                         message: "Invalid email address",
                       },
                     })}
+                    isRequired={false}
                   />
 
                   <TextInput
-                    label="Mobile Number"
-                    placeholder="Enter your mobile number"
+                    label="Phone Number"
+                    placeholder="Enter your phone number"
                     type="tel"
-                    error={errors.mobile}
-                    {...register("mobile", {
-                      required: "Mobile number is required",
-                      pattern: {
-                        value: /^[0-9]{10}$/,
-                        message: "Invalid mobile number",
-                      },
+                    error={errors.phoneNumber}
+                    {...register("phoneNumber", {
+                      required: "Phone number is required",
                     })}
                   />
 
                   <Button
                     type="submit"
                     label={
-                      isSubmitting ? "Sending..." : "Book Free Consultation"
+                      isLoading ? "Please wait..." : "Book Free Consultation"
                     }
                     icon={ICONS.rightArrow}
                     className="w-full  group"
-                    isDisabled={isSubmitting}
+                    isDisabled={isLoading}
                   />
                 </form>
               </div>

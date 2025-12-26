@@ -22,7 +22,7 @@ const consultationApi = baseApi.injectEndpoints({
     
     bookConsultation: builder.mutation({
       query: (data) => ({
-        url: "/consultation/add",
+        url: "/consultation/book",
         method: "POST",
         body: data,
         credentials: "include",

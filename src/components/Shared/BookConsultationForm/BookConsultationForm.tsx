@@ -3,22 +3,39 @@
 import { ICONS } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
+import { useBookConsultationMutation } from "@/redux/features/Consultation/consultationApi";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const BookConsultationForm = () => {
+  const [bookConsultation, { isLoading }] = useBookConsultationMutation();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle form submission
+  const handleBookConsultation = async (data: any) => {
+    try {
+      const payload = {
+        ...data,
+      };
+      const response = await bookConsultation(payload).unwrap();
+      if (response?.success) {
+        toast.success(response?.message);
+        reset();
+      }
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Something went wrong!");
+    }
   };
 
   return (
-    <div id="book-consultation" className="bg-white border border-neutral-200 rounded-xl shadow-sm">
+    <div
+      id="book-consultation"
+      className="bg-white border border-neutral-200 rounded-xl shadow-sm"
+    >
       {/* Form Header */}
       <div className="bg-success-50 border-b border-success-05 px-6 py-6">
         <h2 className="text-xl font-semibold text-neutral-800 mb-1">
@@ -30,7 +47,10 @@ const BookConsultationForm = () => {
       </div>
 
       {/* Form Content */}
-      <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5">
+      <form
+        onSubmit={handleSubmit(handleBookConsultation)}
+        className="p-6 space-y-5"
+      >
         <div className="space-y-4">
           <TextInput
             label="Full Name"
@@ -45,25 +65,21 @@ const BookConsultationForm = () => {
             type="email"
             error={errors.email}
             {...register("email", {
-              required: "Email is required",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: "Invalid email address",
               },
             })}
+            isRequired={false}
           />
 
           <TextInput
-            label="Mobile Number"
-            placeholder="Enter your mobile number"
+            label="Phone Number"
+            placeholder="Enter your phone number"
             type="tel"
-            error={errors.mobile}
-            {...register("mobile", {
-              required: "Mobile number is required",
-              pattern: {
-                value: /^[0-9]{10}$/,
-                message: "Invalid mobile number",
-              },
+            error={errors.phoneNumber}
+            {...register("phoneNumber", {
+              required: "Phone number is required",
             })}
           />
         </div>
@@ -71,9 +87,10 @@ const BookConsultationForm = () => {
         <div className="pt-2">
           <Button
             type="submit"
-            label="Book Free Consultation"
+            label={isLoading ? "Please wait..." : "Book Free Consultation"}
             icon={ICONS.rightArrow}
             className="w-full"
+            isDisabled={isLoading}
           />
         </div>
 
