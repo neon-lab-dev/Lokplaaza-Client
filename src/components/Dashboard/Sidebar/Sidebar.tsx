@@ -1,6 +1,6 @@
 "use client";
 import Button from "../../Reusable/Button/Button";
-import { MdDashboard, MdPeople, MdPerson, MdSettings } from "react-icons/md";
+import { MdDashboard, MdOutlineSupportAgent, MdPeople, MdPerson, MdSettings } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -42,6 +42,11 @@ const Sidebar = () => {
       label: "Order",
       icon: <AiOutlineShopping />,
       path: "/dashboard/admin/orders",
+    },
+    {
+      label: "Consultation",
+      icon: <MdOutlineSupportAgent />,
+      path: "/dashboard/admin/consultation",
     },
   ];
 
