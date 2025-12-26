@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { ICONS } from "@/assets";
@@ -18,7 +19,7 @@ interface Size {
   size: string;
   quantity: number;
   discountedPrice?: number;
-  _id:string;
+  _id: string;
 }
 
 interface ColorVariant {
@@ -28,7 +29,7 @@ interface ColorVariant {
 }
 
 interface Product {
-  productId?: string;  // ADD THIS
+  productId?: string; // ADD THIS
   name?: string;
   description?: string;
   imageUrls?: string[];
@@ -97,26 +98,26 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch();
 
- const handleAddToCart = () => {
-  if (!product || !selectedColor || !selectedSize) {
-    console.log("Cannot add: missing required selections");
-    return;
-  }
+  const handleAddToCart = () => {
+    if (!product || !selectedColor || !selectedSize) {
+      console.log("Cannot add: missing required selections");
+      return;
+    }
 
-  dispatch(
-    addToCart({
-      productId: selectedSize._id,
-      name: product.name!,
-      image: product?.imageUrls?.[0] as string,
-      color: selectedColor.colorName,
-      size: selectedSize.size,
-      quantity: 1,
-      price: selectedSize.discountedPrice!,
-    })
-  );
-  toast.success("Product added to cart!");
-  router.push("/cart");
-};
+    dispatch(
+      addToCart({
+        productId: selectedSize._id,
+        name: product.name!,
+        image: product?.imageUrls?.[0] as string,
+        color: selectedColor.colorName,
+        size: selectedSize.size,
+        quantity: 1,
+        price: selectedSize.discountedPrice!,
+      })
+    );
+    toast.success("Product added to cart!");
+    router.push("/cart");
+  };
 
   // ⭐ Loading State
   if (isLoading || !product)
@@ -141,7 +142,7 @@ const ProductDetails = () => {
           {/* LEFT SIDE - IMAGE SECTION */}
           <div className="w-full lg:w-[50%]">
             {imageUrls.length > 0 && (
-              <div className="relative h-60 sm:h-96 md:h-[540px] w-full rounded-2xl overflow-hidden bg-neutral-10">
+              <div className="relative h-60 sm:h-96 md:h-135 w-full rounded-2xl overflow-hidden bg-neutral-10">
                 <Image
                   src={imageUrls[currentSlider]}
                   alt={product.name || "product"}
@@ -183,9 +184,10 @@ const ProductDetails = () => {
               </h1>
               <button
                 onClick={() => handleAddToCart()}
-                className="flex items-center justify-center size-12 rounded-full bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer text-2xl transition duration-300"
+                className="rounded-3xl px-3 py-2 flex items-center justify-center gap-2 bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer transition duration-300"
               >
                 <RiShoppingCart2Line />
+                Add To Cart
               </button>
             </div>
 
@@ -270,6 +272,14 @@ const ProductDetails = () => {
               icon={ICONS.rightArrow}
               className="w-full mt-7"
               onClick={() => router.push("/customizations")}
+            />
+            <Button
+              label="Buy Now"
+              icon={ICONS.rightArrowRed}
+              className="w-full mt-7"
+              bgColor="bg-neutral-10"
+              textColor="text-neutral-05"
+              onClick={() => handleAddToCart()}
             />
           </div>
         </div>

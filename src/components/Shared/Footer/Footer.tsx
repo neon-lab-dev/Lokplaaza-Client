@@ -253,7 +253,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-6 right-6 bg-success-600 hover:bg-success-700 text-success-05 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-50 group cursor-pointer"
+        className="fixed bottom-6 right-6 bg-success-05 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-50 group cursor-pointer"
         aria-label="Back to top"
       >
         <svg

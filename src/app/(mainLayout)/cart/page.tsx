@@ -103,7 +103,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen font-Satoshi">
+    <div className="bg-white font-Satoshi mt-10 xl:mt-20">
       <Container>
         {isEmpty ? (
           <div className="h-[80vh] flex flex-col items-center justify-center px-4">

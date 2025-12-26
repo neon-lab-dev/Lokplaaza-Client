@@ -1,10 +1,17 @@
 import { baseApi } from "@/redux/api/baseApi";
 
-
 const consultationApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllConsultation: builder.query({
-      query: ({ keyword, page , limit}: { keyword?: string; page?: number, limit?: number }) => {
+      query: ({
+        keyword,
+        page,
+        limit,
+      }: {
+        keyword?: string;
+        page?: number;
+        limit?: number;
+      }) => {
         const params = new URLSearchParams();
 
         if (keyword) params.append("keyword", keyword);
@@ -12,14 +19,16 @@ const consultationApi = baseApi.injectEndpoints({
         if (limit) params.append("limit", limit.toString());
 
         return {
-          url: `/consultation${params.toString() ? `?${params.toString()}` : ""}`,
+          url: `/consultation${
+            params.toString() ? `?${params.toString()}` : ""
+          }`,
           method: "GET",
           credentials: "include",
         };
       },
       providesTags: ["consultation"],
     }),
-    
+
     bookConsultation: builder.mutation({
       query: (data) => ({
         url: "/consultation/book",
@@ -41,4 +50,8 @@ const consultationApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllConsultationQuery, useBookConsultationMutation, useDeleteConsultationMutation } = consultationApi;
+export const {
+  useGetAllConsultationQuery,
+  useBookConsultationMutation,
+  useDeleteConsultationMutation,
+} = consultationApi;
