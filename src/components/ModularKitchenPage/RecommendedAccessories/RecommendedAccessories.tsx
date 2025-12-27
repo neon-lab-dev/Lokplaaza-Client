@@ -1,10 +1,7 @@
 "use client"
 import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
-import ProductCard from "@/components/Reusable/ProductCard/ProductCard";
 import ProductsGrid from "@/components/Reusable/ProductGrid/ProductGrid";
-import Products from "@/components/Reusable/Products/Products";
-import { sampleProducts } from "@/constants/sampleProduct";
 import { useGetAllCategoriesQuery } from "@/redux/features/Category/categoryApi";
 import { useGetAllProductsQuery } from "@/redux/features/Product/productApi";
 

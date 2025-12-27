@@ -49,7 +49,7 @@ const BookConsultationForm = () => {
       {/* Form Content */}
       <form
         onSubmit={handleSubmit(handleBookConsultation)}
-        className="p-6 space-y-5"
+        className="p-4 md:p-6 space-y-5"
       >
         <div className="space-y-4">
           <TextInput

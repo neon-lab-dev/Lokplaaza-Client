@@ -19,7 +19,7 @@ type TableProps = {
   onLimitChange?: (value: number) => void;
   children?: ReactNode;
 
-  categories?: string[]; 
+  categories?: string[];
   selectedCategory?: string;
   onCategoryChange?: (value: string) => void;
 
@@ -30,6 +30,7 @@ type TableProps = {
   loader?: ReactNode;
 
   actions?: ActionItem[];
+  isFilterable?: boolean;
 };
 
 const Table = ({
@@ -55,6 +56,7 @@ const Table = ({
   loader,
 
   actions,
+  isFilterable = true,
 }: TableProps) => {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
 
@@ -71,67 +73,66 @@ const Table = ({
       </div>
 
       {/* Search + Controls */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-
-          {/* Search Input */}
-          <div className="flex-1 w-full sm:max-w-md">
-            <input
-              type="text"
-              placeholder={searchPlaceholder}
-              value={searchValue}
-              onChange={(e) => onSearch && onSearch(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
+      {isFilterable && (
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+            {/* Search Input */}
+            <div className="flex-1 w-full sm:max-w-md">
+              <input
+                type="text"
+                placeholder={searchPlaceholder}
+                value={searchValue}
+                onChange={(e) => onSearch && onSearch(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
                 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-            />
-          </div>
+              />
+            </div>
 
-          {/* Limit + Category */}
-          <div className="flex items-center gap-4">
-
-            {/* Category Dropdown */}
-            {categories && onCategoryChange && (
-              <select
-                value={selectedCategory}
-                onChange={(e) => onCategoryChange(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 
+            {/* Limit + Category */}
+            <div className="flex items-center gap-4">
+              {/* Category Dropdown */}
+              {categories && onCategoryChange && (
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => onCategoryChange(e.target.value)}
+                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 
                   focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              >
-                <option value="">All Categories</option>
-                {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            )}
+                >
+                  <option value="">All Categories</option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              )}
 
-            {/* Limit Dropdown */}
-            {onLimitChange && (
-              <select
-                value={limit}
-                onChange={(e) => onLimitChange(Number(e.target.value))}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 
+              {/* Limit Dropdown */}
+              {onLimitChange && (
+                <select
+                  value={limit}
+                  onChange={(e) => onLimitChange(Number(e.target.value))}
+                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 
                   focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              >
-                {[5, 10, 20, 50].map((num) => (
-                  <option key={num} value={num}>
-                    {num} per page
-                  </option>
-                ))}
-              </select>
-            )}
+                >
+                  {[5, 10, 20, 50].map((num) => (
+                    <option key={num} value={num}>
+                      {num} per page
+                    </option>
+                  ))}
+                </select>
+              )}
 
-            {children}
+              {children}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Table */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-
             <thead className="bg-gray-50">
               <tr>
                 {tableHeaders.map((header) => (
@@ -154,19 +155,32 @@ const Table = ({
             <tbody className="bg-white divide-y divide-gray-200">
               {isLoading ? (
                 <tr>
-                  <td colSpan={tableHeaders.length + 1} className="py-12 text-center">
-                    {loader ? loader : <div className="text-gray-500">Loading...</div>}
+                  <td
+                    colSpan={tableHeaders.length + 1}
+                    className="py-12 text-center"
+                  >
+                    {loader ? (
+                      loader
+                    ) : (
+                      <div className="text-gray-500">Loading...</div>
+                    )}
                   </td>
                 </tr>
               ) : tableData.length === 0 ? (
                 <tr>
-                  <td colSpan={tableHeaders.length + 1} className="py-8 text-center text-gray-500">
+                  <td
+                    colSpan={tableHeaders.length + 1}
+                    className="py-8 text-center text-gray-500"
+                  >
                     No data found
                   </td>
                 </tr>
               ) : (
                 tableData.map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition-colors">
+                  <tr
+                    key={index}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
                     {Object.values(row).map((value, i) => (
                       <td
                         key={i}

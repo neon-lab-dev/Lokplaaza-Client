@@ -28,7 +28,7 @@ const Consultation = () => {
         heading="Consultations"
         subHeading="Manage all consultation requests"
         isLoading={isLoading}
-        tableHeaders={["ID","Name", "Email", "Phone"]}
+        tableHeaders={["ID", "Name", "Email", "Phone"]}
         tableData={consultations.map((c: any) => ({
           _id: c._id,
           name: c.name,
@@ -41,6 +41,7 @@ const Consultation = () => {
             onClick: (row) => handleDelete(row._id),
           },
         ]}
+        isFilterable={false}
       />
     </div>
   );

@@ -1,6 +1,14 @@
 "use client";
 import Button from "../../Reusable/Button/Button";
-import { MdDashboard, MdOutlineSupportAgent, MdPeople, MdPerson, MdSettings } from "react-icons/md";
+import {
+  MdDashboard,
+  MdOutlineImageSearch,
+  MdOutlineSupportAgent,
+  MdOutlineTune,
+  MdPeople,
+  MdPerson,
+  MdSettings,
+} from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -8,7 +16,11 @@ import { IMAGES } from "@/assets";
 import Link from "next/link";
 import { FiBox, FiPackage } from "react-icons/fi";
 import { AiOutlineShopping } from "react-icons/ai";
-import { logout, setUser, useCurrentUser } from "@/redux/features/Auth/authSlice";
+import {
+  logout,
+  setUser,
+  useCurrentUser,
+} from "@/redux/features/Auth/authSlice";
 import Cookies from "js-cookie";
 
 const Sidebar = () => {
@@ -48,6 +60,16 @@ const Sidebar = () => {
       icon: <MdOutlineSupportAgent />,
       path: "/dashboard/admin/consultation",
     },
+    {
+      label: "Inspiration Requests",
+      icon: <MdOutlineImageSearch />,
+      path: "/dashboard/admin/inspiration-requests",
+    },
+    {
+      label: "Customization Requests",
+      icon: <MdOutlineTune />,
+      path: "/dashboard/admin/customization-requests",
+    },
   ];
 
   const userSidebarLinks = [
@@ -80,7 +102,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-[280px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
+    <div className="w-[300px] bg-success-05 h-screen font-Montserrat p-4 flex flex-col justify-between sticky top-0 left-0">
       <div className="flex flex-col gap-16">
         <Link href={"/"}>
           <Image src={IMAGES.lokplaazaLogo} alt="" className="w-44" />

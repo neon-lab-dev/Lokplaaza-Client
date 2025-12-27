@@ -56,7 +56,7 @@ const ShopByRoom = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="relative pt-19 xl:py-54 font-Satoshi bg-linear-to-b from-neutral-10 via-white to-neutral-10/50 overflow-hidden">
+    <div className="relative py-20 xl:py-54 font-Satoshi bg-linear-to-b from-neutral-10 via-white to-neutral-10/50 overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-success-05/10 rounded-full blur-3xl"></div>

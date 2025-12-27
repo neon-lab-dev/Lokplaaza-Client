@@ -18,7 +18,7 @@ const ProductsGrid: React.FC<ProductsGridOnlyProps> = ({
     <div className="bg-neutral-10 py-10">
       <Container>
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-20 place-items-center w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-7 md:gap-y-20 place-items-center w-full">
           {isLoading ? (
             // Skeleton Loaders
             Array(8)

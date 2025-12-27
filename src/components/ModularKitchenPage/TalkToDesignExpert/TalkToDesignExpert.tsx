@@ -133,7 +133,7 @@ const TalkToDesignExpert = () => {
               </div>
 
               {/* Right Column - Form */}
-              <div className="bg-white backdrop-blur-lg rounded-2xl border border-white/20 p-8 md:p-10 shadow-2xl">
+              <div className="bg-white backdrop-blur-lg rounded-2xl border border-white/20 p-4 md:p-10 shadow-2xl">
                 <div className="mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-success-05 mb-3">
                     Book Your Free Consultation
