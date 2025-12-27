@@ -58,8 +58,8 @@ const CustomizationRequests = () => {
   return (
     <div>
       <Table
-        heading="Customization Requests"
-        subHeading="Manage all customization requests"
+        heading="Sofa Customization Requests"
+        subHeading="Manage all sofa customization requests"
         isLoading={isLoading}
         tableHeaders={["Name", "Phone", "Created At", "Action"]}
         tableData={customizationRequests.map((item: any) => ({
