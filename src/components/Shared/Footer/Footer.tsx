@@ -79,7 +79,7 @@ const Footer = () => {
 
               {/* Contact Info */}
               <div className="space-y-3">
-                <div className="flex items-center gap-3">
+                <a href="tel:+91 96440 01216" className="flex items-center gap-3 hover:underline">
                   <div className="w-8 h-8 rounded-full bg-success-100 flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-success-600"
@@ -95,9 +95,9 @@ const Footer = () => {
                       />
                     </svg>
                   </div>
-                  <span className="text-neutral-700">+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center gap-3">
+                  <span className="text-neutral-700">+91 96440 01216</span>
+                </a>
+                <a href="mailto:hello@lokplaaza.com" className="flex items-center gap-3 hover:underline">
                   <div className="w-8 h-8 rounded-full bg-success-100 flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-success-600"
@@ -114,7 +114,7 @@ const Footer = () => {
                     </svg>
                   </div>
                   <span className="text-neutral-700">hello@lokplaaza.com</span>
-                </div>
+                </a>
               </div>
             </div>
 
