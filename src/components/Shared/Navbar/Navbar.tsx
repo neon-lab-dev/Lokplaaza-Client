@@ -59,7 +59,7 @@ const Navbar = () => {
                 href={item?.path}
                 className={`text-base font-medium leading-5 hover:underline
              ${
-               pathname.startsWith("/products") || pathname.startsWith("/cart")
+               pathname.startsWith("/products") || pathname.startsWith("/cart") || pathname.startsWith("/virtual-walk-in")
                  ? "text-neutral-05"
                  : "text-neutral-10"
              }

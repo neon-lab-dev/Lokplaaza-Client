@@ -5,6 +5,7 @@ import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const VirtualWalk = () => {
   return (
@@ -145,20 +146,22 @@ const VirtualWalk = () => {
               </div>
 
               {/* CTA Button */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  label="Start Virtual Walk"
-                  bgColor="bg-primary-05"
-                  textColor="text-white"
-                  icon={ICONS.rightArrow}
-                  onClick={() => {
-                    console.log("Virtual walk started!");
-                  }}
-                />
-              </motion.div>
+              <Link href={"/virtual-walk-in"}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
+                    label="Start Virtual Walk"
+                    bgColor="bg-primary-05"
+                    textColor="text-white"
+                    icon={ICONS.rightArrow}
+                    onClick={() => {
+                      console.log("Virtual walk started!");
+                    }}
+                  />
+                </motion.div>
+              </Link>
             </div>
           </motion.div>
         </div>
