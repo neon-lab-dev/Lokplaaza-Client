@@ -137,7 +137,7 @@ const ProductDetails = () => {
     <Container>
       <div className="font-Satoshi my-10">
 
-        <div className="flex flex-col lg:flex-row gap-6 mt-6 lg:mt-8">
+        <div className="flex flex-col lg:flex-row gap-6 xl:gap-10 2xl:gap-12 mt-6 lg:mt-8">
           {/* LEFT SIDE - IMAGE SECTION */}
           <div className="w-full lg:w-[50%]">
             {imageUrls.length > 0 && (

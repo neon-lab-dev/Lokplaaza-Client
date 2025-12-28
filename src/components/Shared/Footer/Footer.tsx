@@ -2,7 +2,6 @@ import { ICONS, IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/Reusable/Button/Button";
 import {
   FaInstagram,
   FaFacebookF,
@@ -56,34 +55,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-linear-to-b from-white to-neutral-50">
-      {/* Newsletter Section */}
-      <div className="bg-success-50 border-y border-neutral-15">
-        <Container>
-          <div className="py-10 md:py-12">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div>
-                <h3 className="text-2xl font-bold text-neutral-800 mb-2">
-                  Stay Updated with Latest Designs
-                </h3>
-                <p className="text-neutral-600">
-                  Subscribe to our newsletter for exclusive offers and design
-                  tips
-                </p>
-              </div>
-              <div className="flex gap-3 w-full lg:w-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 lg:w-80 px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-success-500 focus:border-transparent"
-                />
-                <Button label="Subscribe" className="rounded-lg" />
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
-
+    <footer className="bg-linear-to-b from-white to-neutral-50 border-t border-neutral-15">
       <Container>
         <div className="py-12 md:py-16">
           {/* Main Footer Content */}
