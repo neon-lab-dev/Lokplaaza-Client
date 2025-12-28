@@ -3,6 +3,7 @@ import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import { useCurrentUser } from "@/redux/features/Auth/authSlice";
+import { RootState } from "@/redux/store";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,29 +13,8 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const pathname = usePathname();
   const user = useSelector(useCurrentUser);
-  console.log(user);
-  // const navlinks = [
-  //   {
-  //     label: "Home",
-  //     path: "/",
-  //   },
-  //   {
-  //     label: "Shop",
-  //     path: "/shop",
-  //   },
-  //   {
-  //     label: "Room",
-  //     path: "/room",
-  //   },
-  //   {
-  //     label: "Collection",
-  //     path: "/collection",
-  //   },
-  //   {
-  //     label: "Inspiration",
-  //     path: "/inspiration",
-  //   },
-  // ];
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+
   const navlinks = [
     {
       label: "Home",
@@ -92,8 +72,11 @@ const Navbar = () => {
           <div className=" hidden lg:flex items-center justify-center gap-6">
             <Link
               href={"/cart"}
-              className="flex items-center justify-center size-12 rounded-full bg-neutral-10 text-primary-05 hover:bg-primary-05 hover:text-white cursor-pointer text-2xl transition duration-300"
+              className="flex items-center justify-center size-12 rounded-full bg-neutral-10 text-primary-05 hover:bg-primary-05 hover:text-white cursor-pointer text-2xl transition duration-300 relative"
             >
+              <div className="bg-success-05 size-4 rounded-full flex items-center justify-center text-white text-[11px] absolute -top-1 right-0">
+                {cartItems?.length || 0}
+              </div>
               <RiShoppingCart2Line />
             </Link>
 

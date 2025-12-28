@@ -116,8 +116,12 @@ const ProductDetails = () => {
       })
     );
     toast.success("Product added to cart!");
-    router.push("/cart");
   };
+
+  const handleAddToCartAndRedirect = () => {
+    handleAddToCart();
+    router.push("/cart");
+  }
 
   // ⭐ Loading State
   if (isLoading || !product)
@@ -132,11 +136,6 @@ const ProductDetails = () => {
   return (
     <Container>
       <div className="font-Satoshi my-10">
-        {/* Breadcrumbs */}
-        <p className="text-neutral-40 text-sm lg:text-xl font-medium">
-          Home {">"} Home Furniture {">"}{" "}
-          <span className="text-success-30 font-bold">{product.name}</span>
-        </p>
 
         <div className="flex flex-col lg:flex-row gap-6 mt-6 lg:mt-8">
           {/* LEFT SIDE - IMAGE SECTION */}
@@ -279,7 +278,7 @@ const ProductDetails = () => {
               className="w-full mt-7"
               bgColor="bg-neutral-10"
               textColor="text-neutral-05"
-              onClick={() => handleAddToCart()}
+              onClick={() => handleAddToCartAndRedirect()}
             />
           </div>
         </div>

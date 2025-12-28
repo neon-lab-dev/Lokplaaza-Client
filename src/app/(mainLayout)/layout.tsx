@@ -6,10 +6,11 @@ import { ReactNode } from "react";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
+  console.log(pathname);
   return (
     <div>
       {
-        pathname.startsWith("/products") || pathname.startsWith("/cart") && <Navbar />
+        (pathname.startsWith("/products") || pathname.startsWith("/cart")) && <Navbar />
       }
       {children}
       <Footer />
