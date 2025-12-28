@@ -6,6 +6,7 @@ import {
   useDeleteConsultationMutation,
   useGetAllConsultationQuery,
 } from "@/redux/features/Consultation/consultationApi";
+import { formatDate } from "@/utils/formatDate";
 import toast from "react-hot-toast";
 
 const Consultation = () => {
@@ -28,12 +29,13 @@ const Consultation = () => {
         heading="Consultations"
         subHeading="Manage all consultation requests"
         isLoading={isLoading}
-        tableHeaders={["ID", "Name", "Email", "Phone"]}
+        tableHeaders={["ID", "Name", "Email", "Phone Number", "Requested Date",]}
         tableData={consultations.map((c: any) => ({
           _id: c._id,
           name: c.name,
           email: c.email || "NA",
           phone: c.phoneNumber,
+          createdAt : formatDate(c.createdAt),
         }))}
         actions={[
           {

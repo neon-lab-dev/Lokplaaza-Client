@@ -1,17 +1,32 @@
+"use client";
 /* eslint-disable react/no-unescaped-entities */
 import DashboardOverviewCard from "@/components/Reusable/DashboardOverviewCard/DashboardOverviewCard";
-import {FiShoppingCart, FiUsers, FiClock, FiCheckCircle } from "react-icons/fi";
-import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { useGetAdminStatsQuery } from "@/redux/features/Admin/adminApi";
+import {
+  FiShoppingCart,
+  FiClock,
+  FiUsers,
+  FiGrid,
+  FiBox,
+  FiMessageSquare,
+  FiImage,
+  FiSliders,
+} from "react-icons/fi";
 
 const AdminDashboard = () => {
-  // Mock data - in real app, this would come from API
+  const { data } = useGetAdminStatsQuery({});
+  console.log(data);
+  const stats = data?.data ?? {};
+
   const dashboardData = {
-    totalOrders: 1247,
-    pendingOrders: 23,
-    totalUsers: 845,
-    totalRevenue: 1245000,
-    deliveredOrders: 985,
-    monthlyGrowth: 12.5,
+    totalOrders: stats.totalOrders || 0,
+    pendingOrders: stats.pendingOrders || 0,
+    totalUsers: stats.totalUsers || 0,
+    totalCategories: stats.totalCategories || 0,
+    totalProducts: stats.totalProducts || 0,
+    totalConsultations: stats.totalConsultations || 0,
+    totalInspirationRequests: stats.totalInspirationRequests || 0,
+    totalCustomizations: stats.totalCustomizations || 0,
   };
 
   const cardsData = [
@@ -19,39 +34,50 @@ const AdminDashboard = () => {
       title: "Total Orders",
       value: dashboardData.totalOrders.toLocaleString(),
       icon: <FiShoppingCart className="text-2xl" />,
-      // trend: { value: 8.2, isPositive: true },
       backgroundColor: "bg-gradient-to-br from-white to-blue-50",
     },
     {
       title: "Pending Orders",
-      value: dashboardData.pendingOrders,
+      value: dashboardData.pendingOrders.toLocaleString(),
       icon: <FiClock className="text-2xl" />,
-      // trend: { value: -3.1, isPositive: false },
       backgroundColor: "bg-gradient-to-br from-white to-yellow-50",
-      textColor: "text-yellow-700"
+      textColor: "text-yellow-700",
     },
     {
       title: "Registered Users",
       value: dashboardData.totalUsers.toLocaleString(),
       icon: <FiUsers className="text-2xl" />,
-      // trend: { value: 15.7, isPositive: true },
       backgroundColor: "bg-gradient-to-br from-white to-green-50",
     },
     {
-      title: "Total Revenue",
-      value: `₹${(dashboardData.totalRevenue / 1000).toFixed(0)}K`,
-      icon: <MdOutlineCurrencyRupee className="text-2xl" />,
-      // trend: { value: 22.3, isPositive: true },
+      title: "Total Categories",
+      value: dashboardData.totalCategories.toLocaleString(),
+      icon: <FiGrid className="text-2xl" />,
       backgroundColor: "bg-gradient-to-br from-white to-purple-50",
-      textColor: "text-purple-700"
     },
     {
-      title: "Delivered Orders",
-      value: dashboardData.deliveredOrders.toLocaleString(),
-      icon: <FiCheckCircle className="text-2xl" />,
-      // trend: { value: 10.5, isPositive: true },
-      backgroundColor: "bg-gradient-to-br from-white to-emerald-50",
-      textColor: "text-emerald-700"
+      title: "Total Products",
+      value: dashboardData.totalProducts.toLocaleString(),
+      icon: <FiBox className="text-2xl" />,
+      backgroundColor: "bg-gradient-to-br from-white to-indigo-50",
+    },
+    {
+      title: "Consultations",
+      value: dashboardData.totalConsultations.toLocaleString(),
+      icon: <FiMessageSquare className="text-2xl" />,
+      backgroundColor: "bg-gradient-to-br from-white to-pink-50",
+    },
+    {
+      title: "Inspiration Requests",
+      value: dashboardData.totalInspirationRequests.toLocaleString(),
+      icon: <FiImage className="text-2xl" />,
+      backgroundColor: "bg-gradient-to-br from-white to-orange-50",
+    },
+    {
+      title: "Customization Requests",
+      value: dashboardData.totalCustomizations.toLocaleString(),
+      icon: <FiSliders className="text-2xl" />,
+      backgroundColor: "bg-gradient-to-br from-white to-teal-50",
     },
   ];
 
@@ -60,7 +86,9 @@ const AdminDashboard = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back! Here's what's happening with your store today.</p>
+        <p className="text-gray-600 mt-2">
+          Welcome back! Here's what's happening with your store today.
+        </p>
       </div>
 
       {/* Overview Cards Grid */}
