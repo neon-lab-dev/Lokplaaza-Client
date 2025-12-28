@@ -44,8 +44,9 @@ const GotInspiration = () => {
     toast.promise(uploadInspirationImage(formData).unwrap(), {
       loading: "Uploading inspiration...",
       success: () => {
+        setIsModalOpen(false);
         reset();
-        return "Inspiration submitted successfully!";
+        return "Inspiration submitted successfully! We will contact with you shortly.";
       },
       error: (err: any) => err?.data?.message || "Upload failed",
     });

@@ -10,7 +10,7 @@ import type { RootState } from "../store";
 import { setUser } from "../features/Auth/authSlice";
 
 // export const backendBaseUrl = "http://localhost:5000/api/v1";
-export const backendBaseUrl = "https://lokplaaza-server.vercel.app/api/v1";
+export const backendBaseUrl = "https://lokplaaza-server.onrender.com/api/v1";
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:5000/api/v1",
   baseUrl: backendBaseUrl,
