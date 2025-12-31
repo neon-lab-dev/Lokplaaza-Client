@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
@@ -9,11 +10,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { useSelector } from "react-redux";
+import MobileSidebar from "./MobileSidebar";
 
 const Navbar = () => {
   const pathname = usePathname();
   const user = useSelector(useCurrentUser);
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navlinks = [
     {
@@ -40,80 +43,83 @@ const Navbar = () => {
 
   const dashboardNavigationPath =
     user?.role === "admin" ? "/dashboard/admin" : "/dashboard/user";
-  return (
-    <div className="bg-transparent font-Satoshi w-full">
-      <Container>
-        <div className="flex items-center justify-between py-5">
-          <Link href={"/"} className="">
-            <Image
-              src={IMAGES.lokplaazaLogo}
-              alt="lokplaaza"
-              className="h-9 md:h-7 w-[109px] md:w-[83px]"
-            />
-          </Link>
 
-          <div className=" hidden lg:flex items-center gap-14">
-            {navlinks?.map((item) => (
-              <Link
-                key={item?.label}
-                href={item?.path}
-                className={`text-base font-medium leading-5 hover:underline
-             ${
-               pathname.startsWith("/products") || pathname.startsWith("/cart") || pathname.startsWith("/virtual-walk-in")
-                 ? "text-neutral-05"
-                 : "text-neutral-10"
-             }
-                `}
-              >
-                {item?.label}
-              </Link>
-            ))}
-          </div>
-          <div className=" hidden lg:flex items-center justify-center gap-6">
-            <Link
-              href={"/cart"}
-              className="flex items-center justify-center size-12 rounded-full bg-neutral-10 text-primary-05 hover:bg-primary-05 hover:text-white cursor-pointer text-2xl transition duration-300 relative"
-            >
-              <div className="bg-success-05 size-4 rounded-full flex items-center justify-center text-white text-[11px] absolute -top-1 right-0">
-                {cartItems?.length || 0}
-              </div>
-              <RiShoppingCart2Line />
+  return (
+    <>
+      <div className="bg-transparent font-Satoshi w-full z-999">
+        <Container>
+          <div className="flex items-center justify-between py-5">
+            {/* Logo */}
+            <Link href="/">
+              <Image
+                src={IMAGES.lokplaazaLogo}
+                alt="lokplaaza"
+                className="h-9 md:h-7 w-27.24 md:w-20.75"
+              />
             </Link>
 
-            {user?.role ? (
-              <Link href={dashboardNavigationPath}>
-                <Button
-                  label="Dashboard"
-                  bgColor="bg-success-05"
-                  textColor="text-success-10"
-                  icon={ICONS.rightArrow}
-                />
-              </Link>
-            ) : (
-              <Link href={"/login"}>
-                <Button
-                  label="Login"
-                  bgColor="bg-success-05"
-                  textColor="text-success-10"
-                  icon={ICONS.rightArrow}
-                />
-              </Link>
-            )}
-          </div>
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-14">
+              
+              {navlinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.path}
+                  className={`text-base font-medium hover:underline ${
+                    pathname === item.path
+                      ? "text-primary-05"
+                      : "text-neutral-10"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
 
-          <Link
-            href={"/"}
-            className=" flex items-center justify-center lg:hidden size-12 rounded-full bg-neutral-10"
-          >
-            <Image
-              src={ICONS.hamburgerMenu}
-              alt="lokplazza"
-              className="size-6"
-            />
-          </Link>
-        </div>
-      </Container>
-    </div>
+            {/* Desktop Actions */}
+            <div className="hidden lg:flex items-center gap-6">
+              <Link
+                href="/cart"
+                className="relative flex items-center justify-center size-12 rounded-full bg-neutral-10 text-primary-05 hover:bg-primary-05 hover:text-white transition"
+              >
+                <span className="absolute -top-1 right-0 bg-success-05 size-4 rounded-full text-[11px] text-white flex items-center justify-center">
+                  {cartItems.length}
+                </span>
+                <RiShoppingCart2Line />
+              </Link>
+
+              <Link href={user?.role ? dashboardNavigationPath : "/login"}>
+                <Button
+                  label={user?.role ? "Dashboard" : "Login"}
+                  bgColor="bg-success-05"
+                  textColor="text-success-10"
+                  icon={ICONS.rightArrow}
+                />
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="lg:hidden flex items-center justify-center size-12 rounded-full bg-neutral-10"
+              aria-label="Open Menu"
+            >
+              <Image src={ICONS.hamburgerMenu} alt="menu" className="size-6" />
+            </button>
+          </div>
+        </Container>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <MobileSidebar
+        open={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        navlinks={navlinks}
+        user={user}
+        cartCount={cartItems.length}
+        dashboardPath={dashboardNavigationPath}
+      />
+    </>
   );
 };
 

@@ -109,7 +109,7 @@ const GotInspiration = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
           >
-            <Heading title="Upload Your Inspiration" />
+            <p className="text-[13px] md:text-xl font-medium mx-auto w-fit">Upload Your Inspiration</p>
 
             <TextInput
               label="Full Name"

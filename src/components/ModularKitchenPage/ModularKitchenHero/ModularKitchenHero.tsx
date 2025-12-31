@@ -25,9 +25,9 @@ const ModularKitchenHero = () => {
       </div>
 
       {/* Hero Content - Bottom Left */}
-      <div className="absolute bottom-10 left-0 w-full z-20 text-white">
+      <div className="absolute bottom-10 left-0 w-full z-10 text-white">
         <Container>
-          <div className="space-y-6 max-w-[700px]">
+          <div className="space-y-6 max-w-175">
             <h3 className="text-[32px] lg:text-[45px] 2xl:text-[61px] font-semibold leading-tight">
               Modular kitchens designed for your home
             </h3>

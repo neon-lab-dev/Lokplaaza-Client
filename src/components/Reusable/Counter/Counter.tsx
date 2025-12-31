@@ -21,8 +21,8 @@ const Counter = () => {
             <div className='w-full flex items-center justify-around bg-neutral-25 py-10 rounded-2xl shadow-md mt-12 space-y-1'>
                 {counterData.map((item , key)=>(
                     <div key={key}>
-                        <p className='text-6xl font-semibold text-success-30'>{item.count}</p>
-                        <h5 className='text-neutral-20 text-xl leading-6'>{item.title}</h5>
+                        <p className='text-lg md:text-2xl 2xl:text-6xl font-semibold text-success-30'>{item.count}</p>
+                        <h5 className='text-neutral-20 md:text-xl leading-6'>{item.title}</h5>
                     </div>
                 ))}
             </div>
