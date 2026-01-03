@@ -19,7 +19,7 @@ export default function ProductAR() {
     if (isIOS) {
       const quickLook = document.createElement("a");
       quickLook.rel = "ar";
-      quickLook.href = "/models/42ebacbe2d1e497283a3a06f4d472bb3_opt-compressed.usdz";
+      quickLook.href = "/models/text2.usdz";
       quickLook.click();
     } else {
       const sceneViewerUrl =
