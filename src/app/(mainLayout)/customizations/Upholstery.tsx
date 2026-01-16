@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { IMAGES } from "@/assets";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +12,7 @@ import {
   setStep,
 } from "@/redux/features/Customizations/customizationSlice";
 import Container from "@/components/Reusable/Container/Container";
+import { RootState } from "@/redux/store";
 
 const dummyFabrics = [
   {
@@ -53,38 +55,54 @@ const dummyFabrics = [
 
 const UpholsteryPage = () => {
   const dispatch = useDispatch();
-  const { fabric, color } = useSelector((state: any) => state.customization);
 
-  const selectedFabric = dummyFabrics.find((f) => f.value === fabric);
+  const { fabric, color } = useSelector((state: RootState) => state.customization);
+
+  const selectedFabricValue = fabric[0]?.key;
+
+  const selectedFabric = dummyFabrics.find(
+    (f) => f.value === selectedFabricValue
+  );
+
+  const canContinue = fabric.length > 0 && color.length > 0;
 
   return (
-    <div className="min-h-screen bg-[#F8F8F8] flex flex-col ">
+    <div className="min-h-screen bg-[#F8F8F8] flex flex-col">
       <StepHeader title="Customize" />
+
       <Container>
-         <div className="lg:flex ">
+        <div className="lg:flex">
           <Image
             src={IMAGES.sofa}
             alt="sofa"
             className="w-full md:w-[930px] lg:w-[50%] rounded-3xl mx-auto lg:mx-0"
           />
+
           <div className="mx-10">
-            {" "}
             <div className="px-5 pt-6 pb-4">
               <h2 className="text-xl font-semibold text-[#1A1A1A]">
                 Upholstery <span className="text-red-500">*</span>
               </h2>
             </div>
+
             {/* Fabric Selection */}
             <div className="px-5 grid grid-cols-4 gap-4">
               {dummyFabrics.map((item) => {
-                const isSelected = fabric === item.value;
+                const isSelected = fabric[0]?.key === item.value;
 
                 return (
                   <button
                     key={item.value}
                     onClick={() => {
-                      dispatch(setFabric(item.value));
-                      dispatch(setColor("")); // reset color when changing fabric
+                      dispatch(
+                        setFabric({
+                          key: item.value,
+                          label: item.label,
+                        })
+                      );
+
+                      // reset color when fabric changes
+                      dispatch(setColor({ key: "", label: "" }));
                     }}
                     className={`rounded-xl border p-2 text-center transition ${
                       isSelected
@@ -101,22 +119,31 @@ const UpholsteryPage = () => {
                 );
               })}
             </div>
+
             {/* Color Selection */}
-            {fabric && (
+            {selectedFabric && (
               <div className="px-5 mt-6">
                 <p className="font-medium text-sm mb-3 text-[#1A1A1A]">
                   Select Color:
                 </p>
+
                 <div className="grid grid-cols-4 gap-4">
-                  {selectedFabric?.colors.map((c) => {
-                    const selected = color === c.hex;
+                  {selectedFabric.colors.map((c) => {
+                    const isSelected = color[0]?.label === c.name;
 
                     return (
                       <button
                         key={c.hex}
-                        onClick={() => dispatch(setColor(c.hex))}
+                        onClick={() =>
+                          dispatch(
+                            setColor({
+                              key: c.name.toLowerCase().replace(/\s/g, "_"),
+                              label: c.name,
+                            })
+                          )
+                        }
                         className={`rounded-xl p-2 border transition ${
-                          selected
+                          isSelected
                             ? "border-[#0F5E3B] ring-2 ring-[#0F5E3B]/40"
                             : "border-gray-300 hover:border-black"
                         }`}
@@ -132,16 +159,17 @@ const UpholsteryPage = () => {
                 </div>
               </div>
             )}
-               <Button
-              className="w-full bg-[#0F5E3B] text-white py-3 rounded-full text-sm hover:bg-[#0b4b2f] transition my-10"
+
+            <Button
+              className={`w-full py-3 rounded-full text-sm transition my-10 ${
+                canContinue
+                  ? "bg-[#0F5E3B] text-white hover:bg-[#0b4b2f]"
+                  : "bg-gray-300 text-gray-600 cursor-not-allowed"
+              }`}
               onClick={() => dispatch(setStep(4))}
-              label=" Continue →"
+              label="Continue →"
             />
           </div>
-
-         
-         
-         
         </div>
       </Container>
     </div>

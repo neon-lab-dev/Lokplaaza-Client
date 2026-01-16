@@ -13,6 +13,7 @@ import {
   setStep,
   updateCustomization,
 } from "@/redux/features/Customizations/customizationSlice";
+import { RootState } from "@/redux/store";
 
 const customizationOptions = {
   reclinerType: [
@@ -133,31 +134,42 @@ const customizationOptions = {
 
 const CustomizationPage = () => {
   const dispatch = useDispatch();
+
   const customizationState = useSelector(
-    (state: any) => state.customization.customizations
+    (state: RootState) => state.customization.customizations
   );
 
   const [openIndex, setOpenIndex] = useState<string | null>("reclinerType");
 
   const categories = Object.entries(customizationOptions);
 
-  const handleSelect = (key: string, value: string) => {
-    dispatch(updateCustomization({ key, value }));
+  const handleSelect = (key: string, opt: any) => {
+    dispatch(
+      updateCustomization({
+        key,
+        value: {
+          key: opt.value,
+          label: opt.label,
+        },
+      })
+    );
   };
 
-  // Check if user has selected all options
+  // must select all categories
   const allSelected = categories.every(([key]) => customizationState[key]);
 
   return (
     <div className="max-w-[784px] lg:max-w-[1028px] mx-auto">
       <StepHeader title="Customize" />
+
       <Container>
-        <div className="lg:flex ">
+        <div className="lg:flex">
           <Image
             src={IMAGES.sofa}
             alt="sofa"
             className="w-full h-fit md:w-[930px] lg:w-[50%] rounded-3xl mx-auto lg:mx-0"
           />
+
           <div className="mx-10">
             <div className="px-5 pt-6 pb-4">
               <h2 className="text-xl font-semibold text-[#1A1A1A]">
@@ -199,21 +211,21 @@ const CustomizationPage = () => {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden"
                         >
-                          {options.map((opt) => {
+                          {options.map((opt: any) => {
                             const isSelected =
-                              customizationState[key] === opt.value;
+                              customizationState[key]?.key === opt.value;
 
                             return (
                               <button
                                 key={opt.value}
-                                className={`mt-3 p-3  w-full text-left text-sm transition ${
+                                className={`mt-3 p-3 w-full text-left text-sm transition ${
                                   isSelected
-                                    ? "bg-[#E6F5EC] border-green-600"
+                                    ? "bg-[#E6F5EC] border border-green-600"
                                     : "hover:bg-gray-100"
                                 }`}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleSelect(key, opt.value);
+                                  handleSelect(key, opt);
                                 }}
                               >
                                 <strong>{opt.label}</strong>
@@ -234,13 +246,13 @@ const CustomizationPage = () => {
         </div>
       </Container>
 
-      {/* Continue Button Only When Completed */}
+      {/* Continue Button */}
       {allSelected && (
         <div className="p-5 sticky bottom-0 bg-white shadow-lg">
           <Button
             className="w-full bg-[#0F5E3B] text-white py-3 rounded-full text-sm hover:bg-[#0b4b2f] transition"
             onClick={() => dispatch(setStep(3))}
-            label=" Continue →"
+            label="Continue →"
           />
         </div>
       )}

@@ -36,11 +36,15 @@ const VariantPage = () => {
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const handleContinue = (selected: string) => {
-    dispatch(setVariant(selected));
-    dispatch(setStep(2));
-  };
-
+ const handleContinue = (item: { title: string }) => {
+  dispatch(
+    setVariant({
+      key: item.title.toLowerCase().replace(/\s/g, "_"),
+      label: item.title,
+    })
+  );
+  dispatch(setStep(2));
+};
   return (
     <div className="max-w-[784px] lg:max-w-[1028px] mx-auto">
       <StepHeader title="Select Variant" />
@@ -96,14 +100,11 @@ const VariantPage = () => {
                           {item.description}
                         </p>
 
-                        {/* CTA BUTTON */}
-                        <Button
-                          onClick={() => {
-                            handleContinue(item.title);
-                          }}
-                          className="w-full hover:scale-[100%] my-5"
-                          label={`  Continue With ${item.title} →`}
-                        />
+                       <Button
+  onClick={() => handleContinue(item)}
+  label={`Continue With ${item.title} →`}
+  className="m-1 "
+/>
                       </motion.div>
                     )}
                   </AnimatePresence>
