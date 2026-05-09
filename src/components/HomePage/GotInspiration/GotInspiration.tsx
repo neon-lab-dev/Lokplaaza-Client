@@ -52,7 +52,7 @@ const GotInspiration = () => {
     });
   };
   return (
-    <div className="xl:relative py-14 xl:py-0 font-Satoshi bg-primary-15 xl:h-screen flex items-center">
+    <div id="design-furniture" className="xl:relative py-14 xl:py-0 font-Satoshi bg-primary-15 xl:h-screen flex items-center">
       <div className="hidden xl:block xl:absolute h-full w-full top-0 left-0 bottom-0">
         <Image
           src={IMAGES.GotInspiration}

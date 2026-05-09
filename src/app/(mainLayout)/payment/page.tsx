@@ -66,19 +66,19 @@ const PaymentSuccess = () => {
         <Loader />
       ) : (
         <div className="flex flex-col items-center">
-          <div className="size-11 rounded-full bg-[#16A34A] flex items-center justify-center">
+          <div className="size-14 rounded-full bg-[#16A34A] flex items-center justify-center">
             <Image src={ICONS.tickMark} alt="Success" className="size-6" />
           </div>
-          <h1 className="text-neutral-10 text-[28px] font-medium leading-8 mt-4 text-center">
+          <h1 className="text-neutral-20 text-[28px] font-medium leading-8 mt-4 text-center">
             Payment Successful!
           </h1>
-          <p className="text-neutral-10 text-[15px] font-medium leading-4.5 mt-8 text-center">
+          <p className="text-neutral-20 text-[15px] font-medium leading-4.5 mt-8 text-center">
             Your product order has been successfully placed. You can track your
             order status from the dashboard!
           </p>
 
           {counter !== null && (
-            <p className="text-neutral-10 text-[15px] leading-4.5 mt-4 text-center">
+            <p className="text-neutral-20 text-[15px] leading-4.5 mt-4 text-center">
               You will be redirected to the dashboard in {counter} second
               {counter !== 1 && "s"}...
             </p>

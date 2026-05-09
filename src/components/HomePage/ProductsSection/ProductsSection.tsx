@@ -11,9 +11,9 @@ const ProductsSection = () => {
   ...(data?.data?.categories || []),
 ];
   return (
-    <div>
+    <div id="categories">
       <Products
-        title="Home Furniture"
+        title="Furniture Categories"
         productCategories={allCategories || []}
         products={allProducts?.data?.products || []}
         isLoading={isLoading}

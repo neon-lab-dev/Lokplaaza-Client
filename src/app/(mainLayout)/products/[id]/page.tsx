@@ -74,7 +74,7 @@ const ProductDetails = () => {
 
     const interval = setInterval(() => {
       setCurrentSlider((prev) =>
-        prev === imageUrls.length - 1 ? 0 : prev + 1
+        prev === imageUrls.length - 1 ? 0 : prev + 1,
       );
     }, 5000);
 
@@ -106,14 +106,14 @@ const ProductDetails = () => {
 
     dispatch(
       addToCart({
-        productId: selectedSize._id,
+        productId: id as string,
         name: product.name!,
         image: product?.imageUrls?.[0] as string,
         color: selectedColor.colorName,
         size: selectedSize.size,
         quantity: 1,
         price: selectedSize.discountedPrice!,
-      })
+      }),
     );
     toast.success("Product added to cart!");
   };
@@ -121,9 +121,9 @@ const ProductDetails = () => {
   const handleAddToCartAndRedirect = () => {
     handleAddToCart();
     router.push("/cart");
-  }
+  };
 
-  // ⭐ Loading State
+  // Loading State
   if (isLoading || !product)
     return (
       <Container>
@@ -136,7 +136,7 @@ const ProductDetails = () => {
   return (
     <Container>
       <div className="font-Satoshi my-10">
-
+        
         <div className="flex flex-col lg:flex-row gap-6 xl:gap-10 2xl:gap-12 mt-6 lg:mt-8">
           {/* LEFT SIDE - IMAGE SECTION */}
           <div className="w-full lg:w-[50%]">
@@ -178,19 +178,25 @@ const ProductDetails = () => {
           <div className="w-full lg:w-[50%]">
             <div className="flex justify-between items-center">
               {" "}
-              <h1 className="text-neutral-20 text-2xl font-bold leading-8">
+              <h1 className="text-neutral-20 text-2xl font-bold capitalize">
                 {product.name}
               </h1>
               <button
                 onClick={() => handleAddToCart()}
-                className="rounded-3xl px-3 py-2 flex items-center justify-center gap-2 bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer transition duration-300"
+                className="rounded-3xl text-sm px-3 py-2 flex items-center justify-center gap-2 bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer transition duration-300"
               >
                 <RiShoppingCart2Line />
                 Add To Cart
               </button>
             </div>
+            <p className="text-neutral-40 text-sm mt-3 leading-6">
+              {/* {product.description} */}
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum,
+              mollitia suscipit! Animi ea fugit ratione a adipisci veritatis,
+              deserunt nihil?
+            </p>
 
-            <h2 className="text-neutral-20 font-bold leading-8">
+            <h2 className="text-neutral-20 font-bold leading-8 mt-5">
               {selectedSize?.discountedPrice
                 ? `₹ ${selectedSize.discountedPrice}/-`
                 : "Price Unavailable"}
@@ -204,10 +210,6 @@ const ProductDetails = () => {
               {renderStars()}
               <span className="text-neutral-40 text-sm ml-2">{rating}</span>
             </div>
-
-            <p className="text-neutral-40 text-sm mt-5 leading-6">
-              {product.description}
-            </p>
 
             {/* Color Selector */}
             {colors.length > 0 && (
@@ -226,7 +228,7 @@ const ProductDetails = () => {
 
                         setSelectedSize(firstAvailableSize);
                       }}
-                      className={`px-3 py-2 rounded-lg border ${
+                      className={`px-3 py-2 text-xs rounded-lg border ${
                         selectedColor?._id === color._id
                           ? "border-black"
                           : "border-neutral-30"
@@ -249,7 +251,7 @@ const ProductDetails = () => {
                       key={size.size}
                       disabled={size.quantity === 0}
                       onClick={() => setSelectedSize(size)}
-                      className={`px-3 py-2 rounded-lg border ${
+                      className={`px-3 py-2 text-xs rounded-lg border ${
                         selectedSize?.size === size.size
                           ? "border-black"
                           : "border-neutral-30"
@@ -266,20 +268,26 @@ const ProductDetails = () => {
               </div>
             )}
 
-            <Button
+            {/* <Button
               label="Customize Now"
               icon={ICONS.rightArrow}
               className="w-full mt-7"
               onClick={() => router.push("/customizations")}
-            />
+            /> */}
             <Button
+              label="Buy Now"
+              icon={ICONS.rightArrow}
+              className="w-full mt-7"
+              onClick={() => handleAddToCartAndRedirect()}
+            />
+            {/* <Button
               label="Buy Now"
               icon={ICONS.rightArrowRed}
               className="w-full mt-7"
               bgColor="bg-neutral-10"
               textColor="text-neutral-05"
               onClick={() => handleAddToCartAndRedirect()}
-            />
+            /> */}
           </div>
         </div>
       </div>

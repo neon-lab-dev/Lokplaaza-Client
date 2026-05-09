@@ -1,12 +1,16 @@
+"use client";
 import { ICONS, IMAGES } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
 import Container from "@/components/Reusable/Container/Container";
 import Navbar from "@/components/Shared/Navbar/Navbar";
 import OfferAnnouncement from "@/components/Shared/OfferAnnouncement/OfferAnnouncement";
 import Image from "next/image";
-import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const HeroSection = () => {
+   const pathname = usePathname();
+    const router = useRouter();
   const [selected, setSelected] = useState<string>("primary");
 
   const colors = [
@@ -14,6 +18,45 @@ const HeroSection = () => {
     { id: "success", bg: "success-05" },
     { id: "secondary", bg: "secondary-05" },
   ];
+
+     const handleNavigation = (sectionId: string) => {
+    // If we're not on home page, navigate to home page with section info
+    if (pathname !== "/") {
+      sessionStorage.setItem("scrollToSection", sectionId);
+      router.push("/");
+      return;
+    }
+
+    // If we're already on home page, scroll to section
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  // Check for stored section to scroll to when home page loads
+  useEffect(() => {
+    if (pathname === "/") {
+      const sectionToScroll = sessionStorage.getItem("scrollToSection");
+      if (sectionToScroll) {
+        // Small delay to ensure DOM is fully loaded
+        setTimeout(() => {
+          const element = document.getElementById(sectionToScroll);
+          if (element) {
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            // Clear the stored section after scrolling
+            sessionStorage.removeItem("scrollToSection");
+          }
+        }, 100);
+      }
+    }
+  }, [pathname]);
 
   return (
     <div className="relative font-Satoshi">
@@ -81,7 +124,11 @@ const HeroSection = () => {
             </div>
 
             {/* Button */}
-            <Button label="Browse Bestsellers" icon={ICONS.rightArrow} />
+            <Button 
+              onClick={() => handleNavigation("categories")} 
+              label="Browse Bestsellers" 
+              icon={ICONS.rightArrow} 
+            />
           </div>
         </div>
       </Container>
