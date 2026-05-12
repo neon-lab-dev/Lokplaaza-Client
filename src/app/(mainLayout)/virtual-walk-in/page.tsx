@@ -12,7 +12,7 @@ const VirtualWalkIn = () => {
           Home
         </Link>
         <span className="mx-2 text-neutral-40">{">"}</span>
-        <span className="text-sm text-success-05 font-bold">Cart</span>
+        <span className="text-sm text-success-05 font-bold">Virtual Walk-in</span>
       </div>
       </Container>
       <iframe
