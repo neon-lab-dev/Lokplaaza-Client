@@ -268,26 +268,26 @@ const ProductDetails = () => {
               </div>
             )}
 
-            {/* <Button
+            <Button
               label="Customize Now"
               icon={ICONS.rightArrow}
               className="w-full mt-7"
               onClick={() => router.push("/customizations")}
-            /> */}
-            <Button
+            />
+            {/* <Button
               label="Buy Now"
               icon={ICONS.rightArrow}
               className="w-full mt-7"
               onClick={() => handleAddToCartAndRedirect()}
-            />
-            {/* <Button
+            /> */}
+            <Button
               label="Buy Now"
               icon={ICONS.rightArrowRed}
               className="w-full mt-7"
               bgColor="bg-neutral-10"
               textColor="text-neutral-05"
               onClick={() => handleAddToCartAndRedirect()}
-            /> */}
+            />
           </div>
         </div>
       </div>
