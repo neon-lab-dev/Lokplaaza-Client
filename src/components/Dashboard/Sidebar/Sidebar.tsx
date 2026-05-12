@@ -4,7 +4,7 @@ import {
   MdDashboard,
   MdOutlineImageSearch,
   MdOutlineSupportAgent,
-  MdOutlineTune,
+  // MdOutlineTune,
   MdPeople,
   MdPerson,
   MdSettings,
@@ -65,11 +65,11 @@ const Sidebar = () => {
       icon: <MdOutlineImageSearch />,
       path: "/dashboard/admin/inspiration-requests",
     },
-    {
-      label: "Customization Requests",
-      icon: <MdOutlineTune />,
-      path: "/dashboard/admin/customization-requests",
-    },
+    // {
+    //   label: "Customization Requests",
+    //   icon: <MdOutlineTune />,
+    //   path: "/dashboard/admin/customization-requests",
+    // },
   ];
 
   const userSidebarLinks = [
