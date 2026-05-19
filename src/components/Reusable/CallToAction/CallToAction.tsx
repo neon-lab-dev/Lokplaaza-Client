@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 interface CallToActionProps {
   image: StaticImageData | string;
@@ -13,7 +15,9 @@ const CallToAction: React.FC<CallToActionProps> = ({
   return (
     <div className={`relative w-full ${height}`}>
       {/* Background Image */}
+      <Link href={"/contact-us"}>
       <Image src={image} alt="cta-banner" fill priority />
+      </Link>
     </div>
   );
 };
