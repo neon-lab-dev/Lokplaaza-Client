@@ -10,7 +10,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       {
-        (pathname.startsWith("/products") || pathname.startsWith("/cart") || pathname.startsWith("/virtual-walk-in") || pathname.startsWith("/blog")) && <Navbar />
+        (pathname.startsWith("/products") || pathname.startsWith("/cart") || pathname.startsWith("/virtual-walk-in") || pathname.startsWith("/blog") || pathname.startsWith("/contact-us")) && <Navbar />
       }
       {children}
       <Footer />

@@ -38,9 +38,9 @@ const Footer = () => {
       heading: "Company",
       links: [
         { label: "About Us", path: "/" },
-        { label: "Contact", path: "/" },
+        { label: "Contact Us", path: "/contact-us" },
         { label: "Careers", path: "/" },
-        { label: "Blog", path: "/" },
+        { label: "Blog", path: "/blog" },
       ],
     },
     {

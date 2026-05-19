@@ -10,15 +10,16 @@ interface TextareaProps {
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isRequired?: boolean;
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, name, placeholder = "", rows = 4, error, ...rest }, ref) => {
+  ({ label, name, placeholder = "", rows = 4, isRequired = true, error, ...rest }, ref) => {
     return (
       <div className="flex flex-col gap-2 font-Satoshi">
-        <label htmlFor={name} className="text-neutral-65">
+         <label htmlFor={name} className="text-neutral-05">
           {label}
-          <span className="text-red-600"> *</span>
+          {isRequired && <span className="text-red-600"> *</span>}
         </label>
         <textarea
           id={name}

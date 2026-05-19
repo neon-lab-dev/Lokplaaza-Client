@@ -120,6 +120,7 @@ const Navbar = () => {
                     pathname.startsWith("/products") ||
                     pathname.startsWith("/cart") ||
                     pathname.startsWith("/blog") ||
+                    pathname.startsWith("/contact-us") ||
                     pathname.startsWith("/virtual-walk-in")
                       ? "text-neutral-05"
                       : "text-neutral-10"
