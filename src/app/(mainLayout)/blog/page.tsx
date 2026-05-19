@@ -90,7 +90,7 @@ const Blog = () => {
             className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             {/* Blog Image */}
-            <Link href={`/blog/${post.slug}`} className="block overflow-hidden">
+            <Link href={`/blog/${post.id}`} className="block overflow-hidden">
               <div className="relative h-56 w-full bg-gray-200">
                 
                 <Image
@@ -113,7 +113,7 @@ const Blog = () => {
               {/* Title */}
               <h2 className="text-xl font-bold text-gray-900 mb-3">
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.id}`}
                   className="hover:text-primary transition-colors line-clamp-2"
                 >
                   {post.title}
@@ -125,7 +125,7 @@ const Blog = () => {
 
               {/* Read More Link */}
               <Link
-                href={`/blog/${post.slug}`}
+                href={`/blog/${post.id}`}
                 className="inline-flex items-center gap-1 text-primary font-medium hover:gap-2 transition-all duration-300"
               >
                 Read More
