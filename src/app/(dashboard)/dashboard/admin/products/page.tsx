@@ -84,16 +84,18 @@ const AllProducts = () => {
                   {color.sizes.map((size: any) => (
                     <div
                       key={size._id}
-                      className="flex items-center text-sm gap-2"
+                      className="flex flex-col text-sm gap-2"
                     >
-                      <span className="w-12">{size.size}</span>
-                      <span className="line-through text-red-500">
+                      <p className="w-12">{size.size}</p>
+                      <div className="flex items-center text-sm gap-2">
+                        <p className="line-through text-red-500">
                         {size.basePrice}
-                      </span>
-                      <span>→</span>
-                      <span className="text-green-600 font-semibold">
+                      </p>
+                      <p>→</p>
+                      <p className="text-green-600 font-semibold">
                         {size.discountedPrice}
-                      </span>
+                      </p>
+                      </div>
                     </div>
                   ))}
                 </div>

@@ -3,11 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import {
-  useForm,
-  FormProvider,
-  useFieldArray,
-} from "react-hook-form";
+import { useForm, FormProvider, useFieldArray } from "react-hook-form";
 import { useState } from "react";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
@@ -18,26 +14,19 @@ import toast from "react-hot-toast";
 import { useAddProductMutation } from "@/redux/features/Product/productApi";
 import { FiTrash2 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import { useGetAllCategoriesQuery } from "@/redux/features/Category/categoryApi";
 
 const AddProduct = () => {
   const router = useRouter();
 
+  const { data: categories } = useGetAllCategoriesQuery({
+    page: 1,
+    limit: 200,
+  });
+  const allCategoryNames = categories?.data?.categories?.map(
+    (category: any) => category.name,
+  );
   const [addProduct, { isLoading }] = useAddProductMutation();
-
-  const categories = [
-    "Bed",
-    "Mattress",
-    "Bed Frame",
-    "Nightstand",
-    "Dresser",
-    "Wardrobe",
-    "Sofa",
-    "Dining Table",
-    "Dining Chair",
-    "Kitchen Cabinet",
-    "Coffee Table",
-    "Bookshelf",
-  ];
 
   const [previews, setPreviews] = useState<string[]>([]);
 
@@ -80,7 +69,7 @@ const AddProduct = () => {
   });
 
   const handleSubmitProduct = async (
-    data: any & { imageUrls?: { file?: File | string }[] }
+    data: any & { imageUrls?: { file?: File | string }[] },
   ) => {
     const formData = new FormData();
 
@@ -91,29 +80,29 @@ const AddProduct = () => {
     formData.append("description", data.description);
     if (data.productStory) formData.append("productStory", data.productStory);
 
-    data.colors?.forEach((color:any, colorIndex:number) => {
+    data.colors?.forEach((color: any, colorIndex: number) => {
       formData.append(`colors[${colorIndex}][colorName]`, color.colorName);
-      color.sizes.forEach((size:any, sizeIndex:number) => {
+      color.sizes.forEach((size: any, sizeIndex: number) => {
         formData.append(
           `colors[${colorIndex}][sizes][${sizeIndex}][size]`,
-          size.size
+          size.size,
         );
         formData.append(
           `colors[${colorIndex}][sizes][${sizeIndex}][quantity]`,
-          size.quantity.toString()
+          size.quantity.toString(),
         );
         formData.append(
           `colors[${colorIndex}][sizes][${sizeIndex}][basePrice]`,
-          size.basePrice.toString()
+          size.basePrice.toString(),
         );
         formData.append(
           `colors[${colorIndex}][sizes][${sizeIndex}][discountedPrice]`,
-          size.discountedPrice.toString()
+          size.discountedPrice.toString(),
         );
       });
     });
 
-    data.imageUrls?.forEach((imgObj:any) => {
+    data.imageUrls?.forEach((imgObj: any) => {
       if (imgObj.file instanceof File) {
         formData.append("files", imgObj.file);
       }
@@ -145,7 +134,7 @@ const AddProduct = () => {
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    index: number
+    index: number,
   ) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -182,7 +171,7 @@ const AddProduct = () => {
                 required: "Category is required",
               })}
               error={errors?.category}
-              options={categories || []}
+              options={allCategoryNames || []}
             />
           </div>
           {/* Description */}
@@ -233,7 +222,7 @@ const AddProduct = () => {
                       onClick={() => {
                         removeImage(index);
                         const newPreviews = previews.filter(
-                          (_, i) => i !== index
+                          (_, i) => i !== index,
                         );
                         setPreviews(newPreviews);
                       }}
