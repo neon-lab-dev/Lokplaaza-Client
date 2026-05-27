@@ -9,7 +9,9 @@ import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.webp";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
 import GotInspiration from "../assets/Images/gotInspiration.png";
 import TryARView from "../assets/Images/TryARView.png";
-import offerBanner from "../assets/Images/offer-banner.webp";
+import offerBannerDesktop from "../assets/Images/offer-banner-desktop.webp";
+import offerBannerTab from "../assets/Images/offer-banner-tab.webp";
+import offerBannerMobile from "../assets/Images/offer-banner-mobile.webp";
 import storeLocation from "../assets/Images/storeLocation.jpg";
 import authImg from "../assets/Images/auth.webp";
 import talkToDesignExpert from "../assets/Images/talk-to-design-expert.webp";
@@ -93,7 +95,9 @@ export const IMAGES = {
   ShopByRoom,
   GotInspiration,
   TryARView,
-  offerBanner,
+  offerBannerDesktop,
+  offerBannerTab,
+  offerBannerMobile,
   storeLocation,
   authImg,
   modularKitchenHero,

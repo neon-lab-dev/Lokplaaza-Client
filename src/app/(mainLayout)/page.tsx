@@ -11,9 +11,9 @@ import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSection";
-import Accessories from "@/components/HomePage/Accessories/Accessories";
-import Appliances from "@/components/HomePage/Appliances/Appliances";
-import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
+// import Accessories from "@/components/HomePage/Accessories/Accessories";
+// import Appliances from "@/components/HomePage/Appliances/Appliances";
+// import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import TalkToDesignExpert from "@/components/ModularKitchenPage/TalkToDesignExpert/TalkToDesignExpert";
@@ -25,15 +25,34 @@ export default function Home() {
       <HeroSection />
       <ProductsSection />
       <Container>
-        <div className="relative h-100 md:h-125 w-full rounded-2xl">
-          <Link href={"/contact-us"}><Image
-            src={IMAGES.HotSellerCTAbg}
-            alt="hotsellers"
-            fill
-            priority
-            className="rounded-2xl"
-          /></Link>
-          
+        <div className="relative w-full h-45 md:h-62 lg:h-86.5 rounded-2xl">
+          <Link href={"/contact-us"} className="h-45 w-full">
+            <Image
+              src={IMAGES.offerBannerMobile}
+              alt="hotsellers"
+              fill
+              priority
+              className="rounded-2xl"
+            />
+          </Link>
+          <Link href={"/contact-us"} className="hidden md:block lg:hidden h-62">
+            <Image
+              src={IMAGES.offerBannerTab}
+              alt="hotsellers"
+              fill
+              priority
+              className="rounded-2xl"
+            />
+          </Link>
+          <Link href={"/contact-us"} className="hidden lg:block h-86.5">
+            <Image
+              src={IMAGES.offerBannerDesktop}
+              alt="hotsellers"
+              fill
+              priority
+              className="rounded-2xl"
+            />
+          </Link>
         </div>
       </Container>
       <ShopByRoom />
@@ -41,13 +60,15 @@ export default function Home() {
       <VirtualWalk />
       <TalkToDesignExpert />
       <TryARView />
-      <CallToAction
-        image={IMAGES.offerBanner}
-        height="h-[250px] md:h-[350px]"
-      />
-      <ModularKitchen />
+      {/* <Link href={"/contact-us"} className="hidden md:block lg:hidden">
+      <Image src={IMAGES.offerBannerTab} alt="cta-banner" />
+      </Link>
+      <Link href={"/contact-us"} className="hidden lg:block">
+      <Image src={IMAGES.offerBannerDesktop} alt="cta-banner" />
+      </Link> */}
+      {/* <ModularKitchen />
       <Appliances />
-      <Accessories />
+      <Accessories /> */}
       <CallToAction
         image={IMAGES.modularKitchen}
         height="h-[250px] md:h-[350px]"

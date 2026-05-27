@@ -104,7 +104,7 @@ const Navbar = () => {
             <Image
               src={IMAGES.lokplaazaLogo}
               alt="lokplaaza"
-              className="h-9 md:h-7 w-[109px] md:w-[83px]"
+              className="h-14 md:h-20 w-[130px] md:w-[180px]"
             />
           </Link>
 
