@@ -14,7 +14,7 @@ import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSecti
 // import Accessories from "@/components/HomePage/Accessories/Accessories";
 // import Appliances from "@/components/HomePage/Appliances/Appliances";
 // import ModularKitchen from "@/components/HomePage/ModularKitchen/ModularKitchen";
-import Container from "@/components/Reusable/Container/Container";
+// import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
 import TalkToDesignExpert from "@/components/ModularKitchenPage/TalkToDesignExpert/TalkToDesignExpert";
 import Link from "next/link";
@@ -24,14 +24,11 @@ export default function Home() {
     <div>
       <HeroSection />
       <ProductsSection />
-      <Container>
         <div className="relative w-full h-45 md:h-62 lg:h-86.5 rounded-2xl">
           <Link href={"/contact-us"} className="h-45 w-full">
             <Image
               src={IMAGES.offerBannerMobile}
               alt="hotsellers"
-              fill
-              priority
               className="rounded-2xl"
             />
           </Link>
@@ -54,7 +51,6 @@ export default function Home() {
             />
           </Link>
         </div>
-      </Container>
       <ShopByRoom />
       <GotInspiration />
       <VirtualWalk />
