@@ -6,11 +6,13 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import Button from "@/components/Reusable/Button/Button";
 import Textarea from "@/components/Reusable/TextArea/TextArea";
+import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
 
 interface TFormData {
   name: string;
   phoneNumber: string;
   email: string;
+  priceRange: string;
   message?: string;
 }
 
@@ -26,15 +28,15 @@ const ContactUsForm = () => {
 
   const handleContactForm = async (data: TFormData) => {
     setIsLoading(true);
-    
+
     // Simulate API call
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log("Contact Form Data:", data);
-      
+
       // Show success message (you can replace with toast notification)
       alert("Thank you for reaching out! We'll get back to you soon.");
-      
+
       // Reset form
       reset();
     } catch (error) {
@@ -44,6 +46,8 @@ const ContactUsForm = () => {
       setIsLoading(false);
     }
   };
+
+  const priceRanges = ["₹5000-₹10000", "₹10000-₹15000", "₹15000-₹20000", "₹20000-₹25000", "₹25000-₹35000", "₹35000-₹50000", "₹50000-Above"];
 
   return (
     <div className="py-16 md:py-24">
@@ -55,8 +59,9 @@ const ContactUsForm = () => {
               Send Us a Message
             </h2>
             <p className="text-[#4a4a4a] leading-relaxed">
-              Fill out the form below and our team will get back to you within 24 hours. 
-              We're here to help with any questions about our products, orders, or services.
+              Fill out the form below and our team will get back to you within
+              24 hours. We're here to help with any questions about our
+              products, orders, or services.
             </p>
           </div>
 
@@ -64,52 +69,90 @@ const ContactUsForm = () => {
           <div className="space-y-4 pt-4">
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 bg-[#004f2f] rounded-full flex items-center justify-center mt-0.5">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                <svg
+                  className="w-3 h-3 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div>
                 <h3 className="font-semibold text-[#0d0d0d]">Quick Response</h3>
-                <p className="text-sm text-[#4a4a4a]">We typically reply within 24 hours</p>
+                <p className="text-sm text-[#4a4a4a]">
+                  We typically reply within 24 hours
+                </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 bg-[#004f2f] rounded-full flex items-center justify-center mt-0.5">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                <svg
+                  className="w-3 h-3 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div>
                 <h3 className="font-semibold text-[#0d0d0d]">Expert Support</h3>
-                <p className="text-sm text-[#4a4a4a]">Our furniture experts are here to help</p>
+                <p className="text-sm text-[#4a4a4a]">
+                  Our furniture experts are here to help
+                </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 bg-[#004f2f] rounded-full flex items-center justify-center mt-0.5">
-                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                <svg
+                  className="w-3 h-3 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-[#0d0d0d]">Free Consultation</h3>
-                <p className="text-sm text-[#4a4a4a]">Get expert advice on your space</p>
+                <h3 className="font-semibold text-[#0d0d0d]">
+                  Free Consultation
+                </h3>
+                <p className="text-sm text-[#4a4a4a]">
+                  Get expert advice on your space
+                </p>
               </div>
             </div>
           </div>
 
           {/* Business Hours */}
           <div className="bg-[#f5f5f5] rounded-xl p-6">
-            <h3 className="font-semibold text-[#0d0d0d] mb-3">Business Hours</h3>
+            <h3 className="font-semibold text-[#0d0d0d] mb-3">
+              Business Hours
+            </h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-[#4a4a4a]">Monday - Friday</span>
-                <span className="text-[#0d0d0d] font-medium">9:00 AM - 6:00 PM</span>
+                <span className="text-[#0d0d0d] font-medium">
+                  9:00 AM - 6:00 PM
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#4a4a4a]">Saturday</span>
-                <span className="text-[#0d0d0d] font-medium">10:00 AM - 4:00 PM</span>
+                <span className="text-[#0d0d0d] font-medium">
+                  10:00 AM - 4:00 PM
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#4a4a4a]">Sunday</span>
@@ -121,7 +164,10 @@ const ContactUsForm = () => {
 
         {/* Right Side - Form */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-[#ebebeb]">
-          <form onSubmit={handleSubmit(handleContactForm)} className="space-y-5">
+          <form
+            onSubmit={handleSubmit(handleContactForm)}
+            className="space-y-5"
+          >
             {/* Name Field */}
             <TextInput
               label="Full Name"
@@ -137,7 +183,9 @@ const ContactUsForm = () => {
               placeholder="Enter your phone number"
               type="tel"
               error={errors.phoneNumber}
-              {...register("phoneNumber", { required: "Phone number is required" })}
+              {...register("phoneNumber", {
+                required: "Phone number is required",
+              })}
             />
 
             {/* Email Field */}
@@ -146,14 +194,24 @@ const ContactUsForm = () => {
               placeholder="Enter your email address"
               type="email"
               error={errors.email}
-              {...register("email", { 
+              {...register("email", {
                 required: "Email is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address"
-                }
+                  message: "Invalid email address",
+                },
               })}
               isRequired={false}
+            />
+
+            {/* Price Range Field */}
+            <SelectDropdown
+              label="Price Range"
+              {...register(`priceRange`, {
+                required: "Category is required",
+              })}
+              error={errors?.priceRange}
+              options={priceRanges || []}
             />
 
             {/* Message Field (Optional) */}
@@ -170,7 +228,6 @@ const ContactUsForm = () => {
             <Button
               label={isLoading ? "Sending..." : "Send Message"}
               bgColor="bg-[#004f2f]"
-              
               className="w-full hover:bg-[#007143] transition-all duration-300"
               isDisabled={isLoading}
             />
