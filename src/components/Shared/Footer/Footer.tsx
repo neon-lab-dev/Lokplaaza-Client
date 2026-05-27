@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   FaInstagram,
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
