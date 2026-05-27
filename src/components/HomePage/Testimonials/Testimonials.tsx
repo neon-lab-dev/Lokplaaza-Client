@@ -39,7 +39,7 @@ const Testimonials = () => {
           title="Our Client Reviews"
           alignClass="text-center"
         />
-        <div className="flex flex-col xl:flex-row justify-center items-center gap-12 mt-12">
+        <div className="flex flex-col xl:flex-row justify-center items-center gap-6 lg:gap-12 mt-12">
           {testimonials.map((t, index) => (
             <TestimonialCard
               key={index}
