@@ -7,6 +7,7 @@ import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -46,10 +47,10 @@ const Footer = () => {
     {
       heading: "Follow Us",
       links: [
-        { label: "Instagram", path: "/", icon: FaInstagram },
-        { label: "Facebook", path: "/", icon: FaFacebookF },
-        { label: "Twitter", path: "/", icon: FaTwitter },
-        { label: "LinkedIn", path: "/", icon: FaLinkedinIn },
+        { label: "Instagram", path: "https://www.instagram.com/lokplaazafurnituresgwalior?igsh=bjh6ZmQwaG1rM2Nw", icon: FaInstagram },
+        { label: "Facebook", path: "https://www.facebook.com/share/14hQjwfm3cf/?mibextid=wwXIfr", icon: FaFacebookF },
+        { label: "Whatsapp", path: "https://whatsapp.com/channel/0029VbCJDhRJP210Nen80S2Q", icon: FaWhatsapp },
+        { label: "LinkedIn", path: "https://www.linkedin.com/company/lokplaaza-furniture/posts/", icon: FaLinkedinIn },
       ],
     },
   ];
@@ -135,6 +136,7 @@ const Footer = () => {
                       <li key={link.label}>
                         <Link
                           href={link.path}
+                          target="_blank"
                           className="text-neutral-600 hover:text-success-600 transition-colors duration-200 flex items-center gap-2 group"
                         >
                           {Icon && (
