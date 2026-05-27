@@ -64,7 +64,7 @@ import maestro from "../assets/Icons/payment-options/maestro.svg";
 
 
 import hamburgerMenu from "../assets/Icons/hambuger-menu.svg";
-import cart from "../assets/Icons/cart.png";
+import cart from "../assets/Icons/cart.svg";
 import rightArrow from "../assets/Icons/arrow-sm-right.svg";
 import downArrow from "../assets/Icons/arrow-sm-down.svg";
 import rightArrowRed from "../assets/Icons/arrow-sm-right1.svg";

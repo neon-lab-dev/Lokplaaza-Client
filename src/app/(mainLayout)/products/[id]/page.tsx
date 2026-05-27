@@ -136,7 +136,6 @@ const ProductDetails = () => {
   return (
     <Container>
       <div className="font-Satoshi my-10">
-        
         <div className="flex flex-col lg:flex-row gap-6 xl:gap-10 2xl:gap-12 mt-6 lg:mt-8">
           {/* LEFT SIDE - IMAGE SECTION */}
           <div className="w-full lg:w-[50%]">
@@ -190,10 +189,7 @@ const ProductDetails = () => {
               </button>
             </div>
             <p className="text-neutral-40 text-sm mt-3 leading-6">
-              {/* {product.description} */}
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum,
-              mollitia suscipit! Animi ea fugit ratione a adipisci veritatis,
-              deserunt nihil?
+              {product.description}
             </p>
 
             <h2 className="text-neutral-20 font-bold leading-8 mt-5">
@@ -268,26 +264,30 @@ const ProductDetails = () => {
               </div>
             )}
 
-            <Button
-              label="Customize Now"
-              icon={ICONS.rightArrow}
-              className="w-full mt-7"
-              onClick={() => router.push("/customizations")}
-            />
+            <div className="flex flex-col md:flex-row gap-4">
+              <Button
+                label="Customize Now"
+                icon={ICONS.rightArrow}
+                className="w-full mt-7"
+                onClick={() => router.push("/customizations")}
+              />
+              <Button
+                label="Add To Cart"
+                icon={ICONS.cart}
+                className="w-full mt-7"
+                onClick={() => handleAddToCartAndRedirect()}
+                bgColor="bg-neutral-10"
+                textColor="text-neutral-05"
+              />
+            </div>
             {/* <Button
-              label="Buy Now"
-              icon={ICONS.rightArrow}
-              className="w-full mt-7"
-              onClick={() => handleAddToCartAndRedirect()}
-            /> */}
-            <Button
               label="Buy Now"
               icon={ICONS.rightArrowRed}
               className="w-full mt-7"
               bgColor="bg-neutral-10"
               textColor="text-neutral-05"
               onClick={() => handleAddToCartAndRedirect()}
-            />
+            /> */}
           </div>
         </div>
       </div>
