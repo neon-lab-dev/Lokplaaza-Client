@@ -105,7 +105,7 @@ const ContactUsHero = () => {
               </svg>
             </div>
             <h3 className="text-white font-semibold mb-1">Visit Us</h3>
-            <p className="text-white/80 text-sm">123 Furniture St, NYC 10001</p>
+            <p className="text-white/80 text-sm">Jinsi Rd Number 1, Jayendraganj, Lashkar, Gwalior, Madhya Pradesh 474009, India</p>
           </div>
         </div>
       </div>
