@@ -290,7 +290,7 @@ const Navbar = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-40 lg:hidden flex flex-col"
+              className="fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-40 lg:hidden flex flex-col"
             >
               {/* Navigation Links */}
               <div className="flex-1 overflow-y-auto py-8 px-6 mt-28">
