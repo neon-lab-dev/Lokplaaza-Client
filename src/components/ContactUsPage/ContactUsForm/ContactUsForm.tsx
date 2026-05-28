@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useRef, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import Button from "@/components/Reusable/Button/Button";
 import Textarea from "@/components/Reusable/TextArea/TextArea";
 import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 interface TFormData {
   name: string;
@@ -17,6 +18,7 @@ interface TFormData {
 }
 
 const ContactUsForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const {
     register,
     handleSubmit,
@@ -24,30 +26,47 @@ const ContactUsForm = () => {
     reset,
   } = useForm<TFormData>();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleContactForm = async (data: TFormData) => {
+  // Service ID- service_wbgpc4c
+  // Template Id - template_wy2hlbf
+
+  const sendEmail: SubmitHandler<TFormData> = async () => {
+    if (!formRef.current) return;
+
     setIsLoading(true);
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Contact Form Data:", data);
+      await emailjs.sendForm(
+        "service_wbgpc4c",
+        "template_wy2hlbf",
+        formRef.current,
+        "0e4ApBaQ3qmzmh73w"
+      );
 
-      // Show success message (you can replace with toast notification)
-      alert("Thank you for reaching out! We'll get back to you soon.");
+      toast.success(
+        "Thanks for your interest. Our support team will contact you soon!",
+        { duration: 3000 }
+      );
 
-      // Reset form
       reset();
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong. Please try again.");
+      console.error(error);
+      toast.error("Failed! Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const priceRanges = ["₹5000-₹10000", "₹10000-₹15000", "₹15000-₹20000", "₹20000-₹25000", "₹25000-₹35000", "₹35000-₹50000", "₹50000-Above"];
+  const priceRanges = [
+    "₹5000-₹10000",
+    "₹10000-₹15000",
+    "₹15000-₹20000",
+    "₹20000-₹25000",
+    "₹25000-₹35000",
+    "₹35000-₹50000",
+    "₹50000-Above",
+  ];
 
   return (
     <div className="py-16 md:py-24">
@@ -165,7 +184,8 @@ const ContactUsForm = () => {
         {/* Right Side - Form */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-[#ebebeb]">
           <form
-            onSubmit={handleSubmit(handleContactForm)}
+          ref={formRef}
+            onSubmit={handleSubmit(sendEmail)}
             className="space-y-5"
           >
             {/* Name Field */}
