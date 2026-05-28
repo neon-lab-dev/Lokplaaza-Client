@@ -239,7 +239,7 @@ const ProductDetails = () => {
             {/* Size Selector */}
             {selectedColor && (
               <div className="mt-6">
-                <p className="font-medium mb-2">Choose Size:</p>
+                <p className="font-medium mb-2">Size:</p>
                 <div className="flex gap-3 flex-wrap">
                   {selectedColor.sizes.map((size) => (
                     <button
