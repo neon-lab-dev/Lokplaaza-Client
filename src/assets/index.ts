@@ -1,4 +1,4 @@
-import lokplaazaLogo from "../assets/Images/Lokplaazalogo.png";
+import lokplaazaLogo from "../assets/Images/logo.jpg";
 import heroSofaSmall from "../assets/Images/hero-smallscreen.png";
 import heroSofa from "../assets/Images/heroSofa.png";
 import heroImgGreen from "../assets/Images/hero-img-green.webp";
@@ -37,6 +37,8 @@ import diningRoomHero from "../assets/Images/diningRoomHero.webp";
 import lShapedKitchen from "../assets/Images/l-shaped-modular-kitchen.webp";
 import uShapedKitchen from "../assets/Images/u-shaped-modular-kitchen.webp";
 import islandKitchen from "../assets/Images/island-kitchen.webp";
+import parallelKitchen from "../assets/Images/parallel-kitchen.webp";
+import straightKitchen from "../assets/Images/straight-kitchen.webp";
 import sofa from "../assets/Images/dummySofa.png"
 import bedroom1 from "../assets/Images/rooms-pages/bedroom-01.webp";
 import bedroom2 from "../assets/Images/rooms-pages/bedroom-02.webp";
@@ -128,6 +130,8 @@ export const IMAGES = {
   lShapedKitchen,
   uShapedKitchen,
   islandKitchen,
+  parallelKitchen,
+  straightKitchen,
   flexible,
   easyToAssemble,
   customizable,

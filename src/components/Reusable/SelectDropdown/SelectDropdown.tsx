@@ -27,12 +27,12 @@ const SelectDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
           ref={ref}
           defaultChecked={selected}
           required={isRequired}
-          className={`px-[18px] py-3.5 rounded-lg  border focus:outline-none focus:border-primary-10 transition duration-300 ${
+          className={`px-[18px] py-3.5 rounded-lg  border focus:outline-none focus:border-primary-10 text-neutral-05/70 transition duration-300 ${
             isDisabled ? "bg-neutral-10/30" : "bg-neutral-70"
           } ${error ? "border-red-500" : "border-neutral-35"}`}
           {...rest}
         >
-          <option value="" disabled selected>
+          <option value="" disabled selected className="text-neutral-35">
             Select {label}
           </option>
           {options.map((option, index) => (

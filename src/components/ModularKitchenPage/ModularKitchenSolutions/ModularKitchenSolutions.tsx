@@ -32,6 +32,30 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
         "Central island designed for cooking, gathering, and creating memorable moments together.",
       features: ["Social layout", "Additional seating", "Prep & storage"],
     },
+    {
+      image: IMAGES.parallelKitchen,
+      title: "Parallel Modular Kitchen",
+      description:
+        "Optimized for corner spaces with maximum storage and efficient workflow in compact areas.",
+      features: [
+        "Corner optimization",
+        "Maximum storage",
+        "Efficient workflow",
+        "Space-saving design",
+      ],
+    },
+    {
+      image: IMAGES.straightKitchen,
+      title: "Straight Modular Kitchen",
+      description:
+        "Spacious layout with ample counter space for comfortable meal preparation and cooking.",
+      features: [
+        "Ample counter space",
+        "Linear workflow",
+        "Easy access",
+        "Modern simplicity",
+      ],
+    },
   ];
 
   console.log(data);

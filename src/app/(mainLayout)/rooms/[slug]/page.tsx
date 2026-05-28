@@ -26,15 +26,12 @@ const RoomPage = () => {
     <div className="bg-neutral-10">
       <ModularKitchenHero data={room.hero} />
 
-      <WhyChooseLokplaaza data={room.consultation} />
-
       <ModularKitchenSolutions data={room.solutions} slug={slug} />
+      <WhyChooseLokplaaza data={room.consultation} />
 
       <StepsOfCustomizedKitchen />
 
-      <StartDreamKitchenBanner
-        data={room.startPlanning}
-      />
+      <StartDreamKitchenBanner data={room.startPlanning} />
 
       {/* <BenefitsOfModularKitchen /> */}
       {/* <OurCollection/> */}
