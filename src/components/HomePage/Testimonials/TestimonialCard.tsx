@@ -51,12 +51,12 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   const initials = getInitials(name);
   const avatarColor = getAvatarColor(name);
   return (
-    <div className="relative h-[380px] w-full md:w-full xl:w-[380px] rounded-2xl overflow-hidden shadow-testimonial-card">
+    <div className="relative h-[400px] w-full md:w-full rounded-2xl overflow-hidden shadow-testimonial-card">
       {/* Background Image */}
       <Image
         src={image}
         alt="Testimonials"
-        className="w-full h-[380px] object-cover"
+        className="w-full h-full object-cover"
       />
 
       <div className="absolute top-0 bottom-0 bg-neutral-05/10 w-full h-full"></div>
@@ -64,7 +64,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       {/* Content Overlay */}
       <div className="absolute bottom-8 left-[18px] right-[18px] z-20 bg-neutral-45 backdrop-blur-2xl p-4 rounded-2xl">
         {/* Avatar */}
-        <div className="absolute -top-10 left-0 right-0 flex items-center justify-center">
+        <div className="absolute -top-7 left-0 right-0 flex items-center justify-center">
           <div className="relative">
             {/* Outer ring/circle */}
             <div className={`size-12 rounded-full ${avatarColor} flex items-center justify-center shadow-md border-4 border-neutral-50`}>
@@ -76,7 +76,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </div>
 
         {/* Text Content */}
-        <div className="flex flex-col items-center justify-center text-center ">
+        <div className="flex flex-col items-center justify-center text-center mt-4">
           <h3 className="font-medium text-lg text-neutral-20">{name}</h3>
           <h5 className="text-sm font-light text-neutral-55 mb-2">{position}</h5>
           <p className=" font-light text-neutral-20">{message}</p>

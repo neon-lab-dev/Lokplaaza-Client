@@ -3,7 +3,6 @@ import { IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Heading from "@/components/Reusable/Heading/Heading";
 import Image from "next/image";
-import Link from "next/link";
 
 const ModularKitchenSolutions = ({ data, slug }: any) => {
   const modularKitchenSolutions = [
@@ -72,9 +71,9 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
 
           {/* Kitchen Cards Grid */}
           {slug === "modular-kitchen" ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div  className="flex flex-wrap justify-center gap-8">
               {modularKitchenSolutions?.map((item) => (
-                <Link key={item?.title} href={"/"} className="group relative">
+                <div key={item?.title}  className="group relative w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] max-w-[400px]">
                   {/* Card Container */}
                   <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full border border-neutral-200 hover:border-success-100">
                     {/* Image Container with Overlay */}
@@ -154,7 +153,7 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
 
                   {/* Decorative Element */}
                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-success-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </Link>
+                </div>
               ))}
             </div>
           ) : (

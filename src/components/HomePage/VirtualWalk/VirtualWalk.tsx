@@ -11,7 +11,7 @@ const VirtualWalk = () => {
   return (
     <div className="py-16 md:py-24 bg-linear-to-b from-white via-neutral-50 to-white">
       <Container>
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-0 lg:gap-16">
           {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -59,6 +59,22 @@ const VirtualWalk = () => {
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-success-100 rounded-full -z-10"></div>
               <div className="absolute -top-4 -left-4 w-16 h-16 bg-neutral-100 rounded-full -z-10"></div>
             </div>
+            <Link href={"/virtual-walk-in"} className="block lg:hidden mt-5">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
+                    label="Start Virtual Walk"
+                    bgColor="bg-primary-05"
+                    textColor="text-white"
+                    icon={ICONS.rightArrow}
+                    onClick={() => {
+                      console.log("Virtual walk started!");
+                    }}
+                  />
+                </motion.div>
+              </Link>
           </motion.div>
 
           {/* Content Section */}
@@ -146,7 +162,7 @@ const VirtualWalk = () => {
               </div>
 
               {/* CTA Button */}
-              <Link href={"/virtual-walk-in"}>
+              <Link href={"/virtual-walk-in"} className="hidden lg:block">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
