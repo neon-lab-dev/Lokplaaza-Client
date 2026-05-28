@@ -34,7 +34,7 @@ const ProductCard: React.FC<TProps> = ({ product }) => {
     <Link href={`/products/${product._id}`} className="block group w-full">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
         {/* Image Container */}
-        <div className="relative size-[300px] overflow-hidden bg-gray-50">
+        <div className="relative w-full h-75 overflow-hidden bg-gray-50">
           <Image
             src={product.imageUrls[0]}
             alt={product.name}

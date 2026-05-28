@@ -190,7 +190,7 @@ const ShopByRoom = () => {
 
                 {/* Rooms Grid */}
                 <div className="mt-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 md:grid-cols-2 gap-2 md:gap-6">
                     {categories.map((room, index) => (
                       <Link key={room.room} href={room.link}>
                         <motion.div
@@ -220,19 +220,19 @@ const ShopByRoom = () => {
                             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-100 transition-opacity duration-300" />
 
                             {/* Room info */}
-                            <div className="absolute bottom-3 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <div className="absolute bottom-3 left-0 right-0 p-3 md:p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                               <div className="flex items-center justify-between">
                                 <div>
-                                  <h3 className="text-2xl font-bold mb-1">
+                                  <h3 className="text-sm md:text-2xl font-bold mb-1">
                                     {room.room}
                                   </h3>
-                                  <p className="text-sm opacity-90">
+                                  <p className="hidden md:block text-sm opacity-90">
                                     {room.description}
                                   </p>
                                 </div>
                                 <motion.div
                                   whileHover={{ scale: 1.1 }}
-                                  className="w-10 h-10 rounded-full bg-white text-success-05 flex items-center justify-center cursor-pointer"
+                                  className="size-5 md:size-10 rounded-full bg-white text-success-05 flex items-center justify-center cursor-pointer"
                                 >
                                   <RxArrowTopRight />
                                 </motion.div>
@@ -240,7 +240,7 @@ const ShopByRoom = () => {
                             </div>
 
                             {/* Top badge */}
-                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                            <div className="hidden md:absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
                               <span className="text-primary-05 font-semibold text-sm">
                                 Popular
                               </span>

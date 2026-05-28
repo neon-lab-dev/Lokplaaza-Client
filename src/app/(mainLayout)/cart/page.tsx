@@ -129,9 +129,9 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <div className="py-14 pb-28 flex gap-20 justify-between">
+          <div className="py-14 pb-28 flex flex-col lg:flex-row gap-12 lg:gap-20 justify-between">
             {/* Cart items list */}
-            <div className="space-y-6 w-[60%]">
+            <div className="space-y-6 w-full lg:w-[60%]">
               {cartItems.map((item: any) => (
                 <div
                   key={item?.productId}
@@ -175,7 +175,7 @@ const Cart = () => {
             </div>
 
             {/* Checkout button */}
-            <div className="flex flex-col bg-white shadow-xl p-6 w-[40%] rounded-xl font-Satoshi">
+            <div className="flex flex-col bg-white shadow-xl p-6 w-full lg:w-[40%] rounded-xl font-Satoshi">
               {/* Price Breakdown */}
               <p className=" text-neutral-20 text-xl font-bold capitalize pb-3 border-b border-neutral-35">
                 Price Breakdown

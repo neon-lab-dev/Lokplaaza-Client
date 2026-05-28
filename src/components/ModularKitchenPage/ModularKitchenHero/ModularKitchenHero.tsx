@@ -5,7 +5,7 @@ import Container from "@/components/Reusable/Container/Container";
 import Navbar from "@/components/Shared/Navbar/Navbar";
 import Image from "next/image";
 
-const ModularKitchenHero = ({data} : any) => {
+const ModularKitchenHero = ({ data }: any) => {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
@@ -28,17 +28,27 @@ const ModularKitchenHero = ({data} : any) => {
       {/* Hero Content - Centered */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <Container>
-          <div className="text-center space-y-6 max-w-[700px] mx-auto">
+          <div className="text-center space-y-6 max-w-175 mx-auto">
             <h3 className="text-[32px] lg:text-[45px] 2xl:text-[61px] font-semibold leading-tight text-white">
               {data.heading}
             </h3>
             <div className="flex justify-center">
               <Button
-                label={data.buttonLabel}
+                label={"Explore Our Collection"}
                 bgColor="bg-success-05"
                 textColor="text-success-10"
                 icon={ICONS.rightArrow}
                 className="w-fit"
+                onClick={() => {
+                  const collectionSection =
+                    document.getElementById("collection");
+                  if (collectionSection) {
+                    collectionSection.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }}
               />
             </div>
           </div>

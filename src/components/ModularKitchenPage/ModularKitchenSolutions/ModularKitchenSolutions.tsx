@@ -10,13 +10,15 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
     {
       image: IMAGES.lShapedKitchen,
       title: "L-Shaped Modular Kitchen",
-      description: "Optimized for corner spaces with maximum storage",
+      description:
+        "Smart corner design offering maximum storage without wasting any space.",
       features: ["Corner optimization", "Smart storage", "Efficient workflow"],
     },
     {
       image: IMAGES.uShapedKitchen,
       title: "U-Shaped Modular Kitchen",
-      description: "Spacious layout with ample counter space",
+      description:
+        "Generous layout with plenty of counter space for effortless meal preparation.",
       features: [
         "Maximum workspace",
         "Three-sided layout",
@@ -26,7 +28,8 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
     {
       image: IMAGES.islandKitchen,
       title: "Island Modular Kitchen",
-      description: "Central island for cooking and socializing",
+      description:
+        "Central island designed for cooking, gathering, and creating memorable moments together.",
       features: ["Social layout", "Additional seating", "Prep & storage"],
     },
   ];
@@ -84,7 +87,7 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
                           {item.title}
                         </h3>
                         {/* Arrow Icon */}
-                        <div className="w-10 h-10 rounded-full bg-success-50 flex items-center justify-center group-hover:bg-success-100 transition-colors">
+                        {/* <div className="w-10 h-10 rounded-full bg-success-50 flex items-center justify-center group-hover:bg-success-100 transition-colors">
                           <svg
                             className="w-5 h-5 text-success-600 transform group-hover:translate-x-1 transition-transform"
                             fill="none"
@@ -98,7 +101,7 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
                               d="M14 5l7 7m0 0l-7 7m7-7H3"
                             />
                           </svg>
-                        </div>
+                        </div> */}
                       </div>
 
                       <p className="text-neutral-600 mb-4">
@@ -106,7 +109,7 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
                       </p>
 
                       {/* Read More Link */}
-                      <div className="flex items-center text-sm font-medium text-success-600 group-hover:text-success-700">
+                      {/* <div className="flex items-center text-sm font-medium text-success-600 group-hover:text-success-700">
                         <span>Explore Designs</span>
                         <svg
                           className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
@@ -121,7 +124,7 @@ const ModularKitchenSolutions = ({ data, slug }: any) => {
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
