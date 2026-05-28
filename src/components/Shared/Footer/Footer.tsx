@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ICONS, IMAGES } from "@/assets";
 import Container from "@/components/Reusable/Container/Container";
 import Image from "next/image";
@@ -8,12 +9,65 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
+import { usePathname, useRouter } from "next/navigation";
 
 const Footer = () => {
-  const legalLinks = [
-    { label: "Terms & Conditions", path: "/" },
-    { label: "Privacy Policy", path: "/" },
-  ];
+  const pathname = usePathname();
+  const router = useRouter();
+
+ const handleNavigation = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  sectionId: string | null,
+  path: string
+) => {
+  e.preventDefault();
+
+  // For external links (social media)
+  if (path.startsWith("http")) {
+    window.open(path, "_blank");
+    return;
+  }
+
+  // For regular page navigation (like /contact-us, /blog, etc.)
+  if (path !== "/" && sectionId === null) {
+    router.push(path);
+    return;
+  }
+
+  // For home page with section scrolling
+  if (path === "/") {
+    // If we're not on home page, navigate to home page with section info
+    if (pathname !== "/") {
+      if (sectionId) {
+        sessionStorage.setItem("scrollToSection", sectionId);
+      }
+      router.push("/");
+      return;
+    }
+
+    // If we're already on home page, scroll to section
+    if (sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    } else {
+      // Scroll to top for Home link
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }
+};
+
+  // const legalLinks = [
+  //   { label: "Terms & Conditions", path: "/" },
+  //   { label: "Privacy Policy", path: "/" },
+  // ];
 
   const paymentIcons = [
     { src: ICONS.visaCard, alt: "visaCard" },
@@ -28,28 +82,60 @@ const Footer = () => {
     {
       heading: "Furniture",
       links: [
-        { label: "Home Furniture", path: "/" },
-        { label: "Office Furniture", path: "/" },
-        { label: "Modular Kitchen", path: "/" },
-        { label: "Wardrobe", path: "/" },
+        {
+          label: "Home",
+          path: "/",
+          sectionId: null,
+        },
+        {
+          label: "Categories",
+          path: "/",
+          sectionId: "categories",
+        },
+        {
+          label: "Furniture Studio",
+          path: "/",
+          sectionId: "furniture-studio",
+        },
+        {
+          label: "Design Your Furniture",
+          path: "/",
+          sectionId: "design-furniture",
+        },
       ],
     },
     {
       heading: "Company",
       links: [
-        { label: "About Us", path: "/" },
-        { label: "Contact Us", path: "/contact-us" },
-        { label: "Careers", path: "/" },
-        { label: "Blog", path: "/blog" },
+        { label: "Why Lokplaaza", path: "/", sectionId: "why-lokplaaza" },
+        { label: "Contact Us", path: "/contact-us", sectionId: null },
+        // { label: "Careers", path: "/" , sectionId: null },
+        { label: "Blog", path: "/blog", sectionId: null },
       ],
     },
     {
       heading: "Follow Us",
       links: [
-        { label: "Instagram", path: "https://www.instagram.com/lokplaazafurnituresgwalior?igsh=bjh6ZmQwaG1rM2Nw", icon: FaInstagram },
-        { label: "Facebook", path: "https://www.facebook.com/share/14hQjwfm3cf/?mibextid=wwXIfr", icon: FaFacebookF },
-        { label: "Whatsapp", path: "https://whatsapp.com/channel/0029VbCJDhRJP210Nen80S2Q", icon: FaWhatsapp },
-        { label: "LinkedIn", path: "https://www.linkedin.com/company/lokplaaza-furniture/posts/", icon: FaLinkedinIn },
+        {
+          label: "Instagram",
+          path: "https://www.instagram.com/lokplaazafurnituresgwalior?igsh=bjh6ZmQwaG1rM2Nw",
+          icon: FaInstagram,
+        },
+        {
+          label: "Facebook",
+          path: "https://www.facebook.com/share/14hQjwfm3cf/?mibextid=wwXIfr",
+          icon: FaFacebookF,
+        },
+        {
+          label: "Whatsapp",
+          path: "https://whatsapp.com/channel/0029VbCJDhRJP210Nen80S2Q",
+          icon: FaWhatsapp,
+        },
+        {
+          label: "LinkedIn",
+          path: "https://www.linkedin.com/company/lokplaaza-furniture/posts/",
+          icon: FaLinkedinIn,
+        },
       ],
     },
   ];
@@ -79,7 +165,10 @@ const Footer = () => {
 
               {/* Contact Info */}
               <div className="space-y-3">
-                <a href="tel:+91 96440 01216" className="flex items-center gap-3 hover:underline">
+                <a
+                  href="tel:+91 96440 01216"
+                  className="flex items-center gap-3 hover:underline"
+                >
                   <div className="w-8 h-8 rounded-full bg-success-100 flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-success-600"
@@ -97,7 +186,10 @@ const Footer = () => {
                   </div>
                   <span className="text-neutral-700">+91 96440 01216</span>
                 </a>
-                <a href="mailto:hello@lokplaaza.com" className="flex items-center gap-3 hover:underline">
+                <a
+                  href="mailto:hello@lokplaaza.com"
+                  className="flex items-center gap-3 hover:underline"
+                >
                   <div className="w-8 h-8 rounded-full bg-success-100 flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-success-600"
@@ -128,14 +220,14 @@ const Footer = () => {
                   )}
                 </h3>
                 <ul className="space-y-3">
-                  {section?.links.map((link) => {
+                  {section?.links.map((link:any) => {
                     const Icon = "icon" in link ? link.icon : undefined;
 
                     return (
                       <li key={link.label}>
                         <Link
                           href={link.path}
-                          target="_blank"
+                          onClick={(e) => handleNavigation(e, link.sectionId, link.path)}
                           className="text-neutral-600 hover:text-success-600 transition-colors duration-200 flex items-center gap-2 group"
                         >
                           {Icon && (
@@ -202,12 +294,12 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="border-t border-neutral-100 mt-8 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
               <div className="text-neutral-500 text-sm">
                 © {new Date().getFullYear()} Lokplaaza. All rights reserved.
               </div>
 
-              <div className="flex items-center gap-6">
+              {/* <div className="flex items-center gap-6">
                 {legalLinks.map((link) => (
                   <Link
                     key={link.label}
@@ -217,7 +309,7 @@ const Footer = () => {
                     {link.label}
                   </Link>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

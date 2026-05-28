@@ -8,27 +8,27 @@ const Testimonials = () => {
   const testimonials = [
     {
       image: IMAGES.testimonial1,
-      name: "John Doe",
+      name: "Priya Sharma",
       clientImage: IMAGES.ShopByRoom,
-      position: "Product Designer",
+      position: "Gwalior",
       message:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem doloribus consectetur iste, adipisci nam quo aspernatur magni eos delectus provident necessitatibus.",
+        "Got our modular kitchen done through Lokplaaza and couldn't be happier. Told them our layout and budget, they handled everything — from material selection to installation. Clean finish, on-time delivery, zero stress. The customized storage units they suggested were a bonus. Highly recommend!",
     },
     {
       image: IMAGES.testimonial2,
-      name: "Sarah Johnson",
+      name: "Karthik Nair",
       clientImage: IMAGES.ShopByRoom,
-      position: "Marketing Lead",
+      position: "Bangalore",
       message:
-        "Quisquam, voluptatem! Reiciendis repellendus quos dolores fugit sequi at saepe nesciunt. Eveniet corporis praesentium voluptate animi.",
+        "Was skeptical ordering customized furniture online but Lokplaaza changed that. Got a modular kitchen plus a custom wardrobe for the master bedroom — both came out exactly as shown in the 3D preview. Quality is solid and the team was responsive throughout. Great experience overall.",
     },
     {
       image: IMAGES.testimonial3,
-      name: "Michael Smith",
+      name: "Neha Kapoor",
       clientImage: IMAGES.ShopByRoom,
-      position: "CEO, Brandify",
+      position: "Delhi",
       message:
-        "Doloremque sequi asperiores harum, temporibus delectus doloribus possimus, quae adipisci quas quibusdam laboriosam repellat.",
+        "Ordered a full modular kitchen setup and a customized study unit. The craftsmanship is genuinely good — better than what most local vendors offer at this price point. Installation took 2 extra days but the end result was worth the wait. Will definitely order again for the living room next.",
     },
   ];
   return (

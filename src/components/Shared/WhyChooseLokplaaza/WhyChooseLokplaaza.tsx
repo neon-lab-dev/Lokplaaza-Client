@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Container from "@/components/Reusable/Container/Container";
 import BookConsultationForm from "../BookConsultationForm/BookConsultationForm";
 
-const WhyChooseLokplaaza = () => {
+const WhyChooseLokplaaza = ({data}:any) => {
   const features = [
     {
       title: "Get an Instant Quote Now",
@@ -35,15 +36,11 @@ const WhyChooseLokplaaza = () => {
                   Why Choose Us
                 </h3>
                 <h1 className="text-3xl md:text-4xl font-bold text-neutral-05 leading-tight">
-                  Why Lokplaaza Modular?
+                  {data.heading}
                 </h1>
               </div>
               <p className="text-lg text-neutral-20 leading-relaxed">
-                We Design{" "}
-                <span className="font-semibold text-success-05">
-                  Tailor-made Solutions
-                </span>{" "}
-                for Your Home
+                {data.description}
               </p>
             </div>
 

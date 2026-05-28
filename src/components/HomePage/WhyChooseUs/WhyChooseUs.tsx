@@ -26,7 +26,7 @@ const WhyChooseUs = () => {
     },
   ];
   return (
-    <div className="py-10 xl:py-20 bg-success-15 font-Satoshi">
+    <div id="why-lokplaaza" className="py-10 xl:py-20 bg-success-15 font-Satoshi">
       <Container>
         <Heading
           heading="LOKPLAAZA STUDIO"

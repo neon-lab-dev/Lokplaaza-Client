@@ -7,7 +7,7 @@ import OfflineStore from "@/components/HomePage/OfflineStore/OfflineStore";
 // import PhotoGallery from "@/components/HomePage/PhotoGallery/PhotoGallery";
 import ShopByRoom from "@/components/HomePage/ShopByRoom/ShopByRoom";
 import Testimonials from "@/components/HomePage/Testimonials/Testimonials";
-import TryARView from "@/components/HomePage/TryARView/TryARView";
+// import TryARView from "@/components/HomePage/TryARView/TryARView";
 import VirtualWalk from "@/components/HomePage/VirtualWalk/VirtualWalk";
 import WhyChooseUs from "@/components/HomePage/WhyChooseUs/WhyChooseUs";
 import ProductsSection from "@/components/HomePage/ProductsSection/ProductsSection";
@@ -55,7 +55,7 @@ export default function Home() {
       <GotInspiration />
       <VirtualWalk />
       <TalkToDesignExpert />
-      <TryARView />
+      {/* <TryARView /> */}
       {/* <Link href={"/contact-us"} className="hidden md:block lg:hidden">
       <Image src={IMAGES.offerBannerTab} alt="cta-banner" />
       </Link>

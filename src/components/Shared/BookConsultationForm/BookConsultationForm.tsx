@@ -2,6 +2,7 @@
 "use client";
 import { ICONS } from "@/assets";
 import Button from "@/components/Reusable/Button/Button";
+import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
 import TextInput from "@/components/Reusable/TextInput/TextInput";
 import { useBookConsultationMutation } from "@/redux/features/Consultation/consultationApi";
 import { useForm } from "react-hook-form";
@@ -30,6 +31,8 @@ const BookConsultationForm = () => {
       toast.error(error?.data?.message || "Something went wrong!");
     }
   };
+
+  const priceRanges = ["₹5000-₹10000", "₹10000-₹15000", "₹15000-₹20000", "₹20000-₹25000", "₹25000-₹35000", "₹35000-₹50000", "₹50000-Above"];
 
   return (
     <div
@@ -82,6 +85,16 @@ const BookConsultationForm = () => {
               required: "Phone number is required",
             })}
           />
+
+          {/* Price Range Field */}
+          <SelectDropdown
+            label="Budget Range"
+            {...register(`budgetRange`, {
+              required: "Category is required",
+            })}
+            error={errors?.budgetRange}
+            options={priceRanges || []}
+          />
         </div>
 
         <div className="pt-2">
@@ -95,7 +108,7 @@ const BookConsultationForm = () => {
         </div>
 
         {/* Footer Note */}
-        <div className="pt-4">
+        <div>
           <p className="text-xs text-neutral-500 text-center">
             By submitting, you agree to our Terms & Privacy Policy
           </p>

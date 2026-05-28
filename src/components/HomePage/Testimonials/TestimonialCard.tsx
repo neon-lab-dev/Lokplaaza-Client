@@ -12,10 +12,44 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   image,
   name,
-  clientImage,
+  // clientImage,
   position,
   message,
 }) => {
+
+   // Function to get initials from name
+  const getInitials = (fullName: string) => {
+    return fullName
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2); // Get first 2 letters/initials
+  };
+  const getAvatarColor = (name: string) => {
+    const colors = [
+      "bg-red-500",
+      "bg-blue-500",
+      "bg-green-500",
+      "bg-yellow-500",
+      "bg-purple-500",
+      "bg-pink-500",
+      "bg-indigo-500",
+      "bg-teal-500",
+      "bg-orange-500",
+      "bg-cyan-500",
+    ];
+    
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const index = Math.abs(hash) % colors.length;
+    return colors[index];
+  };
+
+  const initials = getInitials(name);
+  const avatarColor = getAvatarColor(name);
   return (
     <div className="relative h-[380px] w-full md:w-full xl:w-[380px] rounded-2xl overflow-hidden shadow-testimonial-card">
       {/* Background Image */}
@@ -25,15 +59,20 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="w-full h-[380px] object-cover"
       />
 
+      <div className="absolute top-0 bottom-0 bg-neutral-05/10 w-full h-full"></div>
+
       {/* Content Overlay */}
       <div className="absolute bottom-8 left-[18px] right-[18px] z-20 bg-neutral-45 backdrop-blur-2xl p-4 rounded-2xl">
         {/* Avatar */}
         <div className="absolute -top-10 left-0 right-0 flex items-center justify-center">
-          <Image
-            src={clientImage}
-            alt={name}
-            className="size-12 rounded-full border-8 border-neutral-50 shadow-md"
-          />
+          <div className="relative">
+            {/* Outer ring/circle */}
+            <div className={`size-12 rounded-full ${avatarColor} flex items-center justify-center shadow-md border-4 border-neutral-50`}>
+              <span className="text-white font-semibold text-sm">
+                {initials}
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Text Content */}

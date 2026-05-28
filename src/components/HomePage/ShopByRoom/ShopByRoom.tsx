@@ -21,25 +21,25 @@ const ShopByRoom = () => {
     {
       room: "Kitchen",
       imageUrl: IMAGES.kitchen,
-      link: "/modular-kitchen",
+      link: "/rooms/modular-kitchen",
       description: "Modern modular kitchens",
     },
     {
       room: "Bedroom",
       imageUrl: IMAGES.bedroom,
-      link: "modular-kitchen",
+      link: "/rooms/bedroom",
       description: "Serene spaces for rest and relaxation",
     },
     {
       room: "Living room",
       imageUrl: IMAGES.livingRoom,
-      link: "/custom-furniture",
+      link: "/rooms/living-room",
       description: "Entertainment and gathering spaces",
     },
     {
       room: "Dining room",
       imageUrl: IMAGES.diningRoom,
-      link: "modular-kitchen",
+      link: "/rooms/dining-room",
       description: "Elegant dining experiences",
     },
   ];
@@ -93,18 +93,11 @@ const ShopByRoom = () => {
 
             {/* Quick preview grid */}
             <div className="mt-16 hidden md:grid grid-cols-4 gap-3 max-w-2xl">
-              {categories.slice(0, 4).map((room, index) => (
-                <motion.div
+              {categories.slice(0, 4).map((room) => (
+                <Link
                   key={room.room}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  href={room.link}
                   className="relative cursor-pointer group"
-                  onClick={() => {
-                    setSelected(room);
-                    setIsModalOpen(true);
-                  }}
                 >
                   <div className="relative overflow-hidden rounded-2xl aspect-square">
                     <Image
@@ -118,7 +111,7 @@ const ShopByRoom = () => {
                   <p className="text-center mt-2 text-neutral-20 font-medium text-sm transition-colors">
                     {room.room}
                   </p>
-                </motion.div>
+                </Link>
               ))}
             </div>
           </div>

@@ -22,16 +22,31 @@ import tryIt from "../assets/Images/TryIt.webp";
 import blackCube from "../assets/Icons/black-cube.svg";
 import walk360degree from "../assets/Icons/360-dergee.svg";
 import sofa1 from "../assets/Images/sofa1.jpg";    // Dummy
-import inspiration from "../assets/Images/amico.svg"; 
-import kitchen from "../assets/Images/kitchen.webp"; 
-import bedroom from "../assets/Images/bedroom.webp"; 
-import livingRoom from "../assets/Images/living-room.webp"; 
-import diningRoom from "../assets/Images/dining-room.webp"; 
+import inspiration from "../assets/Images/amico.svg";
+import kitchen from "../assets/Images/kitchen.webp";
+import bedroom from "../assets/Images/bedroom.webp";
+import livingRoom from "../assets/Images/living-room.webp";
+import diningRoom from "../assets/Images/dining-room.webp";
 // Perfect kitchen
+import livingRoomHero from "../assets/Images/living-room-hero.png";
+import bedRoomHero from "../assets/Images/bedroom-hero.webp";
+import diningRoomHero from "../assets/Images/diningRoomHero.webp";
 import lShapedKitchen from "../assets/Images/l-shaped-modular-kitchen.webp";
 import uShapedKitchen from "../assets/Images/u-shaped-modular-kitchen.webp";
 import islandKitchen from "../assets/Images/island-kitchen.webp";
 import sofa from "../assets/Images/dummySofa.png"
+import bedroom1 from "../assets/Images/rooms-pages/bedroom-01.webp";
+import bedroom2 from "../assets/Images/rooms-pages/bedroom-02.webp";
+import bedroom3 from "../assets/Images/rooms-pages/bedroom-03.webp";
+import bedroom4 from "../assets/Images/rooms-pages/bedroom-04.webp";
+import livingRoom1 from "../assets/Images/rooms-pages/living-room-01.webp";
+import livingRoom2 from "../assets/Images/rooms-pages/living-room-02.webp";
+import livingRoom3 from "../assets/Images/rooms-pages/living-room-03.webp";
+import livingRoom4 from "../assets/Images/rooms-pages/living-room-04.webp";
+import livingRoom5 from "../assets/Images/rooms-pages/living-room-05.webp";
+import diningRoom1 from "../assets/Images/rooms-pages/dining-room-01.webp";
+import diningRoom2 from "../assets/Images/rooms-pages/dining-room-02.webp";
+import diningRoom3 from "../assets/Images/rooms-pages/dining-room-03.webp";
 //Benefits of Modular Kitchen
 import flexible from "../assets/Images/flexible.webp";
 import easyToAssemble from "../assets/Images/easy-to-assemble.webp";
@@ -80,7 +95,6 @@ import number2 from "../assets/Icons/number-2.svg";
 import number3 from "../assets/Icons/number-3.svg";
 import number4 from "../assets/Icons/number-4.svg";
 import tickMark from "./Icons/tick-mark.svg";
-
 import cartGif from "../assets/Gifs/cart.gif"
 
 
@@ -102,6 +116,9 @@ export const IMAGES = {
   authImg,
   modularKitchenHero,
   sofa1,
+  livingRoomHero,
+  bedRoomHero,
+  diningRoomHero,
   lShapedKitchen,
   uShapedKitchen,
   islandKitchen,
@@ -132,6 +149,18 @@ export const IMAGES = {
   bedroom,
   livingRoom,
   diningRoom,
+  bedroom1,
+  bedroom2,
+  bedroom3,
+  bedroom4,
+  livingRoom1,
+  livingRoom2,
+  livingRoom3,
+  livingRoom4,
+  livingRoom5,
+  diningRoom1,
+  diningRoom2,
+  diningRoom3
 };
 
 export const ICONS = {
@@ -162,6 +191,6 @@ export const ICONS = {
   walk360degree
 };
 
-export const GIFS={
+export const GIFS = {
   cartGif
 }

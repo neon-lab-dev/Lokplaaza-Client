@@ -12,7 +12,7 @@ interface TFormData {
   name: string;
   phoneNumber: string;
   email: string;
-  priceRange: string;
+  budgetRange: string;
   message?: string;
 }
 
@@ -206,11 +206,11 @@ const ContactUsForm = () => {
 
             {/* Price Range Field */}
             <SelectDropdown
-              label="Price Range"
-              {...register(`priceRange`, {
-                required: "Category is required",
+              label="Budget Range"
+              {...register(`budgetRange`, {
+                required: "Budget range is required",
               })}
-              error={errors?.priceRange}
+              error={errors?.budgetRange}
               options={priceRanges || []}
             />
 

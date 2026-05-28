@@ -15,11 +15,11 @@ interface DropdownProps {
 const SelectDropdown = forwardRef<HTMLSelectElement, DropdownProps>(
   ({ label, options, error, isRequired=true, selected, isDisabled, ...rest }, ref) => {
     return (
-      <div className="flex flex-col gap-2 font-Montserrat w-full">
+      <div className="flex flex-col gap-2 font-Satoshi w-full">
         <label
             className="flex flex-row items-center w-full justify-between text-neutral-65"
           >
-            <span className="text-neutral-05 leading-[18px] text-[15px] font-medium tracking-[-0.16] ">
+            <span className="text-neutral-05 leading-[18px] text-[15px] tracking-[-0.16] ">
               {label} {isRequired && <span className="text-red-600"> *</span>}
             </span>
           </label>

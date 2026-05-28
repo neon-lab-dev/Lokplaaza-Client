@@ -8,11 +8,13 @@ import Button from "../../Reusable/Button/Button";
 import { useForm } from "react-hook-form";
 import { useBookConsultationMutation } from "@/redux/features/Consultation/consultationApi";
 import toast from "react-hot-toast";
+import SelectDropdown from "@/components/Reusable/SelectDropdown/SelectDropdown";
 
 type TFormData = {
   name: string;
   email: string;
   phoneNumber: string;
+  budgetRange: string;
 };
 
 const TalkToDesignExpert = () => {
@@ -38,6 +40,8 @@ const TalkToDesignExpert = () => {
       toast.error(error?.data?.message || "Something went wrong!");
     }
   };
+
+  const priceRanges = ["₹5000-₹10000", "₹10000-₹15000", "₹15000-₹20000", "₹20000-₹25000", "₹25000-₹35000", "₹35000-₹50000", "₹50000-Above"];
 
   return (
     <div className="relative min-h-150 md:min-h-175 flex items-center">
@@ -133,7 +137,7 @@ const TalkToDesignExpert = () => {
               </div>
 
               {/* Right Column - Form */}
-              <div className="bg-white backdrop-blur-lg rounded-2xl border border-white/20 p-4 md:p-10 shadow-2xl">
+              <div className="bg-white backdrop-blur-lg rounded-2xl border border-white/20 p-4 md:p-8 shadow-2xl">
                 <div className="mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-success-05 mb-3">
                     Book Your Free Consultation
@@ -146,7 +150,7 @@ const TalkToDesignExpert = () => {
 
                 <form
                   onSubmit={handleSubmit(handleBookConsultation)}
-                  className="space-y-6"
+                  className="space-y-5"
                 >
                   <TextInput
                     label="Full Name"
@@ -177,6 +181,16 @@ const TalkToDesignExpert = () => {
                     {...register("phoneNumber", {
                       required: "Phone number is required",
                     })}
+                  />
+
+                  {/* Price Range Field */}
+                  <SelectDropdown
+                    label="Budget Range"
+                    {...register(`budgetRange`, {
+                      required: "Category is required",
+                    })}
+                    error={errors?.budgetRange}
+                    options={priceRanges || []}
                   />
 
                   <Button

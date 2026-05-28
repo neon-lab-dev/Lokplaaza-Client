@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Link from "next/link";
 import Container from "../../Reusable/Container/Container";
@@ -5,7 +6,7 @@ import { motion } from "framer-motion";
 import { ICONS } from "@/assets";
 import Image from "next/image";
 
-const StartDreamKitchenBanner = () => {
+const StartDreamKitchenBanner = ({data}:any) => {
   return (
     <div className="relative overflow-hidden bg-linear-to-r from-success-50 via-white to-success-50">
       {/* Background Pattern */}
@@ -26,9 +27,8 @@ const StartDreamKitchenBanner = () => {
             {/* Text Content */}
             <div className="text-center lg:text-left max-w-2xl">
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 leading-tight mb-4">
-                Start Planning Your{" "}
+                {data.heading}{" "}
                 <span className="text-success-600 relative">
-                  Dream Kitchen
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-2 text-success-200"
                     viewBox="0 0 200 10"
@@ -43,8 +43,7 @@ const StartDreamKitchenBanner = () => {
                 </span>
               </h3>
               <p className="text-lg text-neutral-600 mb-6 max-w-xl">
-                Get expert guidance and personalized designs for your perfect
-                kitchen. Book a free consultation today!
+                {data.description}
               </p>
 
               {/* Quick Stats */}

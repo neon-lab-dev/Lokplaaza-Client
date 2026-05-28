@@ -70,7 +70,7 @@ const GotInspiration = () => {
               headingColor="text-secondary-10"
               titleColor="text-white"
             />
-            <p className="text-neutral-10 text-center xl:text-right text-base md:text-2xl mt-4 mb-9 md:mt-3 md:mb-4">
+            <p className="text-neutral-10 text-center xl:text-right text-sm sm:text-base md:text-2xl mt-4 mb-9 md:mt-3 md:mb-4">
               Already have a design or style in mind? Upload your inspiration
               photo and let our team curate pieces just for you.
             </p>

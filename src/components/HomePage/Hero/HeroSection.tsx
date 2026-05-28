@@ -6,12 +6,13 @@ import Navbar from "@/components/Shared/Navbar/Navbar";
 import OfferAnnouncement from "@/components/Shared/OfferAnnouncement/OfferAnnouncement";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 const HeroSection = () => {
-   const pathname = usePathname();
-    const router = useRouter();
+  const pathname = usePathname();
+  const router = useRouter();
   const [selected, setSelected] = useState<string>("primary");
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const colors = [
     { id: "primary", bg: "primary-05" },
@@ -19,7 +20,38 @@ const HeroSection = () => {
     { id: "secondary", bg: "secondary-05" },
   ];
 
-     const handleNavigation = (sectionId: string) => {
+  // Function to get next color
+  const getNextColor = useCallback((currentColor: string) => {
+    const currentIndex = colors.findIndex(color => color.id === currentColor);
+    const nextIndex = (currentIndex + 1) % colors.length;
+    return colors[nextIndex].id;
+  }, [colors]);
+
+  // Function to auto-change color
+  const startAutoChange = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    intervalRef.current = setInterval(() => {
+      setSelected((prevSelected) => getNextColor(prevSelected));
+    }, 2500);
+  }, [getNextColor]);
+
+  // Handle manual color selection
+  const handleColorClick = (colorId: string) => {
+    setSelected(colorId);
+    
+    // Reset the interval when user manually clicks
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    // Restart auto-change after manual click
+    startAutoChange();
+  };
+
+  const handleNavigation = (sectionId: string) => {
     // If we're not on home page, navigate to home page with section info
     if (pathname !== "/") {
       sessionStorage.setItem("scrollToSection", sectionId);
@@ -58,6 +90,18 @@ const HeroSection = () => {
     }
   }, [pathname]);
 
+  // Start auto-change on component mount
+  useEffect(() => {
+    startAutoChange();
+    
+    // Cleanup interval on component unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [startAutoChange]);
+
   return (
     <div className="relative font-Satoshi">
       {/* Offer banner */}
@@ -74,7 +118,7 @@ const HeroSection = () => {
         alt="hero section"
         fill
         priority
-        className="hidden md:block  -z-10"
+        className="hidden md:block -z-10 object-cover transition-opacity duration-500"
       />
 
       {/* Mobile background image */}
@@ -89,7 +133,7 @@ const HeroSection = () => {
         alt="hero section small"
         fill
         priority
-        className="block md:hidden object-cover -z-10"
+        className="block md:hidden object-cover -z-10 transition-opacity duration-500"
       />
 
       <Container>
@@ -111,14 +155,15 @@ const HeroSection = () => {
               {colors.map((color) => (
                 <button
                   key={color.id}
-                  onClick={() => setSelected(color.id)}
+                  onClick={() => handleColorClick(color.id)}
                   className={`size-10 rounded-full border-2 cursor-pointer transition-all duration-200 bg-${
                     color.bg
                   } ${
                     selected === color.id
-                      ? "border-white "
-                      : "scale-110 border-neutral-05"
+                      ? "border-white scale-110"
+                      : "border-neutral-05 scale-100"
                   }`}
+                  aria-label={`Select ${color.id} color theme`}
                 ></button>
               ))}
             </div>
