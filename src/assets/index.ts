@@ -4,6 +4,9 @@ import heroSofa from "../assets/Images/heroSofa.png";
 import heroImgGreen from "../assets/Images/hero-img-green.webp";
 import heroImgRed from "../assets/Images/hero-img-red.webp";
 import heroImgYellow from "../assets/Images/hero-img-yellow.webp";
+import heroImgYellowMobile from "../assets/Images/hero-img-yellow-mobile.webp";
+import heroImgRedMobile from "../assets/Images/hero-img-red-mobile.webp";
+import heroImgGreenMobile from "../assets/Images/hero-img-green-mobile.webp";
 import shopView from "../assets/Images/shopView.webp";
 import HotSellerCTAbg from "../assets/Images/hotsellerCTbg.webp";
 import ShopByRoom from "../assets/Images/shopByRoom.png";
@@ -104,6 +107,9 @@ export const IMAGES = {
   heroImgGreen,
   heroImgRed,
   heroImgYellow,
+  heroImgYellowMobile,
+  heroImgRedMobile,
+  heroImgGreenMobile,
   heroSofaSmall,
   HotSellerCTAbg,
   ShopByRoom,

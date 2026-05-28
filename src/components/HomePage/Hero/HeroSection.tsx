@@ -125,15 +125,15 @@ const HeroSection = () => {
       <Image
         src={
           selected === "primary"
-            ? IMAGES.heroImgYellow
+            ? IMAGES.heroImgYellowMobile
             : selected === "success"
-            ? IMAGES.heroImgGreen
-            : IMAGES.heroImgRed
+            ? IMAGES.heroImgGreenMobile
+            : IMAGES.heroImgRedMobile
         }
         alt="hero section small"
         fill
         priority
-        className="block md:hidden object-cover -z-10 transition-opacity duration-500"
+        className="block md:hidden -z-10 transition-opacity duration-500"
       />
 
       <Container>
