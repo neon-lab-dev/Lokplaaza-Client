@@ -176,7 +176,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-transparent font-Satoshi w-full z-50">
-      <div className={`max-w-[1200px] 2xl:max-w-[1400px] w-full mx-auto z-50 ${pathname === "/" ? "px-0" : "px-5 2xl:px-0"}`}>
+      <div className={`max-w-300 2xl:max-w-350 w-full mx-auto z-50 ${pathname === "/" ? "px-0" : "px-5 2xl:px-0"}`}>
         <div className="flex items-center justify-between py-5 w-full">
           {/* Logo */}
           <Link href={"/"} className="relative z-50">

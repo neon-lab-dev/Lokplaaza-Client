@@ -12,7 +12,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import { RiShoppingCart2Line } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 
 interface Size {
@@ -180,13 +179,13 @@ const ProductDetails = () => {
               <h1 className="text-neutral-20 text-2xl font-bold capitalize">
                 {product.name}
               </h1>
-              <button
+              {/* <button
                 onClick={() => handleAddToCart()}
                 className="rounded-3xl text-sm px-3 py-2 flex items-center justify-center gap-2 bg-neutral-10 hover:bg-success-05 text-success-05 hover:text-white cursor-pointer transition duration-300"
               >
                 <RiShoppingCart2Line />
                 Add To Cart
-              </button>
+              </button> */}
             </div>
             <p className="text-neutral-40 text-sm mt-3 leading-6">
               {product.description}

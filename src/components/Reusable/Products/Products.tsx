@@ -73,7 +73,7 @@ const Products: React.FC<ProductsProps> = ({
         )}
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-6 xl:gap-y-20 place-items-center mt-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-6 place-items-center mt-12 w-full">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard key={`${product._id}`} product={product} />
