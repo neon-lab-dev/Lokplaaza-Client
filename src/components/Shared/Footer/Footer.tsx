@@ -187,7 +187,7 @@ const Footer = () => {
                   <span className="text-neutral-700">+91 96440 01216</span>
                 </a>
                 <a
-                  href="mailto:hello@lokplaaza.com"
+                  href="mailto:lokplaazafurniture@gmail.com"
                   className="flex items-center gap-3 hover:underline"
                 >
                   <div className="w-8 h-8 rounded-full bg-success-100 flex items-center justify-center">
@@ -205,7 +205,7 @@ const Footer = () => {
                       />
                     </svg>
                   </div>
-                  <span className="text-neutral-700">hello@lokplaaza.com</span>
+                  <span className="text-neutral-700">lokplaazafurniture@gmail.com</span>
                 </a>
               </div>
             </div>

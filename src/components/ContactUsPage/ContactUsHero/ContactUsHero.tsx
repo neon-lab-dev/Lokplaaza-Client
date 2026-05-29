@@ -74,10 +74,10 @@ const ContactUsHero = () => {
             </div>
             <h3 className="text-white font-semibold mb-1">Email</h3>
             <a
-              href="mailto:hello@lokplaaza.com"
+              href="mailto:lokplaazafurniture@gmail.com"
               className="text-white/80 text-sm"
             >
-              hello@lokplaaza.com
+              lokplaazafurniture@gmail.com
             </a>
           </div>
 
