@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useGetMyOrdersQuery } from "@/redux/features/Order/orderApi";
+import { usePathname, useRouter } from "next/navigation";
 import { FaBox, FaStar } from "react-icons/fa";
 import { FiClock, FiCheckCircle, FiTruck, FiXCircle } from "react-icons/fi";
 export interface TProductOrderItem {
@@ -26,6 +27,8 @@ export interface TOrder {
 }
 
 const MyOrders = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const { data: myOrders } = useGetMyOrdersQuery({});
   console.log(myOrders);
 
@@ -56,6 +59,23 @@ const MyOrders = () => {
         return "bg-red-100 text-red-800 border-red-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
+    }
+  };
+
+    const handleNavigation = () => {
+    // If not on home page, navigate to home page with categories section
+    if (pathname !== "/") {
+      sessionStorage.setItem("scrollToSection", "categories");
+      router.push("/");
+    } else {
+      // If already on home page, scroll to categories
+      const categoriesSection = document.getElementById("categories");
+      if (categoriesSection) {
+        categoriesSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
@@ -209,7 +229,7 @@ const MyOrders = () => {
           <p className="text-gray-600 mb-6">
             Start shopping to see your orders here
           </p>
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+          <button onClick={handleNavigation} className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
             Start Shopping
           </button>
         </div>
